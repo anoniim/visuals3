@@ -10,7 +10,7 @@ class NoisyWave : RecordedSketch(Screen(1200, 800)) {
     private val centerY: Float = random(1000F)
     private val centerZ: Float = random(1000F)
 
-    private val maxStrings = 50
+    private val numOfStrings = 50
     private val amplitude = 50F // 100
     private val sineStretch = 50F // 10-200 (100)
     private val yVariation = 400F // 100-500 (250)
@@ -27,7 +27,7 @@ class NoisyWave : RecordedSketch(Screen(1200, 800)) {
     override fun render(percent: Float) {
         background(backgroundColor)
 
-        for (string in 0..maxStrings) {
+        for (string in 0..numOfStrings) {
             stroke(getStrokeColor(string))
             beginShape()
             for (x in 0..screen.width) {

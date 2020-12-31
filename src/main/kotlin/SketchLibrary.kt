@@ -1,5 +1,6 @@
 import waves.NoisyWave
 import processing.core.PApplet
+import waves.NoisyWaveSurface
 
 fun main() {
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
@@ -17,5 +18,6 @@ fun main() {
 //    PApplet.main(arrayOf(MatrixLetters::class.qualifiedName))
 //    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
 //    PApplet.main(arrayOf(StripyBlobLoop::class.qualifiedName))
-    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
+//    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
+    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
 }
