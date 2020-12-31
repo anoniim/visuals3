@@ -1,4 +1,4 @@
-abstract class RecordedSketch: BaseSketch() {
+abstract class RecordedSketch(screen: Screen = Screen(1600, 900)): BaseSketch(screen) {
 
     private val defaultNumOfRecordedFrames = 120
     private var recording: Boolean = false
