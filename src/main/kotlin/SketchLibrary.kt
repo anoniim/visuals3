@@ -1,14 +1,5 @@
-import blob.StripyBlobLoop
-import circles.Bubbles
-import circles.CirclePacking
-import letters.MatrixLetters
-import letters.TextFromRandom
-import lines.NoisyLines
-import lines.RoundingLines
-import lines.SkippingLines
-import physics.SoupParticles
+import waves.NoisyWave
 import processing.core.PApplet
-import stars.Starfield
 
 fun main() {
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
@@ -26,5 +17,5 @@ fun main() {
 //    PApplet.main(arrayOf(MatrixLetters::class.qualifiedName))
 //    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
 //    PApplet.main(arrayOf(StripyBlobLoop::class.qualifiedName))
-    PApplet.main(arrayOf(NoisyLines::class.qualifiedName))
+    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
 }
