@@ -29,7 +29,7 @@ class SoupParticles : BaseSketch() {
         }
 
         for (i in 1..layer2Count) {
-            layer2.add(Circle(mass = 1.2F, maxShift = 200F, fill = purple))
+            layer2.add(Circle(mass = 1.2F, maxShift = 200F, fill = orange))
         }
 
         for (i in 1..layer3Count) {

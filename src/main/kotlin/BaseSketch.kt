@@ -9,16 +9,18 @@ open class BaseSketch(
     private val longClickClear: Boolean = false
 
     /** Colors **/
+    internal val grey11 = color(111, 111, 111)
     internal val grey9 = color(99, 99, 99)
     internal val grey7 = color(77, 77, 77)
     internal val grey5 = color(55, 55, 55)
     internal val grey3 = color(33, 33, 33)
     internal val grey1 = color(11, 11, 11)
-    internal val red = color(200, 11, 11)
-    internal val green = color(11, 200, 11)
-    internal val blue = color(11, 11, 200)
-    internal val purple = color(200, 130, 80)
-    internal val yellow = color(150, 155, 49)
+    internal val red = color(200, 70, 0)
+    internal val green = color(70, 200, 70)
+    internal val blue = color(0, 70, 200)
+    internal val purple = color(100, 70, 200)
+    internal val orange = color(200, 150, 70)
+    internal val yellow = color(150, 150, 70)
     internal val transparent = color(0, 0, 0, 255)
     internal val transparentDark = color(0, 0, 0, 100)
     internal val transparentLight = color(255, 255, 255, 100)

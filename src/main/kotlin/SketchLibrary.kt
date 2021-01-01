@@ -1,3 +1,4 @@
+import patterns.Toothpicks
 import waves.NoisyWave
 import processing.core.PApplet
 import waves.NoisyWaveSurface
@@ -19,5 +20,6 @@ fun main() {
 //    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
 //    PApplet.main(arrayOf(StripyBlobLoop::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
-    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
+//    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
+    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
 }
