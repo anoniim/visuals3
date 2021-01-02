@@ -38,7 +38,13 @@ open class BaseSketch(
 
     /** Initial settings **/
     override fun settings() {
-        size(screen.width, screen.height)
+        if (screen.fullscreen) {
+            fullScreen()
+            screen.width = width
+            screen.height = height
+        } else {
+            size(screen.width, screen.height)
+        }
     }
 
     /** Mouse long click clears sketch **/
@@ -67,7 +73,7 @@ open class BaseSketch(
     }
 }
 
-class Screen(val width: Int, val height: Int) {
+class Screen(var width: Int, var height: Int, val fullscreen: Boolean = false) {
     val widthF: Float = width.toFloat()
     val heightF: Float = height.toFloat()
     val centerX: Float = width / 2F

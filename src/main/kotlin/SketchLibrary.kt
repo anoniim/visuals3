@@ -1,9 +1,6 @@
-import patterns.Toothpicks
-import pixels.FireEffect
-import pixels.WaterRipples
-import waves.NoisyWave
+import circles.Spiral
 import processing.core.PApplet
-import waves.NoisyWaveSurface
+import sequences.RecamansSequence
 
 fun main() {
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
@@ -25,5 +22,7 @@ fun main() {
 //    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
 //    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
 //    PApplet.main(arrayOf(WaterRipples::class.qualifiedName))
-    PApplet.main(arrayOf(FireEffect::class.qualifiedName))
+//    PApplet.main(arrayOf(FireEffect::class.qualifiedName))
+    PApplet.main(arrayOf(RecamansSequence::class.qualifiedName))
+//    PApplet.main(arrayOf(Spiral::class.qualifiedName))
 }
