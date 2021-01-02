@@ -6,11 +6,9 @@ import Screen
 class Toothpicks : BaseSketch(Screen(900, 900)) {
 
     private val size: Float = 100F // 100F
-    val flawChance = 0F // 0.000_001F
 
     private var allPicks = mutableListOf<Toothpick>()
     private val nextPicks = mutableListOf<Toothpick>()
-    private val negativePicks = mutableListOf<Toothpick>()
     private var minX = -screen.widthF
     private var maxX = screen.widthF
 
@@ -47,9 +45,9 @@ class Toothpicks : BaseSketch(Screen(900, 900)) {
         }
 
         // NEGATIVE
-//        if (allPicks.size > 1000) {
-//            allPicks = allPicks.drop(allPicks.size/110).toMutableList()
-//        }
+        if (allPicks.size > 100) {
+            allPicks = allPicks.drop(allPicks.size/110).toMutableList()
+        }
     }
 
     private fun addToNext(it: Toothpick): Boolean = nextPicks.add(it)
