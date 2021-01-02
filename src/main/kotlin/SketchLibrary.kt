@@ -1,4 +1,5 @@
 import patterns.Toothpicks
+import pixels.FireEffect
 import pixels.WaterRipples
 import waves.NoisyWave
 import processing.core.PApplet
@@ -23,5 +24,6 @@ fun main() {
 //    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
 //    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
-    PApplet.main(arrayOf(WaterRipples::class.qualifiedName))
+//    PApplet.main(arrayOf(WaterRipples::class.qualifiedName))
+    PApplet.main(arrayOf(FireEffect::class.qualifiedName))
 }
