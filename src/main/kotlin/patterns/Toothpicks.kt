@@ -47,9 +47,9 @@ class Toothpicks : BaseSketch(Screen(900, 900)) {
         }
 
         // NEGATIVE
-//        if (allPicks.size > 1000) {
-//            allPicks = allPicks.drop(allPicks.size/110).toMutableList()
-//        }
+        if (allPicks.size > 100) {
+            allPicks = allPicks.drop(allPicks.size/110).toMutableList()
+        }
     }
 
     private fun addToNext(it: Toothpick): Boolean = nextPicks.add(it)
