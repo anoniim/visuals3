@@ -2,14 +2,15 @@ package patterns
 
 import BaseSketch
 import Screen
-import processing.core.PApplet
 
 class Toothpicks : BaseSketch(Screen(900, 900)) {
 
-    val size: Float = 100F
+    private val size: Float = 100F // 100F
+    val flawChance = 0F // 0.000_001F
 
+    private var allPicks = mutableListOf<Toothpick>()
     private val nextPicks = mutableListOf<Toothpick>()
-    private val allPicks = mutableListOf<Toothpick>()
+    private val negativePicks = mutableListOf<Toothpick>()
     private var minX = -screen.widthF
     private var maxX = screen.widthF
 
@@ -28,31 +29,30 @@ class Toothpicks : BaseSketch(Screen(900, 900)) {
         translate(screen.centerX, screen.centerY)
         setScale()
         background(grey3)
-        stroke(grey11)
         strokeWeight(3F)
 
         allPicks.addAll(nextPicks)
+        nextPicks.clear()
         for (pick in allPicks) {
-            pick.show()
+            if (pick.isNew) {
+                pick.isNew = false
+                stroke(orange)
+                pick.show()
+                pick.generateNext(allPicks, ::addToNext)
+                updateMinMax(pick)
+            } else {
+                stroke(grey11)
+                pick.show()
+            }
         }
 
-        stroke(orange)
-        val next = mutableListOf<Toothpick>()
-        for (pick in nextPicks) {
-            var new = pick.getNextForA(allPicks)
-            if (new != null) {
-                next.add(new)
-            }
-            new = pick.getNextForB(allPicks)
-            if (new != null) {
-                next.add(new)
-            }
-            updateMinMax(pick)
-            pick.show()
-        }
-        nextPicks.clear()
-        nextPicks.addAll(next)
+        // NEGATIVE
+//        if (allPicks.size > 1000) {
+//            allPicks = allPicks.drop(allPicks.size/110).toMutableList()
+//        }
     }
+
+    private fun addToNext(it: Toothpick): Boolean = nextPicks.add(it)
 
     private fun setScale() {
         val scaleFactor = width / (maxX - minX)
@@ -65,12 +65,13 @@ class Toothpicks : BaseSketch(Screen(900, 900)) {
     }
 }
 
-class Toothpick(private val applet: PApplet, x: Float, y: Float, val size: Float, val direction: Direction) {
+class Toothpick(private val applet: Toothpicks, x: Float, y: Float, val size: Float, val direction: Direction) {
 
     val ax: Float
     private val ay: Float
     private val bx: Float
     private val by: Float
+    var isNew = true
 
     init {
         val halfSize = size / 2
@@ -90,31 +91,27 @@ class Toothpick(private val applet: PApplet, x: Float, y: Float, val size: Float
         }
     }
 
-    fun getNextForA(otherNew: List<Toothpick>): Toothpick? {
-        return getNext(ax, ay, otherNew)
-    }
-
-    fun getNextForB(otherNew: List<Toothpick>): Toothpick? {
-        return getNext(bx, by, otherNew)
-    }
-
-    private fun getNext(x: Float, y: Float, otherNew: List<Toothpick>): Toothpick? {
-        var available = true
+    fun generateNext(otherNew: List<Toothpick>, addNew: (Toothpick) -> Boolean) {
+        var aAvailable = true
+        var bAvailable = true
         for (pick in otherNew) {
-            if (pick != this && pick.touches(x, y)) {
-                available = false
-                // TODO break
+            if (aAvailable && pick != this && pick.touches(ax, ay, direction)) {
+                aAvailable = false
+            }
+            if (bAvailable && pick != this && pick.touches(bx, by, direction)) {
+                bAvailable = false
             }
         }
-        return if(available) newPerpendicular(x, y) else null
+        if (aAvailable) addNew(newPerpendicular(ax, ay))
+        if (bAvailable) addNew(newPerpendicular(bx, by))
+    }
+
+    private fun touches(x: Float, y: Float, direction: Direction): Boolean {
+        return this.direction == direction && ((ax == x && ay == y) || (bx == x && by == y))
     }
 
     private fun newPerpendicular(x: Float, y: Float): Toothpick {
         return Toothpick(applet, x, y, size, direction.perpendicular())
-    }
-
-    private fun touches(x: Float, y: Float): Boolean {
-        return (ax == x && ay == y) || (bx == x && by == y)
     }
 
     fun show() {
@@ -126,7 +123,7 @@ class Toothpick(private val applet: PApplet, x: Float, y: Float, val size: Float
         VERTICAL;
 
         fun perpendicular(): Direction {
-            return when(this) {
+            return when (this) {
                 HORIZONTAL -> VERTICAL
                 VERTICAL -> HORIZONTAL
             }
