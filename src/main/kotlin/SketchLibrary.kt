@@ -1,6 +1,5 @@
-import circles.Spiral
+import circles.ZenSpiral
 import processing.core.PApplet
-import sequences.RecamansSequence
 
 fun main() {
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
@@ -24,5 +23,5 @@ fun main() {
 //    PApplet.main(arrayOf(WaterRipples::class.qualifiedName))
 //    PApplet.main(arrayOf(FireEffect::class.qualifiedName))
 //    PApplet.main(arrayOf(RecamansSequence::class.qualifiedName))
-    PApplet.main(arrayOf(Spiral::class.qualifiedName))
+    PApplet.main(arrayOf(ZenSpiral::class.qualifiedName))
 }
