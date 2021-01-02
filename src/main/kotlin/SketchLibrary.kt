@@ -1,4 +1,5 @@
 import patterns.Toothpicks
+import pixels.WaterRipples
 import waves.NoisyWave
 import processing.core.PApplet
 import waves.NoisyWaveSurface
@@ -21,5 +22,6 @@ fun main() {
 //    PApplet.main(arrayOf(StripyBlobLoop::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
-    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
+//    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
+    PApplet.main(arrayOf(WaterRipples::class.qualifiedName))
 }
