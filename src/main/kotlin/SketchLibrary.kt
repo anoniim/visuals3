@@ -23,6 +23,6 @@ fun main() {
 //    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
 //    PApplet.main(arrayOf(WaterRipples::class.qualifiedName))
 //    PApplet.main(arrayOf(FireEffect::class.qualifiedName))
-    PApplet.main(arrayOf(RecamansSequence::class.qualifiedName))
-//    PApplet.main(arrayOf(Spiral::class.qualifiedName))
+//    PApplet.main(arrayOf(RecamansSequence::class.qualifiedName))
+    PApplet.main(arrayOf(Spiral::class.qualifiedName))
 }
