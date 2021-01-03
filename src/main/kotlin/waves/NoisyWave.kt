@@ -13,13 +13,13 @@ class NoisyWave : RecordedSketch(Screen(1200, 800)) {
     private val numOfStrings = 50
     private val amplitude = 50F // 100
     private val sineStretch = 50F // 10-200 (100)
-    private val yVariation = 400F // 100-500 (250)
-    private val smoothness = 0.001F * 2 // 1-30 (10)
+    private val yVariation = 100F // 100-500 (250)
+    private val smoothness = 0.001F * 12 // 1-30 (10)
     private val randomnessDiameter = 0.1F * 9 // 1-10 (4)
     private val stringCohesion = 0.01F * 5 // 5-25 (5)
 
     override fun setup() {
-        record(frames = 180, take = 2, record = true)
+        record(frames = 180, take = 2, record = false)
         noFill()
 //        frameRate(10F)
     }
