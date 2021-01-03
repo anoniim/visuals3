@@ -1,9 +1,9 @@
-package circles
+package spirals
 
 import BaseSketch
 import Screen
 
-class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = true)) {
+class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = false)) {
 
     private val circularSpeed = 0.05f // 0.05f
     private val heightThreshold = 1.3f // 1.32f / 1.3f when fullscreen
@@ -15,7 +15,7 @@ class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = true)) {
     private var diameter: Float = 0f
 
     override fun setup() {
-        frameRate(20f)
+        frameRate(120f)
         background(grey3)
         noFill()
         stroke(grey11)
