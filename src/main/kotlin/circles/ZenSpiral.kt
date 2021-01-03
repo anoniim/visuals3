@@ -5,7 +5,7 @@ import Screen
 
 class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = true)) {
 
-    private val speed = 0.05f // 0.05f
+    private val circularSpeed = 0.05f // 0.05f
     private val heightThreshold = 1.3f // 1.32f / 1.3f when fullscreen
     private val diameterStep = 0.5f // 0.5f
 
@@ -23,14 +23,14 @@ class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = true)) {
     }
 
     override fun draw() {
-        radianProgress += clockwise * speed
+        radianProgress += clockwise * circularSpeed
         diameter += clockwise * diameterStep
         if (diameter > heightThreshold * height) {
             reverseDirection(true)
         } else if (diameter < 0) {
             reverseDirection(false)
         }
-        arc(width/2f, height/2f, diameter, diameter, radianProgress, radianProgress + speed)
+        arc(width/2f, height/2f, diameter, diameter, radianProgress, radianProgress + circularSpeed)
     }
 
     private fun reverseDirection(reachedEnd: Boolean) {
@@ -46,11 +46,13 @@ class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = true)) {
 
     private fun reverseFilling() {
         if (filling) {
+            noFill()
             strokeWeight(4f)
             stroke(grey3)
         } else {
-            stroke(grey11)
+            noFill()
             strokeWeight(1f)
+            stroke(grey11)
         }
         filling = !filling
     }
