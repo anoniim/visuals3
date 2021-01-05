@@ -29,6 +29,10 @@ open class BaseSketch(
         get() = mouseX.toFloat()
     val mouseYF: Float
         get() = mouseY.toFloat()
+    val widthF: Float
+        get() = width.toFloat()
+    val heightF: Float
+        get() = height.toFloat()
 
     override fun draw() {
 
