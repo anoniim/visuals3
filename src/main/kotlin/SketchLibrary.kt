@@ -1,3 +1,4 @@
+import patterns.AnimatedRosePatterns
 import patterns.RosePatterns
 import patterns.TimesTablesCircle
 import processing.core.PApplet
@@ -28,4 +29,5 @@ fun main() {
 //    PApplet.main(arrayOf(SquareSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
     PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
+    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 }

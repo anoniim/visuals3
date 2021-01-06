@@ -7,15 +7,12 @@ import util.roundTo
 class RosePatterns : BaseSketch(Screen(800, 800, fullscreen = false)) {
 
     // Interesting n (for d: 8): 3.5-4.5, 8-9, 13.5
-    private val nProgress = ValueProgress(minValue = 0f, maxValue = 4f)
-    private val dProgress = ValueProgress(minValue = 0f, maxValue = 5f)
+    private val nProgress = ValueProgress(minValue = 21f, maxValue = 26f)
+    private val dProgress = ValueProgress(minValue = 42f, maxValue = 52f)
 
     private val scale: Float = 350f
     private val textSize = 24f
     private val textScale = 1.3f
-
-    override fun setup() {
-    }
 
     override fun draw() {
         translate(width / 2f, height / 2f)
@@ -31,7 +28,7 @@ class RosePatterns : BaseSketch(Screen(800, 800, fullscreen = false)) {
         stroke(grey9)
         beginShape()
         var theta = 0f
-        while (theta <= TWO_PI * d * 2) {
+        while (theta <= TWO_PI * d) {
             val radius = scale * cos(n / d * theta)
             val x = radius * cos(theta)
             val y = radius * sin(theta)
