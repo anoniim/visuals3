@@ -19,7 +19,7 @@ class NoisyWave : RecordedSketch(Screen(1200, 800)) {
     private val stringCohesion = 0.01F * 5 // 5-25 (5)
 
     override fun setup() {
-        record(frames = 180, take = 2, record = false)
+        record(frames = 180, label = "2", skipFrames = 5, record = false)
         noFill()
 //        frameRate(10F)
     }

@@ -20,7 +20,7 @@ class NoisyWaveSurface : RecordedSketch(Screen(1200, 800)) {
     private val stringCohesion = 0.01F * 5 // 5-25 (5)
 
     override fun setup() {
-        record(frames = 240, take = 1, record = false)
+        record(frames = 240, label = "1", skipFrames = 5, record = false)
         noFill()
 //        frameRate(10F)
     }

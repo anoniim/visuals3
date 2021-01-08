@@ -3,24 +3,29 @@ abstract class RecordedSketch(screen: Screen = Screen(1600, 900)): BaseSketch(sc
     private val defaultNumOfRecordedFrames = 120
     private var recording: Boolean = false
     protected var totalFrames = defaultNumOfRecordedFrames
-    private var take: Int = 1
+    private var label: String = "1"
+    private var skipFrames: Int = 0
 
     protected fun record(
         frames: Int = defaultNumOfRecordedFrames,
-        take: Int = 1,
+        label: String = "1",
+        skipFrames: Int = 0,
         record: Boolean = true
     ) {
         recording = record
         totalFrames = frames
-        this.take = take
+        this.label = label
+        this.skipFrames = skipFrames
     }
 
     override fun draw() {
         val percent = calculateAnimationProgress(recording)
         render(percent)
         if (recording) {
-            saveFrame("recordings/${this::class.simpleName}/$take/###.png")
-            if (frameCount == totalFrames) {
+            if (skipFrames == 0 || frameCount % skipFrames == 1) {
+                saveFrame("recordings/${this::class.simpleName}/$label/###.png")
+            }
+            if (frameCount > totalFrames) {
                 exit()
             }
         }

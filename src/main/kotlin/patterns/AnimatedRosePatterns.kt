@@ -1,30 +1,31 @@
 package patterns
 
-import BaseSketch
+import RecordedSketch
 import Screen
 import processing.core.PVector
 
-class AnimatedRosePatterns : BaseSketch(Screen(800, 800, fullscreen = false)) {
+class AnimatedRosePatterns : RecordedSketch(Screen(800, 800, fullscreen = false)) {
 
     // If n/d is rational, then the curve is closed
-    // Interesting: (15.5, 17.5), (12.0, 17.9), (21.24, 42.75), (21.24, 44.81),
-    private val n = 21.24f
-    private val d = 44.81f
-    private val step = 0.05f // 0.05f
+    // Interesting: (1, 6), (2, 7), (15.5, 17.5), (12.0, 17.9), (21.24, 42.75), (21.24, 44.81),
+    private val n = 18.5f
+    private val d = 6f
+    private val step = 0.03f // 0.05f
 
     private val scale: Float = 350f
     private var theta = 0f
+    private val maxAngle = TWO_PI * d
     private var last = calculateXY(theta)
 
     override fun setup() {
         background(grey3)
+        record(ceil(maxAngle/step), label = "twoSeventh", skipFrames = 2, record = false)
     }
 
-    override fun draw() {
+    override fun render(percent: Float) {
         translate(width / 2f, height / 2f)
         drawRoseShape()
         incrementAngle()
-        println(theta)
     }
 
     private fun drawRoseShape() {
@@ -48,7 +49,7 @@ class AnimatedRosePatterns : BaseSketch(Screen(800, 800, fullscreen = false)) {
 
     private fun incrementAngle() {
         theta += step
-        if (theta > TWO_PI * d) {
+        if (theta > maxAngle) {
             noLoop()
         }
     }
