@@ -9,10 +9,16 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
     private val strokeWeight = 5f
     private val lines by lazy {
         listOf(
-            Line(step, step, Direction.RIGHT),
-            Line(width - step, step, Direction.DOWN),
-            Line(width - step, height - step, Direction.LEFT),
-            Line(step, height - step, Direction.UP)
+        // 1 Pyramid
+//            Line(step, step, Direction.RIGHT),
+//            Line(width - step, step, Direction.DOWN),
+//            Line(width - step, height - step, Direction.LEFT),
+//            Line(step, height - step, Direction.UP)
+        // 4 Pyramids
+            Line(width/2 - step/2, height/2 - step/2, Direction.LEFT),
+            Line(width/2 - step/2, height/2 + step/2, Direction.LEFT),
+            Line(width/2 + step/2, height/2 - step/2, Direction.RIGHT),
+            Line(width/2 + step/2, height/2 + step/2, Direction.RIGHT)
         )
     }
 
@@ -104,11 +110,6 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
 
         private fun turn() {
             turnCount++
-            if (turnCount == 2) {
-                // skip one turn (not to go backwards
-                turn()
-                return
-            }
             if (turnCount >= 4) {
                 // Nowhere to go
                 onCannotMove()
@@ -119,6 +120,11 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
                 Direction.LEFT -> Direction.UP
                 Direction.UP -> Direction.RIGHT
                 Direction.DOWN -> Direction.LEFT
+            }
+            if (turnCount == 2) {
+                // do one more turn (not to go backwards)
+                turn()
+                return
             }
             update()
         }
