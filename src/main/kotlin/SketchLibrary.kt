@@ -1,11 +1,7 @@
-import patterns.AnimatedRosePatterns
-import patterns.RosePatterns
-import patterns.TimesTablesCircle
 import processing.core.PApplet
-import spirals.NoisySpiral
 import spirals.SquareSpiral
-import spirals.ZenSpiral
 
+@ExperimentalStdlibApi
 fun main() {
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
