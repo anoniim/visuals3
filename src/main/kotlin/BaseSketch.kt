@@ -2,11 +2,11 @@ import processing.core.PApplet
 import kotlin.random.Random
 
 open class BaseSketch(
-    val screen: Screen = Screen(1600, 900)
+    val screen: Screen = Screen(1600, 900),
+    private val longClickClear: Boolean = false
 ) : PApplet() {
 
     /** General config **/
-    private val longClickClear: Boolean = false
 
     /** Colors **/
     internal val grey11 = color(111, 111, 111)
@@ -35,7 +35,13 @@ open class BaseSketch(
         get() = height.toFloat()
 
     override fun draw() {
-
+        val mouseDownTime = millis() - mousePressedMillis
+        if (longClickClear && mousePressed && mouseDownTime > 1000) {
+            noStroke()
+            val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
+            fill(grey1, overlayAlpha)
+            rect(0f, 0f, widthF, heightF)
+        }
     }
 
     internal fun random(max: Int) = map(Random.nextFloat(), 0F, 1F, 0F, max.toFloat())
@@ -59,8 +65,12 @@ open class BaseSketch(
 
     override fun mouseReleased() {
         if (longClickClear && millis() - mousePressedMillis > 2000) {
-            background(grey1)
+            reset()
         }
+    }
+
+    open fun reset() {
+        background(grey1)
     }
 
     protected fun distFromScreenCenter(x1: Float, y1: Float) =
