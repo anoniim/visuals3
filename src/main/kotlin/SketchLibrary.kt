@@ -1,3 +1,4 @@
+import lines.HalfFill
 import lines.MoireLines
 import processing.core.PApplet
 
@@ -29,5 +30,6 @@ fun main() {
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
-    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
+//    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
+    PApplet.main(arrayOf(HalfFill::class.qualifiedName))
 }
