@@ -3,6 +3,7 @@ import kotlin.random.Random
 
 open class BaseSketch(
     val screen: Screen = Screen(1600, 900),
+    private val renderer: String? = null,
     private val longClickClear: Boolean = false
 ) : PApplet() {
 
@@ -53,7 +54,11 @@ open class BaseSketch(
             screen.width = width
             screen.height = height
         } else {
-            size(screen.width, screen.height)
+            if (renderer != null) {
+                size(screen.width, screen.height, renderer)
+            } else {
+                size(screen.width, screen.height)
+            }
         }
     }
 
