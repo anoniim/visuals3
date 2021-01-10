@@ -1,3 +1,4 @@
+import patterns.MoireHexagons
 import processing.core.PApplet
 import spirals.SpinningSpiral
 
@@ -26,11 +27,11 @@ fun main() {
 //    PApplet.main(arrayOf(RecamansSequence::class.qualifiedName))
 //    PApplet.main(arrayOf(ZenSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(SquareSpiral::class.qualifiedName))
-    PApplet.main(arrayOf(SpinningSpiral::class.qualifiedName))
+//    PApplet.main(arrayOf(SpinningSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(HalfFill::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
-//    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
+    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 }
