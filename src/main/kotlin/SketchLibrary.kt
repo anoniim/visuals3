@@ -1,9 +1,5 @@
-import lines.HalfFill
-import lines.MoireLines
-import patterns.MoireHexagons
 import processing.core.PApplet
-import spirals.SimpleSpiral
-import waves.NoisyWaveSurface
+import spirals.SpinningSpiral
 
 @ExperimentalStdlibApi
 fun main() {
@@ -30,7 +26,7 @@ fun main() {
 //    PApplet.main(arrayOf(RecamansSequence::class.qualifiedName))
 //    PApplet.main(arrayOf(ZenSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(SquareSpiral::class.qualifiedName))
-    PApplet.main(arrayOf(SimpleSpiral::class.qualifiedName))
+    PApplet.main(arrayOf(SpinningSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
