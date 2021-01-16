@@ -1,31 +1,25 @@
-package waves
+package sketch.sound
 
 import BaseSketch
 import Screen
-import processing.sound.*
 import java.util.*
 
 class Equalizer : BaseSketch(Screen(1500, 800)) {
 
     private val bands = 256 // power of 2 (256)
     private val smoothingFactor = 0.2f // 0.2
-    private val strokeWeight = 40f // 1-100 (30)
+    private val strokeWeight = 10f // 1-100 (30)
     private val spacing = 5f // 5
     private val maxLength = 400f // 400
 
-    private lateinit var volume: Amplitude
-    private lateinit var waveform: Waveform
-    private lateinit var fft: FFT
+    private val waveform by lazy { sound.waveform(samples) }
+    private val fft by lazy { sound.fft(bands) }
     private val lineWidthTotal = strokeWeight + spacing
     private val padding = 50f / strokeWeight
     private val numLines = floor(screen.widthF / lineWidthTotal - padding)
     private val xOffset = (screen.widthF - numLines * lineWidthTotal) / 2 + strokeWeight / 2
     private val lines1 = List(numLines) { Line(it) }
     private val samples = numLines
-
-    override fun setup() {
-        initAudio()
-    }
 
     override fun draw() {
         background(grey3)
@@ -37,8 +31,8 @@ class Equalizer : BaseSketch(Screen(1500, 800)) {
         fft.analyze()
 
         for (line in lines1.withIndex()) {
-            val sample = waveform.data[line.index]
-//            val sample = fft.spectrum[line.index]
+//            val sample = waveform.data[line.index]
+            val sample = fft.spectrum[line.index]
             line.value.update(sample)
             line.value.show()
         }
@@ -76,22 +70,5 @@ class Equalizer : BaseSketch(Screen(1500, 800)) {
                 line(x, 0f, x, -lineLength.value)
             }
         }
-    }
-
-    private fun initAudio() {
-//        println(Sound.list())
-        val sound = Sound(this)
-        sound.inputDevice(1)
-        val mic = AudioIn(this, 0)
-        mic.start()
-
-        volume = Amplitude(this)
-        volume.input(mic)
-
-        waveform = Waveform(this, samples)
-        waveform.input(mic)
-
-        fft = FFT(this, bands)
-        fft.input(mic)
     }
 }

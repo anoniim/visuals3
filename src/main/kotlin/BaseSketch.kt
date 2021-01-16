@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sound.SoundHelper
 import kotlin.random.Random
 
 open class BaseSketch(
@@ -6,6 +7,9 @@ open class BaseSketch(
     private val renderer: String? = null,
     private val longClickClear: Boolean = false
 ) : PApplet() {
+
+    /* Helpers */
+    val sound: SoundHelper by lazy { SoundHelper(this) }
 
     /* Colors */
     internal val grey11 = color(111, 111, 111)
