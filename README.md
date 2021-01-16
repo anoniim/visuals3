@@ -3,15 +3,15 @@ Gradle Setup
 
 Using Kotlin DSL for Gradle, the Processing dependency can be defined as follows:
 ```gradle
-implementation(group = "org.processing", name = "core", version = "3.5.4")
+implementation(group = "org.processing", name = "core", version = "3.3.7")
 ```
 
-### Public maven
+## Public maven
 
 For out-of-the-box setup use the public maven artefacts (taken from `mavenCentral()`). 
 Beware that these are not officially maintained and thus are outdated (only version up to 3.3.7 available). 
 
-### Local maven
+## Local maven
 
 For a newer version, download Processing, open the application files and install the library file in local maven repository.
 On MacOS, this can be done by:
@@ -20,6 +20,31 @@ On MacOS, this can be done by:
 cd /Applications/Processing.app/Contents/Java/core/library
 mvn install:install-file -Dfile=core.jar -DgroupId=org.processing -DartifactId=core -Dversion=3.5.4 -Dpackaging=jar
 ```
+```gradle
+implementation(group = "org.processing", name = "core", version = "3.3.7")
+```
+
+### Processing 4
+
+Using this technique, we can also get the latest Processing 4.0
+
+```gradle
+implementation(group = "org.processing", name = "core", version = "4.0a2")
+```
+
+The only thing this needs is Java 11. Everything else seems to work fine so far.
+
+## Sound
+
+To use [Processing Sound library](https://processing.org/reference/libraries/sound/index.html), download the library via Processing PDE and install the the 2 JARs in local maven by the method described above.
+
+```shell
+mvn install:install-file -Dfile=sound.jar -DgroupId=org.processing -DartifactId=sound -Dversion=2.2.3 -Dpackaging=jar
+mvn install:install-file -Dfile=javamp3-1.0.4.jar -DgroupId=org.processing -DartifactId=sound -Dversion=2.2.3 -Dpackaging=jar -Dclassifier=javamp3
+mvn install:install-file -Dfile=jsyn-20171016.jar -DgroupId=org.processing -DartifactId=sound -Dversion=2.2.3 -Dpackaging=jar -Dclassifier=jsyn
+``` 
+
+**TODO:** Work out how to add `javamp3` and `jsyn` as dependencies of the main (`sound`) artefact 
 
 Running Sketches with Kotlin
 ===

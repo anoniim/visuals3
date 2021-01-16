@@ -16,6 +16,9 @@ dependencies {
     // installed in local maven
 //    implementation(group = "org.processing", name = "core", version = "3.5.4")
     implementation(group = "org.processing", name = "core", version = "4.0a2")
+    implementation(group = "org.processing", name = "sound", version = "2.2.3")
+    implementation(group = "org.processing", name = "sound", version = "2.2.3", classifier = "jsyn")
+    implementation(group = "org.processing", name = "sound", version = "2.2.3", classifier = "javamp3")
 
     // public maven (outdated version)
 //    implementation(group = "org.processing", name = "core", version = "3.3.7")
