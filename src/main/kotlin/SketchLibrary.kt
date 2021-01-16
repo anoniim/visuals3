@@ -1,6 +1,6 @@
 import processing.core.PApplet
-import sketch.sound.BeatDetector
-import sketch.sound.Equalizer
+import sketch.sound.miso.EveningExperiment1
+import sketch.waves.SineFlower
 
 @ExperimentalStdlibApi
 fun main() {
@@ -35,6 +35,7 @@ fun main() {
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
-    PApplet.main(arrayOf(Equalizer::class.qualifiedName))
+//    PApplet.main(arrayOf(Equalizer::class.qualifiedName))
 //    PApplet.main(arrayOf(BeatDetector::class.qualifiedName))
+    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 }
