@@ -18,7 +18,7 @@ class SineFlower : BaseSketch(Screen(800, 800)) {
     private val amplitude = 5f
 
     private val lines = MutableList(numLines) { index ->
-        Line(index * TWO_PI/numLines)
+        Line(index * TWO_PI / numLines)
     }
     private var hasCurvingStarted = false
 
@@ -63,17 +63,24 @@ class SineFlower : BaseSketch(Screen(800, 800)) {
         }
 
         private fun addNewCurved(frameCount: Int) {
+            path.add(createNewPoint(frameCount))
+            lineColor = calculateColor(frameCount)
+        }
+
+        private fun createNewPoint(frameCount: Int): PVector {
             val yOffset = sin(frameCount / frameDivisor) * amplitude
             pushMatrix()
             rotate(-angle)
             val yOffsetVector = PVector(0f, yOffset)
-            val curved = path.last.copy().add(yOffsetVector)
+            val newPoint = path.last.copy().add(yOffsetVector)
             popMatrix()
-            path.add(curved)
+            return newPoint
+        }
+
+        private fun calculateColor(frameCount: Int): Int {
             val progression = constrain(frameCount - lineLength, 0, 1000)
             val green = floor(map(progression, 0, 1000, startColor, endColor))
-            println(green)
-            lineColor = color(70, green, 70)
+            return color(70, green, 70)
         }
 
         fun show() {
@@ -83,7 +90,7 @@ class SineFlower : BaseSketch(Screen(800, 800)) {
             for (i in 1 until path.size) {
                 strokeWeight(map(i.toFloat(), 1f, lineLength.toFloat(), maxStrokeWeight, minStrokeWeight))
                 stroke(lineColor)
-                val previous = path[i-1]
+                val previous = path[i - 1]
                 val current = path[i]
                 line(previous.x, previous.y, current.x, current.y)
             }
