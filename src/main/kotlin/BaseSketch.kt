@@ -34,6 +34,10 @@ open class BaseSketch(
         get() = width.toFloat()
     val heightF: Float
         get() = height.toFloat()
+    val halfWidthF: Float
+        get() = width / 2f
+    val halfHeightF: Float
+        get() = height / 2f
 
     override fun draw() {
         val mouseDownTime = millis() - mousePressedMillis
@@ -78,6 +82,12 @@ open class BaseSketch(
         background(grey1)
     }
 
+    /** Helper methods **/
+
+    protected fun map(value: Int, start1: Int, stop1: Int, start2: Int, stop2: Int): Float {
+        return map(value.toFloat(), start1.toFloat(), stop1.toFloat(), start2.toFloat(), stop2.toFloat())
+    }
+
     protected fun distFromScreenCenter(x1: Float, y1: Float) =
         dist(x1, y1, screen.widthF / 2, screen.heightF / 2)
 
@@ -97,4 +107,6 @@ class Screen(var width: Int, var height: Int, val fullscreen: Boolean = false) {
     val heightF: Float = height.toFloat()
     val centerX: Float = width / 2F
     val centerY: Float = height / 2F
+    val halfWidth: Float = width / 2F
+    val halfHeight: Float = height / 2F
 }

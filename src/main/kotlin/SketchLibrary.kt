@@ -1,6 +1,5 @@
-import patterns.MoireHexagons
+import lines.CircleTangents
 import processing.core.PApplet
-import spirals.SpinningSpiral
 
 @ExperimentalStdlibApi
 fun main() {
@@ -33,5 +32,7 @@ fun main() {
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(HalfFill::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
-    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
+//    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
+//    PApplet.main(arrayOf(Equalizer::class.qualifiedName))
+    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
 }
