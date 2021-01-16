@@ -1,6 +1,6 @@
-import lines.CircleTangents
 import processing.core.PApplet
-import waves.Equalizer
+import sketch.sound.BeatDetector
+import sketch.sound.Equalizer
 
 @ExperimentalStdlibApi
 fun main() {
@@ -36,4 +36,5 @@ fun main() {
 //    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
     PApplet.main(arrayOf(Equalizer::class.qualifiedName))
+//    PApplet.main(arrayOf(BeatDetector::class.qualifiedName))
 }

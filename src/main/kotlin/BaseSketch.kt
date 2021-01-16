@@ -7,9 +7,7 @@ open class BaseSketch(
     private val longClickClear: Boolean = false
 ) : PApplet() {
 
-    /** General config **/
-
-    /** Colors **/
+    /* Colors */
     internal val grey11 = color(111, 111, 111)
     internal val grey9 = color(99, 99, 99)
     internal val grey7 = color(77, 77, 77)
@@ -26,6 +24,7 @@ open class BaseSketch(
     internal val transparentDark = color(0, 0, 0, 100)
     internal val transparentLight = color(255, 255, 255, 100)
 
+    /* Floats */
     val mouseXF: Float
         get() = mouseX.toFloat()
     val mouseYF: Float
@@ -39,19 +38,7 @@ open class BaseSketch(
     val halfHeightF: Float
         get() = height / 2f
 
-    override fun draw() {
-        val mouseDownTime = millis() - mousePressedMillis
-        if (longClickClear && mousePressed && mouseDownTime > 1000) {
-            noStroke()
-            val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
-            fill(grey1, overlayAlpha)
-            rect(0f, 0f, widthF, heightF)
-        }
-    }
-
-    internal fun random(max: Int) = map(Random.nextFloat(), 0F, 1F, 0F, max.toFloat())
-
-    /** Initial settings **/
+    /* Initial settings */
     override fun settings() {
         if (screen.fullscreen) {
             fullScreen()
@@ -66,14 +53,17 @@ open class BaseSketch(
         }
     }
 
-    /** Mouse long click clears sketch **/
+    /* Mouse long click clears sketch */
+    private val longClickResetMillis = 2000
+    private val longClickResetCueMillis = 1000
     private var mousePressedMillis: Int = 0
+
     override fun mousePressed() {
         mousePressedMillis = millis()
     }
 
     override fun mouseReleased() {
-        if (longClickClear && millis() - mousePressedMillis > 2000) {
+        if (longClickClear && millis() - mousePressedMillis > longClickResetMillis) {
             reset()
         }
     }
@@ -82,11 +72,26 @@ open class BaseSketch(
         background(grey1)
     }
 
-    /** Helper methods **/
+    override fun draw() {
+        val mouseDownTime = millis() - mousePressedMillis
+        if (longClickClear && mousePressed && mouseDownTime > longClickResetCueMillis) {
+            // Darken screen before resetting
+            noStroke()
+            val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
+            fill(grey1, overlayAlpha)
+            rect(0f, 0f, widthF, heightF)
+        }
+    }
 
+    /* === Helper methods === */
+
+    /* map() that takes Int */
     protected fun map(value: Int, start1: Int, stop1: Int, start2: Int, stop2: Int): Float {
         return map(value.toFloat(), start1.toFloat(), stop1.toFloat(), start2.toFloat(), stop2.toFloat())
     }
+
+    /* random() that takes Int */
+    internal fun random(max: Int) = map(Random.nextFloat(), 0F, 1F, 0F, max.toFloat())
 
     protected fun distFromScreenCenter(x1: Float, y1: Float) =
         dist(x1, y1, screen.widthF / 2, screen.heightF / 2)
@@ -94,6 +99,7 @@ open class BaseSketch(
     protected fun distFromMouse(x1: Float, y1: Float) =
         dist(x1, y1, mouseXF, mouseYF)
 
+    /* Recording */
     protected fun recordAndExit(numFrames: Int) {
         saveFrame("###.png")
         if (frameCount == numFrames) {
