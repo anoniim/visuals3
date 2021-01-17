@@ -3,21 +3,22 @@ package sketch.sound
 import BaseSketch
 import Screen
 import processing.sound.SoundFile
+import sound.SoundHelper.Companion.getSelectedFftBinAverage
 import java.util.*
 
-class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
+open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
 
     private val bands = 1024 // power of 2 (256)
     private val smoothingFactor = 0.2f // 0.2
+
     private val strokeWeight = 20f // 1-100 (30)
     private val spacing = 5f // 5
     private val maxLength = 100f // 100
     private var showBarNumbers = false
 
-//    private val inputFile: SoundFile? by lazy { SoundFile(this, "input/miso.wav").apply { loop() } }
-    private val inputFile: SoundFile? = null
-    private val waveform by lazy { sound.waveform(samples, inputFile) }
-    private val fft by lazy { sound.fft(bands, inputFile) }
+    protected var inputFile: SoundFile? = null
+    protected val waveform by lazy { sound.waveform(samples, inputFile) }
+    protected val fft by lazy { sound.fft(bands, inputFile) }
     private val barWidthTotal = strokeWeight + spacing
     private val padding = 50f / strokeWeight
     private val numBars = floor(screen.widthF / barWidthTotal - padding)
@@ -29,6 +30,7 @@ class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
     private val waveformBars = List(numBars) { Bar(it) }
     private val samples = numBars
     private val labelTextSize = 14f
+    private val labelPadding = 20f
     private var maxWaveformPeak = 0f
     private var selectedFftBins = mutableListOf<Int>()
 
@@ -80,10 +82,9 @@ class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
         val yMax = -maxWaveformPeak - strokeWeight / 2f
         line(0f, yMax, xOffset, yMax)
         // Max label
-        stroke(white)
+        fill(white)
         textSize(labelTextSize)
-        val textPadding = 5f
-        val yText = constrain(yMax, -waveformTranslationY + labelTextSize + 4 * textPadding, 0f) - textPadding
+        val yText = constrain(yMax, -waveformTranslationY + labelTextSize + labelPadding, 0f) - labelPadding/2f
         text(maxWaveformPeak, 0f, yText)
     }
 
@@ -97,6 +98,14 @@ class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
             line.value.show()
             drawFftBinMax(line.index, bin)
         }
+        drawSelectedFftBinAverage()
+    }
+
+    private fun drawSelectedFftBinAverage() {
+        fill(white)
+        textSize(labelTextSize)
+        val label = getSelectedFftBinAverage(fft, selectedFftBins)
+        text(label, 0f, -fftTranslationY + labelTextSize + labelPadding)
     }
 
     private fun drawFftBinMax(index: Int, binValue: Float) {
@@ -116,7 +125,7 @@ class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
 
     private fun binValueToLength(bin: Float): Float = map(bin, -0.1f, 0.2f, 0f, maxLength)
     private fun getXForBar(i: Int) = xOffset + i * barWidthTotal
-    private fun getBarIndexForX(x: Float) = floor((x - xOffset + strokeWeight/2f) / barWidthTotal)
+    private fun getBarIndexForX(x: Float) = floor((x - xOffset + strokeWeight / 2f) / barWidthTotal)
 
     override fun reset() {
         inputFile?.stop()
@@ -149,15 +158,21 @@ class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
             strokeWeight(strokeWeight)
             val x = getXForBar(i)
             for (lineLength in history.withIndex()) {
-                setColor(i, lineLength.index)
+                setStrokeColor(i, lineLength.index)
                 line(x, 0f, x, -lineLength.value)
             }
             showBarNumbers(x)
         }
 
-        private fun setColor(barIndex: Int, historyIndex: Int) {
+        private fun setStrokeColor(barIndex: Int, historyIndex: Int) {
             if (historyIndex == maxHistorySize - 1) {
-                stroke(if (showBarNumbers && selectedFftBins.contains(barIndex)) { darkRed } else { red })
+                stroke(
+                    if (showBarNumbers && selectedFftBins.contains(barIndex)) {
+                        darkRed
+                    } else {
+                        red
+                    }
+                )
             } else {
                 stroke(orange, map(historyIndex, 1, maxHistorySize, 150, 0))
             }
@@ -165,7 +180,7 @@ class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
 
         private fun showBarNumbers(x: Float) {
             if (showBarNumbers) {
-                stroke(white)
+                fill(white)
                 textSize(strokeWeight)
                 text(i, x - strokeWeight / 2, 0f)
             }

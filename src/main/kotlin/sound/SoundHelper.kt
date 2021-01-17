@@ -8,7 +8,7 @@ import processing.sound.SoundFile
 class SoundHelper(private val applet: PApplet) {
 
     init {
-//        println(Sound.list())
+        println(Sound.list())
     }
 
     private val mic by lazy {
@@ -51,6 +51,90 @@ class SoundHelper(private val applet: PApplet) {
             if (loop) {
                 loop()
             }
+        }
+    }
+
+    open class SceneCue {
+
+        private var hasTriggered = false
+        private var lastTriggeredMillis: Long = 0L
+        private var repeatable: Boolean = false
+        private var throttleMillis: Long = 0L
+        private var triggerLimit: Int = Int.MAX_VALUE
+        private var triggerCount: Int = 0
+
+        fun setRepeatable(
+            repeatable: Boolean = true,
+            throttleMillis: Long = 0L,
+            triggerLimit: Int = Int.MAX_VALUE
+        ) {
+            this.repeatable = repeatable
+            this.throttleMillis = throttleMillis
+            this.triggerLimit = triggerLimit
+        }
+
+        fun setEnabled(enabled: Boolean) {
+            triggerLimit = if (enabled) { Int.MAX_VALUE } else { 0 }
+        }
+
+        protected fun check(condition: Boolean, onTrigger: (Int) -> Unit) {
+            if (hasTriggered) {
+                onTrigger(triggerCount)
+                return
+            }
+            if (condition && !triggeredRecently() && !triggerLimitReached()) {
+                if (repeatable) {
+                    lastTriggeredMillis = System.currentTimeMillis()
+                } else {
+                    hasTriggered = true
+                }
+                triggerCount++
+                onTrigger(triggerCount)
+            }
+        }
+
+        private fun triggerLimitReached(): Boolean {
+            return triggerCount >= triggerLimit
+        }
+
+        private fun triggeredRecently(): Boolean {
+            val now = System.currentTimeMillis()
+            return now - lastTriggeredMillis < throttleMillis
+        }
+
+        fun reset() {
+            hasTriggered = false
+        }
+    }
+
+    class FftSceneCue(
+        private val fftBinIndices: List<Int>,
+        private val threshold: Float
+    ) : SceneCue() {
+
+        fun checkAverage(fft: FFT, onTrigger: (Int) -> Unit) {
+            val average = getSelectedFftBinAverage(fft, fftBinIndices)
+            val condition = average >= threshold
+            check(condition, onTrigger)
+        }
+
+        fun checkAny(fft: FFT, onTrigger: (Int) -> Unit) {
+            var hasAnyReachedThreshold = false
+            fftBinIndices.forEach {
+                if (fft.spectrum[it] >= threshold) hasAnyReachedThreshold = true
+            }
+            check(hasAnyReachedThreshold, onTrigger)
+        }
+    }
+
+    companion object {
+
+        fun getSelectedFftBinAverage(fft: FFT, fftBinIndices: List<Int>): Float {
+            var fftBinSum = 0f
+            fftBinIndices.forEach {
+                fftBinSum += fft.spectrum[it]
+            }
+            return fftBinSum / fftBinIndices.size
         }
     }
 }
