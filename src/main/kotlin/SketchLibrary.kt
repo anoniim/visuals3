@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.sound.miso.EveningExperiment1
-import sketch.waves.SineFlower
+import sketch.sound.BarVisualizer
 
 @ExperimentalStdlibApi
 fun main() {
@@ -35,7 +34,8 @@ fun main() {
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
-//    PApplet.main(arrayOf(Equalizer::class.qualifiedName))
-//    PApplet.main(arrayOf(BeatDetector::class.qualifiedName))
-    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
+    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
+//    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
+//    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
+//    PApplet.main(arrayOf(EveningExperiment1::class.qualifiedName))
 }
