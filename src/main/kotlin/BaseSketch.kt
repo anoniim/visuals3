@@ -12,6 +12,7 @@ open class BaseSketch(
     val sound: SoundHelper by lazy { SoundHelper(this) }
 
     /* Colors */
+    internal val white = color(200, 200, 200)
     internal val grey11 = color(111, 111, 111)
     internal val grey9 = color(99, 99, 99)
     internal val grey7 = color(77, 77, 77)
@@ -76,14 +77,15 @@ open class BaseSketch(
         background(grey1)
     }
 
-    override fun draw() {
+    fun drawLongPressOverlay() {
         val mouseDownTime = millis() - mousePressedMillis
         if (longClickClear && mousePressed && mouseDownTime > longClickResetCueMillis) {
             // Darken screen before resetting
-            noStroke()
+            val overlay = createShape(RECT, 0f, 0f, widthF, heightF)
             val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
-            fill(grey1, overlayAlpha)
-            rect(0f, 0f, widthF, heightF)
+            overlay.setFill(color(11f, 11f, 11f, overlayAlpha))
+            overlay.setStroke(false)
+            shape(overlay)
         }
     }
 
