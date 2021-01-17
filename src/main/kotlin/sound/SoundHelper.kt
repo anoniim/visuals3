@@ -8,12 +8,12 @@ import processing.sound.SoundFile
 class SoundHelper(private val applet: PApplet) {
 
     init {
-        println(Sound.list())
-        val sound = Sound(applet)
-        sound.inputDevice(1)
+//        println(Sound.list())
     }
 
     private val mic by lazy {
+        val sound = Sound(applet)
+        sound.inputDevice(1)
         AudioIn(applet, 0).apply { start() }
     }
 
