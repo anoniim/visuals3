@@ -1,17 +1,26 @@
 Gradle Setup
 ===
 
+I tried to avoid having to include the library JARs in the project as much as I could, but it was not sustainable.
+I want this project to be runnable with minimum effort and that was no longer possible.
+That is because there are some dependencies (including some specific to Processing) that cannot be obtained from maven.
+
+Therefore, all project dependencies are included in the project (in `/libs` folder).
+
+### Maven
+
+For those curious, there are the instruction to use maven:
+
 Using Kotlin DSL for Gradle, the Processing dependency can be defined as follows:
 ```gradle
 implementation(group = "org.processing", name = "core", version = "3.3.7")
 ```
 
-## Public maven
+#### Public maven
 
-For out-of-the-box setup use the public maven artefacts (taken from `mavenCentral()`). 
-Beware that these are not officially maintained and thus are outdated (only version up to 3.3.7 available). 
+The public maven artefacts (taken from `mavenCentral()`) are not owned by the Processing Foundation and therefore are out of date (only version up to 3.3.7 available). 
 
-## Local maven
+#### Local maven
 
 For a newer version, download Processing, open the application files and install the library file in local maven repository.
 On MacOS, this can be done by:
@@ -21,30 +30,24 @@ cd /Applications/Processing.app/Contents/Java/core/library
 mvn install:install-file -Dfile=core.jar -DgroupId=org.processing -DartifactId=core -Dversion=3.5.4 -Dpackaging=jar
 ```
 ```gradle
-implementation(group = "org.processing", name = "core", version = "3.3.7")
+implementation(group = "org.processing", name = "core", version = "3.5.4")
 ```
+Same technique can be used to install any number of Processing libraries.
+Just download the library via Processing PDE and install the JARs in local maven by the method described above.
 
-### Processing 4
+## Processing 4
 
-Using this technique, we can also get the latest Processing 4.0
+The project is using the latest version of Processing 4.0. 
+The binaries are included in the project.
 
-```gradle
-implementation(group = "org.processing", name = "core", version = "4.0a2")
-```
+Java 11 is needed to run Processing 4 sketches. 
+Everything else seems to work fine so far.
 
-The only thing this needs is Java 11. Everything else seems to work fine so far.
+## Libraries
 
-## Sound
+The project uses the following Processing libraries:
 
-To use [Processing Sound library](https://processing.org/reference/libraries/sound/index.html), download the library via Processing PDE and install the the 2 JARs in local maven by the method described above.
-
-```shell
-mvn install:install-file -Dfile=sound.jar -DgroupId=org.processing -DartifactId=sound -Dversion=2.2.3 -Dpackaging=jar
-mvn install:install-file -Dfile=javamp3-1.0.4.jar -DgroupId=org.processing -DartifactId=sound -Dversion=2.2.3 -Dpackaging=jar -Dclassifier=javamp3
-mvn install:install-file -Dfile=jsyn-20171016.jar -DgroupId=org.processing -DartifactId=sound -Dversion=2.2.3 -Dpackaging=jar -Dclassifier=jsyn
-``` 
-
-**TODO:** Work out how to add `javamp3` and `jsyn` as dependencies of the main (`sound`) artefact 
+* [Processing Sound library](https://processing.org/reference/libraries/sound/index.html)
 
 Running Sketches with Kotlin
 ===
@@ -65,7 +68,7 @@ Whenever I create a new sketch, I add it to this class and comment the old one o
 Convenience methods
 ===
 
-`BaseSketch`
+`BaseSketch` TBD
 
 ### Sketch Recording + create GIFs 
 
@@ -96,4 +99,4 @@ When run with `FX2D` renderer, the sketch fails to load with:
 ```text
 Caused by: java.lang.ClassNotFoundException: javafx.scene.image.PixelFormat
 ```
-Looks like a missing library dependency, even though there is now JavaFx included in the project as a JAR.
+Looks like a missing library dependency, even though the JavaFx JARs are now included in the project.
