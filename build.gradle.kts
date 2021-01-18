@@ -14,9 +14,9 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     // Local (copied from Processing4)
-//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(files("/libs/processing"))
-    implementation(files("/libs/contributed"))
+    implementation(fileTree(mapOf("dir" to "libs/processing", "include" to listOf("*.jar"))))
+    implementation(fileTree(mapOf("dir" to "libs/contributed/sound", "include" to listOf("*.jar"))))
+//    implementation(files("/libs"))
 
     // Installed in local maven
 //    implementation(group = "org.processing", name = "core", version = "3.5.4")
