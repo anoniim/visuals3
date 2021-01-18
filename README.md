@@ -90,30 +90,10 @@ makegif bubbles
 Known issues
 === 
 
-### Only the default renderer works
+### FX2D renderer doesn't work
 
-`P2D` and `P3D` renderers fail with the following error on MacOS.
-
-```text
-2021-01-10 20:47:22.022 java[44072:686817] Apple AWT Internal Exception: NSWindow drag regions should only be invalidated on the Main Thread!
-2021-01-10 20:47:22.022 java[44072:686817] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'NSWindow drag regions should only be invalidated on the Main Thread!'
-*** First throw call stack:
-(
-	0   CoreFoundation                      0x00007fff382dcb57 __exceptionPreprocess + 250
-	1   libobjc.A.dylib                     0x00007fff711285bf objc_exception_throw + 48
-	2   CoreFoundation                      0x00007fff3830534c -[NSException raise] + 9
-	3   AppKit                              0x00007fff354ff5ec -[NSWindow(NSWindow_Theme) _postWindowNeedsToResetDragMarginsUnlessPostingDisabled] + 310
-	4   AppKit                              0x00007fff354e7052 -[NSWindow _initContent:styleMask:backing:defer:contentView:] + 1416
-	5   AppKit                              0x00007fff354e6ac3 -[NSWindow initWithContentRect:styleMask:backing:defer:] + 42
-	6   libnativewindow_macosx.jnilib       0x000000012ddac3fe Java_jogamp_nativewindow_macosx_OSXUtil_CreateNSWindow0 + 398
-	7   ???                                 0x000000010c957407 0x0 + 4506088455
-)
-libc++abi.dylib: terminating with uncaught exception of type NSException
-```
-This is a [known issue](https://github.com/processing/processing/issues/5983) and has apparently been fixed in Processing 4.0 but still happens to me when running the project in the current setup.
-
-`FX2D` fails with: 
+When run with `FX2D` renderer, the sketch fails to load with: 
 ```text
 Caused by: java.lang.ClassNotFoundException: javafx.scene.image.PixelFormat
 ```
-Might be a missing library dependency, I only import `org.processing.core`.
+Looks like a missing library dependency, even though there is now JavaFx included in the project as a JAR.
