@@ -9,10 +9,10 @@ class EveningExperiment1Visualizer : BarVisualizer() {
     private var pianoTriggerCount = 0
 
     override fun setup() {
-        inputFile = SoundFile(this, "input/miso.wav").apply {
+        inputFile = SoundFile(this, "data/input/miso.wav").apply {
             loop()
 //            jump(15f) // vibrato
-            jump(60f) // piano
+//            jump(60f) // piano
 //            jump(105f) // piano chaos
         }
     }

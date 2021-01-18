@@ -2,6 +2,7 @@ package sketch.sound.miso
 
 import BaseSketch
 import Screen
+import com.hamoid.VideoExport
 import processing.core.PShape
 import processing.core.PVector
 import processing.sound.SoundFile
@@ -9,7 +10,8 @@ import sound.SoundHelper
 import java.util.*
 
 open class EveningExperiment1Idea2 : BaseSketch(
-    Screen(1700, 1100, fullscreen = false),
+    Screen(1000, 800, fullscreen = false),
+    longClickClear = true,
     renderer = P2D
 ) {
 
@@ -18,7 +20,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
     private val fft by lazy { sound.fft(bands, inputFile) }
     private val waveform by lazy { sound.waveform(wfSamples, inputFile) }
     private val inputFile: SoundFile by lazy {
-        SoundFile(this, "input/miso.wav").apply {
+        SoundFile(this, "data/input/miso.wav").apply {
             loop()
 //            jump(15f) // vibrato
 //            jump(60f) // piano
@@ -83,8 +85,15 @@ open class EveningExperiment1Idea2 : BaseSketch(
         )
     )
 
+    private val videoExport: VideoExport by lazy {
+        VideoExport(this).apply {
+            setAudioFileName("input/miso.wav")
+        }
+    }
+
     override fun setup() {
         println(visibleDistanceFromCenter)
+        videoExport.startMovie()
     }
 
     override fun draw() {
@@ -98,6 +107,13 @@ open class EveningExperiment1Idea2 : BaseSketch(
 
         vibratoSceneCue.checkAverage(fft)
         checkPianoSceneCue()
+
+        super.drawLongPressOverlay()
+    }
+
+    override fun reset() {
+        videoExport.endMovie()
+        exit()
     }
 
     private fun drawInitialCircle() {
