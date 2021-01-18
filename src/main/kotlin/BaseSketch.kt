@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import processing.core.PShape
 import sound.SoundHelper
 import kotlin.random.Random
 
@@ -78,15 +79,23 @@ open class BaseSketch(
         background(grey1)
     }
 
+    private val resetOverlay: PShape by lazy {
+        fill(grey1) // needed so that the created shape can set its fill (?!)
+        createShape(RECT, 0f, 0f, widthF, heightF).apply {
+            setStroke(false)
+        }
+    }
+
+    /**
+     * Call at the end of [draw] to darken the screen a second before the reset.
+     */
     fun drawLongPressOverlay() {
         val mouseDownTime = millis() - mousePressedMillis
         if (longClickClear && mousePressed && mouseDownTime > longClickResetCueMillis) {
             // Darken screen before resetting
-            val overlay = createShape(RECT, 0f, 0f, widthF, heightF)
             val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
-            overlay.setFill(color(11f, 11f, 11f, overlayAlpha))
-            overlay.setStroke(false)
-            shape(overlay)
+            resetOverlay.setFill(color(11f, 11f, 11f, overlayAlpha))
+            shape(resetOverlay)
         }
     }
 
