@@ -2,6 +2,7 @@ package sketch.patterns
 
 import BaseSketch
 import Screen
+import processing.core.PVector
 
 class MoireHexagons : BaseSketch(Screen(1500, 800)) {
 
@@ -73,24 +74,24 @@ class MoireHexagons : BaseSketch(Screen(1500, 800)) {
 
         init {
             if (createOnInit) {
-                val (centerX, centerY) = calculateCenter(j, i)
-                createHexagonShape(centerX, centerY)
+                val center = calculateCenter(j, i)
+                createHexagonShape(center.x, center.y)
             }
         }
 
         fun show() {
             if (!createOnInit) {
-                val (centerX, centerY) = calculateCenter(j, i)
-                createHexagonShape(centerX, centerY)
+                val center = calculateCenter(j, i)
+                createHexagonShape(center.x, center.y)
             }
             shape(shape)
         }
 
-        private fun calculateCenter(j: Int, i: Int): Pair<Float, Float> {
+        private fun calculateCenter(j: Int, i: Int): PVector {
             val xOffset = if (j % 2 == 0) 1.5f * radius else 0f
             val centerX = xOffset + i * 3 * radius
             val centerY = j * rowHeight
-            return Pair(centerX, centerY)
+            return PVector(centerX, centerY)
         }
 
         private fun createHexagonShape(centerX: Float, centerY: Float) {
