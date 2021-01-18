@@ -80,7 +80,6 @@ open class BaseSketch(
     }
 
     private val resetOverlay: PShape by lazy {
-        fill(grey1) // needed so that the created shape can set its fill (?!)
         createShape(RECT, 0f, 0f, widthF, heightF).apply {
             setStroke(false)
         }
@@ -93,9 +92,11 @@ open class BaseSketch(
         val mouseDownTime = millis() - mousePressedMillis
         if (longClickClear && mousePressed && mouseDownTime > longClickResetCueMillis) {
             // Darken screen before resetting
-            val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
-            resetOverlay.setFill(color(11f, 11f, 11f, overlayAlpha))
-            shape(resetOverlay)
+            shape(resetOverlay.apply {
+                setFill(true) // needs to be called in case noFill() was set before creating the shape
+                val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
+                setFill(color(11f, 11f, 11f, overlayAlpha))
+            })
         }
     }
 
