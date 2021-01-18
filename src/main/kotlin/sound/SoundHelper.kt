@@ -77,9 +77,9 @@ class SoundHelper(private val applet: PApplet) {
             triggerLimit = if (enabled) { Int.MAX_VALUE } else { 0 }
         }
 
-        protected fun check(condition: Boolean, onTrigger: (Int) -> Unit) {
+        protected fun check(condition: Boolean, onTrigger: ((Int) -> Unit)?) {
             if (hasTriggered) {
-                onTrigger(triggerCount)
+                onTrigger?.invoke(triggerCount)
                 return
             }
             if (condition && !triggeredRecently() && !triggerLimitReached()) {
@@ -89,7 +89,7 @@ class SoundHelper(private val applet: PApplet) {
                     hasTriggered = true
                 }
                 triggerCount++
-                onTrigger(triggerCount)
+                onTrigger?.invoke(triggerCount)
             }
         }
 
@@ -102,6 +102,10 @@ class SoundHelper(private val applet: PApplet) {
             return now - lastTriggeredMillis < throttleMillis
         }
 
+        fun hasTriggered(): Boolean {
+            return hasTriggered
+        }
+
         fun reset() {
             hasTriggered = false
         }
@@ -112,13 +116,13 @@ class SoundHelper(private val applet: PApplet) {
         private val threshold: Float
     ) : SceneCue() {
 
-        fun checkAverage(fft: FFT, onTrigger: (Int) -> Unit) {
+        fun checkAverage(fft: FFT, onTrigger: ((Int) -> Unit)? = null) {
             val average = getSelectedFftBinAverage(fft, fftBinIndices)
             val condition = average >= threshold
             check(condition, onTrigger)
         }
 
-        fun checkAny(fft: FFT, onTrigger: (Int) -> Unit) {
+        fun checkAny(fft: FFT, onTrigger: ((Int) -> Unit)? = null) {
             var hasAnyReachedThreshold = false
             fftBinIndices.forEach {
                 if (fft.spectrum[it] >= threshold) hasAnyReachedThreshold = true

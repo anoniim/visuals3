@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.patterns.MoireHexagons
 import sketch.sound.BarVisualizer
 import sketch.sound.miso.EveningExperiment1Idea2
 import sketch.sound.miso.EveningExperiment1Visualizer
@@ -39,6 +40,6 @@ fun main() {
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
-    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
-//    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
+//    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
+    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
 }
