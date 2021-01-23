@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.circles.CurlyCircles
 import sketch.lines.CircleTangents
 import sketch.patterns.MoireHexagons
 import sketch.sound.BarVisualizer
@@ -43,5 +44,6 @@ fun main() {
 //    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
-    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
+//    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
+    PApplet.main(arrayOf(CurlyCircles::class.qualifiedName))
 }
