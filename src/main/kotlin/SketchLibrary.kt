@@ -1,11 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.CurlyCircles
-import sketch.lines.CircleTangents
-import sketch.patterns.MoireHexagons
-import sketch.sound.BarVisualizer
-import sketch.sound.miso.EveningExperiment1Idea2
-import sketch.sound.miso.EveningExperiment1Visualizer
-import sketch.waves.SineFlower
+import sketch.circles.CurlingCircles
 
 @ExperimentalStdlibApi
 fun main() {
@@ -45,5 +39,5 @@ fun main() {
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
-    PApplet.main(arrayOf(CurlyCircles::class.qualifiedName))
+    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
 }

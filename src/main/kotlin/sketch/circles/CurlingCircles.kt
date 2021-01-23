@@ -3,7 +3,7 @@ package sketch.circles
 import BaseSketch
 import Screen
 
-class CurlyCircles : BaseSketch(Screen(800, 800)) {
+class CurlingCircles : BaseSketch(Screen(800, 800)) {
 
     private val initialDiameter = 200f
 
