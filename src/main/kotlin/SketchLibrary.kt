@@ -1,8 +1,10 @@
 import processing.core.PApplet
+import sketch.lines.CircleTangents
 import sketch.patterns.MoireHexagons
 import sketch.sound.BarVisualizer
 import sketch.sound.miso.EveningExperiment1Idea2
 import sketch.sound.miso.EveningExperiment1Visualizer
+import sketch.waves.SineFlower
 
 @ExperimentalStdlibApi
 fun main() {

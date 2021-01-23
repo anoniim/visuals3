@@ -88,9 +88,10 @@ open class BaseSketch(
     /**
      * Call at the end of [draw] to darken the screen a second before the reset.
      */
-    fun drawLongPressOverlay() {
+    fun drawLongPressOverlay(reverseTransformation: (() -> Unit)? = null) {
         val mouseDownTime = millis() - mousePressedMillis
         if (longClickClear && mousePressed && mouseDownTime > longClickResetCueMillis) {
+            reverseTransformation?.invoke()
             // Darken screen before resetting
             shape(resetOverlay.apply {
                 setFill(true) // needs to be called in case noFill() was set before creating the shape

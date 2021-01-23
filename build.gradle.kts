@@ -16,7 +16,9 @@ dependencies {
     // Local (copied from Processing4)
     implementation(fileTree(mapOf("dir" to "libs/processing", "include" to listOf("*.jar"))))
     implementation(fileTree(mapOf("dir" to "libs/contributed/sound", "include" to listOf("*.jar"))))
-//    implementation(files("/libs"))
+    implementation(fileTree(mapOf("dir" to "libs/contributed/VideoExport", "include" to listOf("*.jar"))))
+//    implementation(files("/libs/processing"))
+//    implementation(files("/libs/contributed/sound"))
 
     // Installed in local maven
 //    implementation(group = "org.processing", name = "core", version = "3.5.4")

@@ -48,6 +48,7 @@ Everything else seems to work fine so far.
 The project uses the following Processing libraries:
 
 * [Processing Sound library](https://processing.org/reference/libraries/sound/index.html)
+* [VideoExport by Abe Pazos](https://github.com/hamoid/video_export_processing)
 
 Running Sketches with Kotlin
 ===

@@ -10,7 +10,7 @@ import sound.SoundHelper
 import java.util.*
 
 open class EveningExperiment1Idea2 : BaseSketch(
-    Screen(1000, 800, fullscreen = false),
+    Screen(800, 800, fullscreen = false),
     longClickClear = true,
     renderer = P2D
 ) {
@@ -31,7 +31,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
         SoundHelper.FftSceneCue(listOf(3, 4, 5, 6, 7), 0.01f)
     }
     private val pianoSceneCue by lazy {
-        SoundHelper.FftSceneCue(listOf(14, 15, 16), 0.08f).apply {
+        SoundHelper.FftSceneCue(listOf(14, 15, 16), 0.07f).apply {
             setRepeatable(throttleMillis = 1000L, triggerLimit = 6)
         }
     }
@@ -42,21 +42,25 @@ open class EveningExperiment1Idea2 : BaseSketch(
         }
     }
 
-    private val initialCircleStep = 0.005f // 0.005f
+    private val initialCircleStep = 0.01f // 0.005f
     private val initialRadius = 80f
     private val diameter = 2 * initialRadius
     private val initialCircle = InitialCircle()
     private val growingCircles = mutableListOf<GrowingCircle>()
     private val center = PVector(0f, 0f)
     private val visibleDistanceFromCenter
-        get() = dist(0f, 0f, halfWidthF / 2f, halfHeightF / 2f)
-    private val scaleFactor = 1.4f
+        get() = dist(0f, 0f, halfWidthF / 2f, halfHeightF / 2f) / 1.3f
+    private val vibratingCirclesScaleFactor = 1.8f
     private val vibratingCircleRadians = 3 * TWO_PI + QUARTER_PI / 2f
     private val angleStep = vibratingCircleRadians / wfSamples
     private val expansionVectors = List<PVector>(wfSamples) {
-        PVector.fromAngle(it * angleStep).mult(scaleFactor)
+        PVector.fromAngle(it * angleStep).mult(vibratingCirclesScaleFactor)
     }
     private var centralColor = grey11
+    private var startScaling = false
+    private var globalScaleFactor = 1f
+    private var globalScaleStep = 0.001f
+    private val globalScaleLimit = 2.4f
     private val colors = LinkedList<Int>(
         listOf(
             color(111, 111, 111),
@@ -88,12 +92,14 @@ open class EveningExperiment1Idea2 : BaseSketch(
     private val videoExport: VideoExport by lazy {
         VideoExport(this).apply {
             setAudioFileName("input/miso.wav")
+            setFrameRate(28.75f)
+//            setMovieFileName("data/output")
         }
     }
 
     override fun setup() {
-        println(visibleDistanceFromCenter)
-        videoExport.startMovie()
+        frameRate(30f)
+//        videoExport.startMovie()
     }
 
     override fun draw() {
@@ -102,13 +108,18 @@ open class EveningExperiment1Idea2 : BaseSketch(
 
         background(grey3)
         translate(halfWidthF, halfHeightF)
+        finalScaling()
         drawInitialCircle()
         drawGrowingCircles()
 
         vibratoSceneCue.checkAverage(fft)
         checkPianoSceneCue()
 
-        super.drawLongPressOverlay()
+        drawLongPressOverlay {
+            scale(1/globalScaleFactor)
+            translate(-halfWidthF, -halfHeightF)
+        }
+        videoExport.saveFrame()
     }
 
     override fun reset() {
@@ -136,7 +147,8 @@ open class EveningExperiment1Idea2 : BaseSketch(
                 pianoSceneCue2.setEnabled(true)
             }
         }
-        pianoSceneCue2.checkAny(fft) {
+        pianoSceneCue2.checkAny(fft) {  triggerCount ->
+            if (triggerCount == 1) startScaling = true
             onPianoTriggered()
         }
     }
@@ -153,7 +165,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
             stroke(color)
             strokeWeight(1f)
             val wfData = waveform.data
-            val angleStep = (vibratingCircleRadians) / wfData.size
+            val angleStep = vibratingCircleRadians / wfData.size
             for (wfDataPoint in wfData.withIndex()) {
                 val angle = wfDataPoint.index * angleStep
                 val radius = initialRadius + wfDataPoint.value * 80f
@@ -162,6 +174,14 @@ open class EveningExperiment1Idea2 : BaseSketch(
                 curveVertex(x, y)
             }
             endShape()
+        }
+    }
+
+    private fun finalScaling() {
+        if (startScaling) {
+            scale(globalScaleFactor)
+            globalScaleFactor += globalScaleStep
+            if(globalScaleFactor >= globalScaleLimit) globalScaleStep *= -1
         }
     }
 
@@ -195,27 +215,27 @@ open class EveningExperiment1Idea2 : BaseSketch(
         private var lastDistanceFromCenter = 0f
 
         fun update() {
-            var distFromCenter = Float.MAX_VALUE
-            val newShape = createShape().apply {
-                beginShape()
-                stroke(centralColor, getNewAlpha(lastDistanceFromCenter))
-                for (i in 0 until shape.vertexCount) {
-                    val newVertex = shape.getVertex(i).add(expansionVectors[i]).add(PVector.random2D())
-                    distFromCenter = min(newVertex.dist(center), distFromCenter)
-                    lastDistanceFromCenter = distFromCenter
-                    curveVertex(newVertex.x, newVertex.y)
-                }
-                endShape()
+            for (i in 0 until shape.vertexCount) {
+                val newVertex = shape.getVertex(i).add(expansionVectors[i]).add(PVector.random2D())
+                shape.setVertex(i, newVertex.x, newVertex.y)
             }
-            shape = newShape
-            updateVisibility(distFromCenter)
+            lastDistanceFromCenter = shape.getVertex(0).dist(center)
+            shape.setStroke(getNewAlpha(lastDistanceFromCenter))
+            updateVisibility(lastDistanceFromCenter)
         }
 
-        private fun getNewAlpha(distFromCenter: Float) =
-            map(distFromCenter, 0f, visibleDistanceFromCenter / 2f, 200f, 0f)
+        private fun getNewAlpha(distFromCenter: Float): Int {
+            val newAlpha = map(distFromCenter, 0f, visibleDistanceFromCenter, 200f, 0f)
+            return color(
+                red(centralColor),
+                green(centralColor),
+                blue(centralColor),
+                newAlpha
+            )
+        }
 
         private fun updateVisibility(distFromCenter: Float) {
-            if (isVisible && distFromCenter > visibleDistanceFromCenter / 2) {
+            if (isVisible && distFromCenter > visibleDistanceFromCenter) {
                 isVisible = false
             }
         }

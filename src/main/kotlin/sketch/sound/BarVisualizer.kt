@@ -41,7 +41,7 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
         drawFft()
         drawWaveform()
         popMatrix()
-        super.drawLongPressOverlay()
+        drawLongPressOverlay()
     }
 
     override fun mouseReleased() {

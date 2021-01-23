@@ -74,15 +74,19 @@ class SoundHelper(private val applet: PApplet) {
         }
 
         fun setEnabled(enabled: Boolean) {
-            triggerLimit = if (enabled) { Int.MAX_VALUE } else { 0 }
+            triggerLimit = if (enabled) {
+                Int.MAX_VALUE
+            } else {
+                0
+            }
         }
 
-        protected fun check(condition: Boolean, onTrigger: ((Int) -> Unit)?) {
+        protected fun check(condition: () -> Boolean, onTrigger: ((Int) -> Unit)?) {
             if (hasTriggered) {
                 onTrigger?.invoke(triggerCount)
                 return
             }
-            if (condition && !triggeredRecently() && !triggerLimitReached()) {
+            if (condition() && !triggeredRecently() && !triggerLimitReached()) {
                 if (repeatable) {
                     lastTriggeredMillis = System.currentTimeMillis()
                 } else {
@@ -117,17 +121,22 @@ class SoundHelper(private val applet: PApplet) {
     ) : SceneCue() {
 
         fun checkAverage(fft: FFT, onTrigger: ((Int) -> Unit)? = null) {
-            val average = getSelectedFftBinAverage(fft, fftBinIndices)
-            val condition = average >= threshold
-            check(condition, onTrigger)
+            val isAverageAboveThreshold = {
+                val average = getSelectedFftBinAverage(fft, fftBinIndices)
+                average >= threshold
+            }
+            check(isAverageAboveThreshold, onTrigger)
         }
 
         fun checkAny(fft: FFT, onTrigger: ((Int) -> Unit)? = null) {
-            var hasAnyReachedThreshold = false
-            fftBinIndices.forEach {
-                if (fft.spectrum[it] >= threshold) hasAnyReachedThreshold = true
+            val condition = {
+                var hasAnyReachedThreshold = false
+                fftBinIndices.forEach {
+                    if (fft.spectrum[it] >= threshold) hasAnyReachedThreshold = true
+                }
+                hasAnyReachedThreshold
             }
-            check(hasAnyReachedThreshold, onTrigger)
+            check(condition, onTrigger)
         }
     }
 
