@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.CurlingCircles
-import sketch.lines.ConstraintNoise
+import sketch.lines.ConstrainedNoiseWithStencil
 
 @ExperimentalStdlibApi
 fun main() {
@@ -41,5 +40,6 @@ fun main() {
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
-    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
+//    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
+    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
 }
