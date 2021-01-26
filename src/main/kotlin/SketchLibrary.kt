@@ -1,5 +1,8 @@
 import processing.core.PApplet
 import sketch.lines.ConstrainedNoiseWithStencil
+import sketch.physics.LivingNetworkGraph
+import sketch.sound.BeatDetectorClock
+import sketch.sound.miso.EveningExperiment1Idea2
 
 @ExperimentalStdlibApi
 fun main() {
@@ -35,11 +38,12 @@ fun main() {
 //    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
-//    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
+    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
-    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
+//    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
+//    PApplet.main(arrayOf(LivingNetworkGraph::class.qualifiedName))
 }
