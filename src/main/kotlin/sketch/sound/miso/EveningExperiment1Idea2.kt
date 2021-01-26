@@ -10,7 +10,7 @@ import sound.SoundHelper
 import java.util.*
 
 open class EveningExperiment1Idea2 : BaseSketch(
-    Screen(800, 800, fullscreen = false),
+    Screen(1600, 900, fullscreen = false),
     longClickClear = true,
     renderer = P2D
 ) {
@@ -21,7 +21,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
     private val waveform by lazy { sound.waveform(wfSamples, inputFile) }
     private val inputFile: SoundFile by lazy {
         SoundFile(this, "data/input/miso.wav").apply {
-            loop()
+            start()
 //            jump(15f) // vibrato
 //            jump(60f) // piano
 //            jump(105f) // piano chaos
