@@ -5,10 +5,12 @@ import sketch.physics.LivingNetworkGraph
 import sketch.sequences.CollatzConjecture
 import sketch.sound.BeatDetectorClock
 import sketch.sound.miso.EveningExperiment1Idea2
+import sketch.squares.RaisingTiles
 
 @ExperimentalStdlibApi
 fun main() {
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
+    PApplet.main(arrayOf(RaisingTiles::class.qualifiedName))
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
 //    PApplet.main(arrayOf(SmoothWalkers::class.qualifiedName))
 //    PApplet.main(arrayOf(HyperbolicPlane::class.qualifiedName))
@@ -34,7 +36,7 @@ fun main() {
 //    PApplet.main(arrayOf(SpinningSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
-    PApplet.main(arrayOf(MaurerRosePatterns::class.qualifiedName))
+//    PApplet.main(arrayOf(MaurerRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(HalfFill::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
