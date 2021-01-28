@@ -1,5 +1,6 @@
 import processing.core.PApplet
 import sketch.lines.ConstrainedNoiseWithStencil
+import sketch.patterns.MaurerRosePatterns
 import sketch.physics.LivingNetworkGraph
 import sketch.sequences.CollatzConjecture
 import sketch.sound.BeatDetectorClock
@@ -33,6 +34,7 @@ fun main() {
 //    PApplet.main(arrayOf(SpinningSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
+    PApplet.main(arrayOf(MaurerRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(HalfFill::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
@@ -47,5 +49,5 @@ fun main() {
 //    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
 //    PApplet.main(arrayOf(LivingNetworkGraph::class.qualifiedName))
-    PApplet.main(arrayOf(CollatzConjecture::class.qualifiedName))
+//    PApplet.main(arrayOf(CollatzConjecture::class.qualifiedName))
 }
