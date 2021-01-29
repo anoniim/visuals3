@@ -2,14 +2,15 @@ package sketch.squares
 
 import BaseSketch
 
-class RaisingTiles : BaseSketch(renderer = P2D) {
+class RaisingTiles : BaseSketch(renderer = P3D) {
 
-    private val tileGap: Float = 12F
-    private val tileSize: Float = 60F
-    private val fillMin = 50f
-    private val fillMax = 150f
-    private val zMin = 0.5f
-    private val zMax = 1f
+    private val is3D = false
+    private val tileGap: Float = 20F // 12
+    private val tileSize: Float = 60F // 60
+    private val fillMin = 50f // 50
+    private val fillMax = 150f // 150
+    private val zMin = 0.5f // 0.5
+    private val zMax = 1f / 1
 
     private val tileTotalSize = tileSize + tileGap
     private val horizontalCount = ceil(screen.widthF / tileTotalSize)
@@ -30,8 +31,25 @@ class RaisingTiles : BaseSketch(renderer = P2D) {
     }
 
     override fun draw() {
+        if (is3D) {
+            addLights()
+            addPerspective()
+        }
+
         showTiles()
         pokeRandomTile()
+    }
+
+    private fun addLights() {
+//        ambientLight(33f, 33f, 33f, 0f, 0f, 200f)
+//        directionalLight(200f, 200f, 200f, 0f, 0f, 200f)
+        lights()
+    }
+
+    private fun addPerspective() {
+        val fov = PI / 3
+        val cameraZ = halfHeightF / tan(fov / 2.0f)
+        perspective(fov, widthF / heightF, cameraZ / 10.0f, cameraZ * 100.0f)
     }
 
     override fun mousePressed() {
@@ -105,7 +123,14 @@ class RaisingTiles : BaseSketch(renderer = P2D) {
             noStroke()
             val fillRaw = map(z, zMin, zMax, 0f, 1f) * fillRawOriginal
             fill(constrain(color(fillRaw), grey3, grey11))
-            rect(x, y, z * tileSize, z * tileSize, 5f)
+            if (is3D) {
+                pushMatrix()
+                translate(x, y, -100 + 100 * z)
+                box(tileSize)
+                popMatrix()
+            } else {
+                rect(x, y, z * tileSize, z * tileSize, 5f)
+            }
         }
 
         fun poke() {
