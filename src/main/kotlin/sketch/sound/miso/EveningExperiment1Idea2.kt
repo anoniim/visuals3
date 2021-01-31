@@ -21,7 +21,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
     private val waveform by lazy { sound.waveform(wfSamples, inputFile) }
     private val inputFile: SoundFile by lazy {
         SoundFile(this, "data/input/miso.wav").apply {
-            start()
+            play()
 //            jump(15f) // vibrato
 //            jump(60f) // piano
 //            jump(105f) // piano chaos
