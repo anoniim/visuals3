@@ -13,6 +13,7 @@ open class BaseSketch(
     val sound: SoundHelper by lazy { SoundHelper(this) }
 
     /* Colors */
+    internal val black = color(0, 0, 0)
     internal val white = color(200, 200, 200)
     internal val grey11 = color(111, 111, 111)
     internal val grey9 = color(99, 99, 99)
@@ -23,6 +24,7 @@ open class BaseSketch(
     internal val red = color(160, 40, 0)
     internal val darkRed = color(120, 30, 0)
     internal val green = color(70, 200, 70)
+    internal val darkGreen = color(40, 100, 40)
     internal val blue = color(0, 70, 200)
     internal val purple = color(100, 70, 200)
     internal val orange = color(200, 150, 70)
@@ -62,7 +64,7 @@ open class BaseSketch(
 
     /* Mouse long click clears sketch */
     private val longClickResetMillis = 2000
-    private val longClickResetCueMillis = 1000
+    private val longClickResetCueMillis = 1500
     private var mousePressedMillis: Int = 0
 
     override fun mousePressed() {
