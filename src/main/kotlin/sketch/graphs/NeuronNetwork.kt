@@ -140,6 +140,7 @@ class NeuronNetwork : BaseSketch(Screen(1200, 800), longClickClear = true) {
 
         private fun chanceByDistance(other: Neuron): Boolean {
             val dist = map(position.dist(other.position), 0f, maxDist, 0f, 1f)
+            // TODO Use exponential decay e^(-5x)
             return Random.nextFloat() * connectionHardness < log(1.01f) / dist
         }
     }
