@@ -1,4 +1,4 @@
-package util
+package structures
 
 import Screen
 import kotlin.random.Random
