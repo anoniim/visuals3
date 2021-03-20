@@ -1,7 +1,9 @@
 package sketch.letters
 
 import BaseSketch
+import com.hamoid.VideoExport
 import util.Grid
+import util.isOdd
 import kotlin.random.Random
 
 
@@ -11,20 +13,33 @@ class TextFromRandom : BaseSketch() {
     private val fillColor2 = yellow
     private val backgroundColor = grey3
 
-    private lateinit var grid: Grid<Letter>
+    // config
+    private val text = "The night is young. The time is now!"
+    private val speedUpChance = 0.0f // 0.0 - 0.08
     private val letterSize: Float = 20F
-    val text = "The night is young. The time is now!"
-    val startIndex = 1700
+
+    private val itemMargin: Float = letterSize/10f
+    private lateinit var grid: Grid<Letter>
+    private var textStartIndex = 0
+
+    private val videoExport: VideoExport by lazy {
+        VideoExport(this).apply {
+            setFrameRate(60f)
+        }
+    }
 
     override fun setup() {
-        frameRate(120F)
+        frameRate(60F)
+//        videoExport.startMovie() // record
 
         background(backgroundColor)
         textSize(letterSize)
 //       TODO textFont
         textAlign(LEFT, TOP)
 
-        grid = Grid(screen, 20F, Grid.Orientation.VERTICAL)
+        grid = Grid(screen, letterSize + itemMargin, Grid.Orientation.VERTICAL)
+        val midGridIndex = if (grid.numOfRows.isOdd()) grid.size / 2 else grid.size / 2 - grid.numOfCols / 2
+        textStartIndex = midGridIndex - text.length / 2 // centered
         grid.initItems { n, x, y ->
             Letter(n, x, y)
         }
@@ -33,40 +48,55 @@ class TextFromRandom : BaseSketch() {
     override fun draw() {
         background(backgroundColor)
         grid.updateAndDraw()
+        videoExport.saveFrame()
     }
 
-    inner class Letter(
+    private inner class Letter(
         val index: Int,
         private val x: Float = random(0F, screen.widthF),
         private val y: Float = random(0F, screen.heightF)
-    ): Grid.SimpleItem() {
+    ) : Grid.SimpleItem() {
 
-        private val minAlpha = 0
-        private val maxAlpha = 255 // 255
-        private val alphaDecay = 5F
-        private var alpha: Float = Random.nextInt(maxAlpha).toFloat()
-        var letter = ' '
+        private val alphaRange = 0..255 step 5
+        private val indexWithinText = index - textStartIndex
 
+        private var alpha: Float = Random.nextInt(alphaRange.last).toFloat()
+        private var letter = ' '
         private var endState: Boolean = false
 
         override fun update() {
-            if (!endState && index in startIndex until startIndex + text.length) {
-                val indexWithinText = index - startIndex
+            updateEndState()
+            updateAlphaOrRefresh()
+        }
+
+        private fun updateEndState() {
+            if (!endState && isWithinText()) {
                 endState = text[indexWithinText].equals(letter, ignoreCase = true)
             }
-            if (alpha > minAlpha) {
-                alpha -= alphaDecay
+        }
+
+        private fun updateAlphaOrRefresh() {
+            if (alpha > alphaRange.first) {
+                alpha -= alphaRange.step
             } else {
                 refresh()
             }
         }
 
-        fun refresh() {
+        private fun refresh() {
             if (!endState) {
-                letter = Random.nextInt(48, 129).toChar() // alphanumeric and extra symbols
+                letter = newLetter()
             }
-            alpha = maxAlpha.toFloat()
+            alpha = alphaRange.last.toFloat()
         }
+
+        private fun newLetter() = if (isWithinText() && Random.nextFloat() < speedUpChance) {
+            text[indexWithinText].apply { if (Random.nextBoolean()) toUpperCase() }
+        } else {
+            Random.nextInt(48, 129).toChar() // alphanumeric and extra symbols
+        }
+
+        private fun isWithinText() = index in textStartIndex until textStartIndex + text.length
 
         override fun draw() {
             noStroke()
