@@ -1,8 +1,8 @@
-package sketch.letters
+package sketch.text
 
 import BaseSketch
-import util.Grid
-import util.RollingGrid
+import structures.Grid
+import structures.RollingGrid
 import kotlin.random.Random
 
 

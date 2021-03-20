@@ -1,27 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.CircleLining
-import sketch.circles.CurlingCircles
-import sketch.graphs.NeuronNetwork
-import sketch.letters.MatrixLetters
-import sketch.letters.TextFromRandom
-import sketch.lines.*
-import sketch.patterns.*
-import sketch.physics.LivingNetworkGraph
-import sketch.physics.SoupParticles
-import sketch.physics.Test
-import sketch.sequences.CollatzConjecture
-import sketch.sequences.RecamansSequence
-import sketch.sound.AudioClock
-import sketch.sound.BarVisualizer
-import sketch.sound.miso.EveningExperiment1Idea2
-import sketch.spirals.SquareSpiral
-import sketch.spirals.ZenSpiral
-import sketch.squares.RaisingTiles
-import sketch.walkers.GrowingTreeBranch
-import sketch.walkers.PixelatedWalkers
-import sketch.walkers.SmoothWalkers
-import sketch.waves.NoisyWave
-import sketch.waves.NoisyWaveSurface
+import sketch.text.TextFromRandom
 
 @ExperimentalStdlibApi
 fun main() {
@@ -60,7 +38,7 @@ fun main() {
 //    PApplet.main(arrayOf(RaisingTiles::class.qualifiedName))
 //    PApplet.main(arrayOf(SoupParticles::class.qualifiedName))
 //    PApplet.main(arrayOf(MatrixLetters::class.qualifiedName))
-//    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
+    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
 //    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
@@ -82,5 +60,6 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
-    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
+//    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
+//    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
 }

@@ -1,8 +1,8 @@
-package sketch.letters
+package sketch.text
 
 import BaseSketch
 import com.hamoid.VideoExport
-import util.Grid
+import structures.Grid
 import util.isOdd
 import kotlin.random.Random
 
