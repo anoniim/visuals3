@@ -29,6 +29,7 @@ open class BaseSketch(
     internal val purple = color(100, 70, 200)
     internal val orange = color(200, 150, 70)
     internal val yellow = color(150, 150, 70)
+    internal val pink = color(240, 140, 240)
     internal val transparent = color(0, 0, 0, 255)
     internal val transparentDark = color(0, 0, 0, 100)
     internal val transparentLight = color(255, 255, 255, 100)

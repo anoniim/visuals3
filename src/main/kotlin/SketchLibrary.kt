@@ -2,6 +2,7 @@ import processing.core.PApplet
 import sketch.shapes.FourierTransform
 import sketch.shapes.Prsoid
 import sketch.walkers.GrowingNeuron
+import sketch.walkers.GrowingNeuron2
 
 @ExperimentalStdlibApi
 fun main() {
@@ -19,6 +20,8 @@ fun main() {
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
+//    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
+    PApplet.main(arrayOf(GrowingNeuron2::class.qualifiedName))
 
     // Tools
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
@@ -64,5 +67,4 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
 }
