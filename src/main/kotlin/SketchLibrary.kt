@@ -1,6 +1,7 @@
 import processing.core.PApplet
 import sketch.shapes.FourierTransform
 import sketch.shapes.Prsoid
+import sketch.walkers.GrowingNeuron
 
 @ExperimentalStdlibApi
 fun main() {
@@ -23,6 +24,7 @@ fun main() {
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
+//    PApplet.main(arrayOf(FourierTransform::class.qualifiedName))
 
     // Ideas
 //    PApplet.main(arrayOf(HyperbolicPlane::class.qualifiedName))
@@ -32,6 +34,7 @@ fun main() {
 //    PApplet.main(arrayOf(HalfFill::class.qualifiedName))
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
+//    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -61,7 +64,5 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-//    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
-//    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
-    PApplet.main(arrayOf(FourierTransform::class.qualifiedName))
+    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
 }
