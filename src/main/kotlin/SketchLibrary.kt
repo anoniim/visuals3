@@ -1,5 +1,6 @@
 import processing.core.PApplet
-import sketch.text.TextFromRandom
+import sketch.shapes.FourierTransform
+import sketch.shapes.Prsoid
 
 @ExperimentalStdlibApi
 fun main() {
@@ -38,7 +39,7 @@ fun main() {
 //    PApplet.main(arrayOf(RaisingTiles::class.qualifiedName))
 //    PApplet.main(arrayOf(SoupParticles::class.qualifiedName))
 //    PApplet.main(arrayOf(MatrixLetters::class.qualifiedName))
-    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
+//    PApplet.main(arrayOf(TextFromRandom::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWave::class.qualifiedName))
 //    PApplet.main(arrayOf(NoisyWaveSurface::class.qualifiedName))
 //    PApplet.main(arrayOf(Toothpicks::class.qualifiedName))
@@ -58,8 +59,9 @@ fun main() {
 //    PApplet.main(arrayOf(LivingNetworkGraph::class.qualifiedName))
 //    PApplet.main(arrayOf(Test::class.qualifiedName))
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
-//    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
+//    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
+    PApplet.main(arrayOf(FourierTransform::class.qualifiedName))
 }
