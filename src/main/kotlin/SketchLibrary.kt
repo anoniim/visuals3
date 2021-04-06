@@ -1,8 +1,5 @@
 import processing.core.PApplet
-import sketch.shapes.FourierTransform
-import sketch.shapes.Prsoid
-import sketch.walkers.GrowingNeuron
-import sketch.walkers.GrowingNeuron2
+import sketch.spirals.VortexGroups
 
 @ExperimentalStdlibApi
 fun main() {
@@ -21,7 +18,6 @@ fun main() {
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
-    PApplet.main(arrayOf(GrowingNeuron2::class.qualifiedName))
 
     // Tools
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
@@ -57,6 +53,7 @@ fun main() {
 //    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
+//    PApplet.main(arrayOf(GrowingNeuron2::class.qualifiedName))
 
     // In progress
 //    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
@@ -67,4 +64,6 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
+    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 }
