@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.physics.CirclePendulum
 import sketch.spirals.VortexGroups
 
 @ExperimentalStdlibApi
@@ -34,6 +35,7 @@ fun main() {
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
+//    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -64,6 +66,5 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-//    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
-    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
+    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 }
