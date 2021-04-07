@@ -8,3 +8,6 @@ class Vector {
     }
 }
 
+fun zeroVector() = PVector(0f, 0f)
+
+operator fun PVector.times(multiplier: Float): PVector = this.mult(multiplier)
