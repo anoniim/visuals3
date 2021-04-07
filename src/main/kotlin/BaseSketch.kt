@@ -112,7 +112,7 @@ open class BaseSketch(
     }
 
     /* random() that takes Int */
-    internal fun random(max: Int) = map(Random.nextFloat(), 0F, 1F, 0F, max.toFloat())
+    internal fun random(max: Int) = random(max.toFloat())
 
     protected fun distFromScreenCenter(x1: Float, y1: Float) =
         dist(x1, y1, screen.widthF / 2, screen.heightF / 2)
