@@ -1,5 +1,6 @@
 import processing.core.PApplet
 import sketch.dots.CirclePendulum2
+import sketch.dots.CirclePendulum3
 
 @ExperimentalStdlibApi
 fun main() {
@@ -18,7 +19,7 @@ fun main() {
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
-//    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 
     // Tools
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
@@ -66,6 +67,7 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-//    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
-    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
+    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 }
