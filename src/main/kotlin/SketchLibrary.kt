@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.physics.CirclePendulum
-import sketch.spirals.VortexGroups
+import sketch.dots.CirclePendulum2
 
 @ExperimentalStdlibApi
 fun main() {
@@ -19,6 +18,7 @@ fun main() {
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
 
     // Tools
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
@@ -66,5 +66,6 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
+    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
 }

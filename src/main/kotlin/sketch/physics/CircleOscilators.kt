@@ -3,7 +3,7 @@ package sketch.physics
 import BaseSketch
 import processing.core.PVector
 
-class CirclePendulum : BaseSketch(renderer = P2D) {
+class CircleOscilators : BaseSketch(renderer = P2D) {
 
     private val numOfDots = 70
     private val dots = List(numOfDots) {
@@ -24,7 +24,7 @@ class CirclePendulum : BaseSketch(renderer = P2D) {
         }
     }
 
-    inner class Particle(
+    private inner class Particle(
         private val initialPosition: PVector,
         offset: Int,
         rotation: Float,
