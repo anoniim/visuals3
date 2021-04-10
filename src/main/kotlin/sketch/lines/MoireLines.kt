@@ -3,7 +3,7 @@ package sketch.lines
 import BaseSketch
 import Screen
 import processing.core.PVector
-import util.Vector
+import util.Vectors
 
 class MoireLines : BaseSketch(Screen(1500, 800)) {
 
@@ -76,7 +76,7 @@ class MoireLines : BaseSketch(Screen(1500, 800)) {
         return when {
             config.mouseControl -> PVector(mouseXF, mouseYF)
             config.translation.translationFn != Translation.Fn.NONE -> config.translation.updateTranslation()
-            else -> Vector.zero()
+            else -> Vectors.zero()
         }
     }
 
