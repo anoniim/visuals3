@@ -1,6 +1,7 @@
 import processing.core.PApplet
 import sketch.dots.CirclePendulum2
 import sketch.dots.CirclePendulum3
+import sketch.dots.PreciseSynchronization
 
 @ExperimentalStdlibApi
 fun main() {
@@ -37,6 +38,7 @@ fun main() {
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -57,6 +59,7 @@ fun main() {
 //    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron2::class.qualifiedName))
+//    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
 
     // In progress
 //    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
@@ -68,6 +71,5 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
-//    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
-    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
+    PApplet.main(arrayOf(PreciseSynchronization::class.qualifiedName))
 }
