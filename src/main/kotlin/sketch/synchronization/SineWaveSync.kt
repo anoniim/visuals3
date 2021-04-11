@@ -1,11 +1,11 @@
-package sketch.dots
+package sketch.synchronization
 
 import BaseSketch
 import processing.core.PShape
 import processing.core.PVector
 import util.Vectors
 
-class PreciseSynchronization : BaseSketch(renderer = P2D) {
+class SineWaveSync : BaseSketch(renderer = P2D) {
 
     private val backgroundAlpha = 255f // 10f To see the dots are moving in a straight line
     private val drawGuide = false

@@ -1,7 +1,5 @@
 import processing.core.PApplet
-import sketch.dots.CirclePendulum2
-import sketch.dots.CirclePendulum3
-import sketch.dots.PreciseSynchronization
+import sketch.synchronization.SineWaveSync
 
 @ExperimentalStdlibApi
 fun main() {
@@ -71,5 +69,5 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
-    PApplet.main(arrayOf(PreciseSynchronization::class.qualifiedName))
+    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 }
