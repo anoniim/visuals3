@@ -1,9 +1,5 @@
 import processing.core.PApplet
-import sketch.gameoflife.GameOfLife
-import sketch.sound.AudioClock
-import sketch.sound.miso.EveningExperiment1Idea1
-import sketch.sound.miso.EveningExperiment1Idea2
-import sketch.synchronization.SineWaveSync
+import sketch.physics.SpaceSimulation
 
 @ExperimentalStdlibApi
 fun main() {
@@ -41,6 +37,7 @@ fun main() {
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
+//    PApplet.main(arrayOf(SpaceSimulation::class.qualifiedName))
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
@@ -70,7 +67,6 @@ fun main() {
 //    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 //    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
-//    PApplet.main(arrayOf(LivingNetworkGraph::class.qualifiedName))
 //    PApplet.main(arrayOf(Test::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
