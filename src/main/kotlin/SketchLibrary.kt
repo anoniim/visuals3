@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.gameoflife.GameOfLife
 import sketch.sound.AudioClock
 import sketch.synchronization.SineWaveSync
 
@@ -71,4 +72,5 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
+    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 }
