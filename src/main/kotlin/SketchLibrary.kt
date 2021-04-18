@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.sound.AudioClock
 import sketch.synchronization.SineWaveSync
 
 @ExperimentalStdlibApi
@@ -18,6 +19,7 @@ fun main() {
 //    PApplet.main(arrayOf(MoireLines::class.qualifiedName))
 //    PApplet.main(arrayOf(BarVisualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
+//    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 
     // Tools
@@ -37,6 +39,7 @@ fun main() {
 //    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
+//    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -65,9 +68,7 @@ fun main() {
 //    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
 //    PApplet.main(arrayOf(LivingNetworkGraph::class.qualifiedName))
 //    PApplet.main(arrayOf(Test::class.qualifiedName))
-//    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
-    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 }
