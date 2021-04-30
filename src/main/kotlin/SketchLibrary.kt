@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.patterns.CubeLikePattern
 import sketch.physics.QuadTreeTest
 
 @ExperimentalStdlibApi
@@ -72,4 +73,6 @@ fun main() {
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
+//    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
+    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 }

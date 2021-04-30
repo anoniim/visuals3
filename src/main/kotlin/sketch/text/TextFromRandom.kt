@@ -37,7 +37,7 @@ class TextFromRandom : BaseSketch() {
 //       TODO textFont
         textAlign(LEFT, TOP)
 
-        grid = Grid(screen, letterSize + itemMargin, Grid.Orientation.VERTICAL)
+        grid = Grid(screen, letterSize + itemMargin)
         val midGridIndex = if (grid.numOfRows.isOdd()) grid.size / 2 else grid.size / 2 - grid.numOfCols / 2
         textStartIndex = midGridIndex - text.length / 2 // centered
         grid.initItems { n, x, y ->

@@ -4,22 +4,28 @@ import Screen
 import kotlin.random.Random
 
 @Suppress("MemberVisibilityCanBePrivate")
-open class Grid<Item: Grid.SimpleItem>(
+open class Grid<Item : Grid.SimpleItem>(
     val width: Float,
     val height: Float,
     val itemSize: Float = DEFAULT_ITEM_SIZE,
-    val orientation: Orientation = Orientation.HORIZONTAL
+    itemInitFunction: ((Int, Float, Float) -> Item)? = null
 ) {
     constructor(
         screen: Screen,
         itemSize: Float = DEFAULT_ITEM_SIZE,
-        orientation: Orientation = Orientation.HORIZONTAL
-    ): this(screen.widthF, screen.heightF, itemSize, orientation)
+        itemInitFunction: ((Int, Float, Float) -> Item)? = null
+    ) : this(screen.widthF, screen.heightF, itemSize, itemInitFunction)
 
     val numOfCols = (width / itemSize).toInt()
     val numOfRows = (height / itemSize).toInt()
     val size: Int = numOfCols * numOfRows
     val items: MutableList<Item> = mutableListOf()
+
+    init {
+        if (itemInitFunction != null) {
+            initItems(itemInitFunction)
+        }
+    }
 
     fun initItems(initItem: (Int, Float, Float) -> Item) {
         for (n: Int in 0 until size) {
@@ -45,7 +51,10 @@ open class Grid<Item: Grid.SimpleItem>(
         abstract fun draw()
     }
 
-    abstract class ChangingItem: SimpleItem() {
+    /**
+     * Grid item which
+     */
+    abstract class ChangingItem : SimpleItem() {
         abstract fun refresh()
     }
 
@@ -55,18 +64,18 @@ open class Grid<Item: Grid.SimpleItem>(
     }
 }
 
-class RollingGrid<Item: Grid.ChangingItem>(
+class RollingGrid<Item : Grid.ChangingItem>(
     width: Float,
     height: Float,
     itemSize: Float = DEFAULT_ITEM_SIZE,
     orientation: Orientation = Orientation.HORIZONTAL
-): Grid<Item>(width, height, itemSize, orientation) {
+) : Grid<Item>(width, height, itemSize) {
 
     constructor(
         screen: Screen,
         itemSize: Float = DEFAULT_ITEM_SIZE,
         orientation: Orientation = Orientation.HORIZONTAL
-    ): this(screen.widthF, screen.heightF, itemSize, orientation)
+    ) : this(screen.widthF, screen.heightF, itemSize, orientation)
 
     val numOfRefreshLines: Int = when (orientation) {
         Orientation.HORIZONTAL -> numOfRows
