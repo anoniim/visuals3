@@ -10,3 +10,7 @@ fun PApplet.translate(translation: PVector) {
         translate(translation.x, translation.y, translation.z)
     }
 }
+
+fun PApplet.vertex(vector: PVector) {
+    vertex(vector.x, vector.y)
+}
