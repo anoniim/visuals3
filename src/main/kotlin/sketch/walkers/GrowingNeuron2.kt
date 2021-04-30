@@ -2,7 +2,7 @@ package sketch.walkers
 
 import BaseSketch
 import processing.core.PVector
-import util.OpenSimplexNoise
+import util.SimplexNoise
 
 
 class GrowingNeuron2 : BaseSketch(renderer = P2D) {
@@ -56,7 +56,7 @@ class GrowingNeuron2 : BaseSketch(renderer = P2D) {
             for (i in 0..maxLength) {
                 val zoom = zoom.toDouble()
                 val a: Float =
-                    PI * (OpenSimplexNoise().eval(offset + x * zoom, offset + y * zoom, 0.0)).toFloat()
+                    PI * (SimplexNoise().eval(offset + x * zoom, offset + y * zoom, 0.0)).toFloat()
                 x += cos(a)
                 y += sin(a)
                 shape.add(PVector(x, y))

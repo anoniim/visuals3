@@ -23,7 +23,7 @@ package util;
  *   of any particular randomization library, so results
  *   will be the same when ported to other languages.
  */
-public class OpenSimplexNoise {
+public class SimplexNoise {
 
     private static final double STRETCH_CONSTANT_2D = -0.211324865405187;    //(1/Math.sqrt(2+1)-1)/2;
     private static final double SQUISH_CONSTANT_2D = 0.366025403784439;      //(Math.sqrt(2+1)-1)/2;
@@ -41,11 +41,11 @@ public class OpenSimplexNoise {
     private short[] perm;
     private short[] permGradIndex3D;
 
-    public OpenSimplexNoise() {
+    public SimplexNoise() {
         this(DEFAULT_SEED);
     }
 
-    public OpenSimplexNoise(short[] perm) {
+    public SimplexNoise(short[] perm) {
         this.perm = perm;
         permGradIndex3D = new short[256];
 
@@ -58,7 +58,7 @@ public class OpenSimplexNoise {
     //Initializes the class using a permutation array generated from a 64-bit seed.
     //Generates a proper permutation (i.e. doesn't merely perform N successive pair swaps on a base array)
     //Uses a simple 64-bit LCG.
-    public OpenSimplexNoise(long seed) {
+    public SimplexNoise(long seed) {
         perm = new short[256];
         permGradIndex3D = new short[256];
         short[] source = new short[256];
@@ -76,6 +76,11 @@ public class OpenSimplexNoise {
             permGradIndex3D[i] = (short)((perm[i] % (gradients3D.length / 3)) * 3);
             source[r] = source[i];
         }
+    }
+
+    //2D OpenSimplex Noise.
+    public float eval(float x, float y) {
+        return eval(x, y);
     }
 
     //2D OpenSimplex Noise.
@@ -191,6 +196,11 @@ public class OpenSimplexNoise {
         }
 
         return value / NORM_CONSTANT_2D;
+    }
+
+    //3D OpenSimplex Noise.
+    public float eval(float x, float y, float z) {
+        return eval(x, y, z);
     }
 
     //3D OpenSimplex Noise.
@@ -752,6 +762,11 @@ public class OpenSimplexNoise {
         }
 
         return value / NORM_CONSTANT_3D;
+    }
+
+    //4D OpenSimplex Noise.
+    public float eval(float x, float y, float z, float w) {
+        return eval(x, y, z, w);
     }
 
     //4D OpenSimplex Noise.

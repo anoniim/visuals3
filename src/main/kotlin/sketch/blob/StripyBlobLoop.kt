@@ -2,7 +2,7 @@
 
 package sketch.blob
 
-import util.OpenSimplexNoise
+import util.SimplexNoise
 import BaseSketch
 
 
@@ -17,7 +17,7 @@ class StripyBlobLoop : BaseSketch() {
     private val itemVerticalCount: Int = (screen.height / itemSize).toInt() + 3
     private val itemTotalCount: Int = itemHorizontalCount * itemVerticalCount
 
-    val noise = OpenSimplexNoise()
+    val noise = SimplexNoise()
     var xBlob: Float = 0F
     var yBlob: Float = 0F
     var t = 0f

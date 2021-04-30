@@ -1,8 +1,7 @@
 package sketch.walkers
 
 import BaseSketch
-import Screen
-import util.OpenSimplexNoise
+import util.SimplexNoise
 
 
 class GrowingNeuron: BaseSketch(renderer = P2D) {
@@ -33,7 +32,7 @@ class GrowingNeuron: BaseSketch(renderer = P2D) {
             val t = frameCount * zNoise
             val zoom = zoom.toDouble()
             val a: Float =
-                PI * (OpenSimplexNoise().eval(offset + xx * zoom, offset + yy * zoom, t.toDouble())).toFloat()
+                PI * (SimplexNoise().eval(offset + xx * zoom, offset + yy * zoom, t.toDouble())).toFloat()
             xx += cos(a)
             yy += sin(a)
             vertex(xx, yy)
