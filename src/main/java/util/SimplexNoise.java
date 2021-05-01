@@ -80,7 +80,7 @@ public class SimplexNoise {
 
     //2D OpenSimplex Noise.
     public float eval(float x, float y) {
-        return eval(x, y);
+        return (float) eval(x, (double) y);
     }
 
     //2D OpenSimplex Noise.
@@ -200,7 +200,7 @@ public class SimplexNoise {
 
     //3D OpenSimplex Noise.
     public float eval(float x, float y, float z) {
-        return eval(x, y, z);
+        return (float) eval(x, y, (double) z);
     }
 
     //3D OpenSimplex Noise.
@@ -766,7 +766,7 @@ public class SimplexNoise {
 
     //4D OpenSimplex Noise.
     public float eval(float x, float y, float z, float w) {
-        return eval(x, y, z, w);
+        return (float) eval(x, y, z, (double) w);
     }
 
     //4D OpenSimplex Noise.
