@@ -1,10 +1,12 @@
 import processing.core.PApplet
 import processing.core.PShape
 import sound.SoundHelper
-import kotlin.random.Random
+
+private const val defaultWidth = 1600
+private const val defaultHeight = 900
 
 open class BaseSketch(
-    val screen: Screen = Screen(1600, 900),
+    val screen: Screen = Screen(defaultWidth, defaultHeight),
     private val renderer: String? = null,
     private val longClickClear: Boolean = false
 ) : PApplet() {
@@ -52,8 +54,9 @@ open class BaseSketch(
     override fun settings() {
         if (screen.fullscreen) {
             fullScreen()
-            screen.width = width
-            screen.height = height
+            System.err.println("Fullscreen, don't forget to set the screen size in setup()\n" +
+                    "screen.width = width\n" +
+                    "screen.height = height")
         } else {
             if (renderer != null) {
                 size(screen.width, screen.height, renderer)
@@ -129,11 +132,11 @@ open class BaseSketch(
     }
 }
 
-class Screen(var width: Int, var height: Int, val fullscreen: Boolean = false) {
-    val widthF: Float = width.toFloat()
-    val heightF: Float = height.toFloat()
-    val centerX: Float = width / 2F
-    val centerY: Float = height / 2F
-    val halfWidth: Float = width / 2F
-    val halfHeight: Float = height / 2F
+class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight, val fullscreen: Boolean = false) {
+    val widthF: Float by lazy { width.toFloat() }
+    val heightF: Float by lazy { height.toFloat() }
+    val centerX: Float by lazy { width / 2F }
+    val centerY: Float by lazy { height / 2F }
+    val halfWidth: Float by lazy { width / 2F }
+    val halfHeight: Float by lazy { height / 2F }
 }

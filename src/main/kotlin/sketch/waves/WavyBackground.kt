@@ -1,13 +1,14 @@
 package sketch.waves
 
 import BaseSketch
+import Screen
 import util.SimplexNoise
 
-class WavyBackground: BaseSketch() {
+class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
 
     override fun setup() {
-
-
+        screen.width = width
+        screen.height = height
     }
 
     private val points = 10
