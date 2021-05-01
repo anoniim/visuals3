@@ -2,6 +2,7 @@ import processing.core.PApplet
 import sketch.patterns.CubeLikePattern
 import sketch.physics.QuadTreeTest
 import sketch.waves.WavyBackground
+import sketch.waves.WavyBackgroundDrops
 
 @ExperimentalStdlibApi
 fun main() {
@@ -44,7 +45,8 @@ fun main() {
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
-    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
+//    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
+    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))

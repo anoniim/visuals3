@@ -17,6 +17,7 @@ open class BaseSketch(
     /* Colors */
     internal val black = color(0, 0, 0)
     internal val white = color(200, 200, 200)
+    internal val cream = color(244, 243, 234)
     internal val grey11 = color(111, 111, 111)
     internal val grey9 = color(99, 99, 99)
     internal val grey7 = color(77, 77, 77)
