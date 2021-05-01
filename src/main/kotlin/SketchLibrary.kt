@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.gameoflife.GameOfLife
 import sketch.patterns.CubeLikePattern
 import sketch.physics.QuadTreeTest
 import sketch.waves.WavyBackground
@@ -46,7 +47,7 @@ fun main() {
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
-    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
+//    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -76,6 +77,6 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
-//    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
+    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 }
