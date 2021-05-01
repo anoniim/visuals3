@@ -1,6 +1,7 @@
 import processing.core.PApplet
 import sketch.patterns.CubeLikePattern
 import sketch.physics.QuadTreeTest
+import sketch.waves.WavyBackground
 
 @ExperimentalStdlibApi
 fun main() {
@@ -43,6 +44,7 @@ fun main() {
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
+    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -74,5 +76,4 @@ fun main() {
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
-    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 }
