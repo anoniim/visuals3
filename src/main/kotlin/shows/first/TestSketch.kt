@@ -7,6 +7,8 @@ import shows.first.MidiController.Companion.PAD_16
 
 class TestSketch: BaseSketch(Screen(fullscreen=true)){
 
+    // TODO MIDI signals are currently sent to all MidiControllers (how to send them only to the active scene?)
+
     private lateinit var scenes: List<Scene>
     private val controller by lazy { MidiController(this, 1, 2) }
     private var scenePointer = 0
