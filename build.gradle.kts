@@ -17,6 +17,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs/processing", "include" to listOf("*.jar"))))
     implementation(fileTree(mapOf("dir" to "libs/contributed/sound", "include" to listOf("*.jar"))))
     implementation(fileTree(mapOf("dir" to "libs/contributed/VideoExport", "include" to listOf("*.jar"))))
+    implementation(fileTree(mapOf("dir" to "libs/contributed/themidibus", "include" to listOf("*.jar"))))
 //    implementation(files("/libs/processing"))
 //    implementation(files("/libs/contributed/sound"))
 
