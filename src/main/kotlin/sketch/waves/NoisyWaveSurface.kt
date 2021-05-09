@@ -7,8 +7,8 @@ class NoisyWaveSurface : RecordedSketch(Screen(1200, 800)) {
 
     private val backgroundColor = grey3
 
-    private val centerY: Float = random(1000F)
-    private val centerZ: Float = random(1000F)
+    private val waveCenterY: Float = random(1000F)
+    private val waveCenterZ: Float = random(1000F)
 
     private val numOfStrings = 100
     private val spacing: Float = 10F
@@ -34,8 +34,8 @@ class NoisyWaveSurface : RecordedSketch(Screen(1200, 800)) {
             for (x in 0..screen.width) {
                 val sineWave = amplitude * sin(x / sineStretch)
                 val noiseAngle = percent * TWO_PI - (string * stringCohesion)
-                val yOff = map(sin(noiseAngle), -1F, 1F, centerY, centerY + randomnessDiameter)
-                val zOff = map(cos(noiseAngle), -1F, 1F, centerZ, centerZ + randomnessDiameter)
+                val yOff = map(sin(noiseAngle), -1F, 1F, waveCenterY, waveCenterY + randomnessDiameter)
+                val zOff = map(cos(noiseAngle), -1F, 1F, waveCenterZ, waveCenterZ + randomnessDiameter)
                 val noiseWave = map(
                     noise(x * smoothness, yOff, zOff),
                     0F,

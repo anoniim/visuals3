@@ -36,6 +36,20 @@ open class BaseSketch(
     internal val transparent = color(0, 0, 0, 255)
     internal val transparentDark = color(0, 0, 0, 100)
     internal val transparentLight = color(255, 255, 255, 100)
+    val pastelColors = listOf(
+        color(255, 173, 173),
+        color(255, 214, 165),
+        color(253, 255, 182),
+        color(202, 255, 191),
+        color(155, 246, 255),
+        color(160, 196, 255),
+        color(189, 178, 255),
+        color(255, 198, 255),
+        color(255, 255, 252),
+    )
+    private val augustiniColors = listOf(
+        color(0,0,0)
+    )
 
     /* Floats */
     val mouseXF: Float
@@ -54,10 +68,16 @@ open class BaseSketch(
     /* Initial settings */
     override fun settings() {
         if (screen.fullscreen) {
-            fullScreen()
-            System.err.println("Fullscreen, don't forget to set the screen size in setup()\n" +
-                    "screen.width = width\n" +
-                    "screen.height = height")
+            if (renderer != null) {
+                fullScreen(renderer)
+            } else {
+                fullScreen()
+            }
+            System.err.println(
+                "Fullscreen, don't forget to set the screen size in setup()\n" +
+                        "screen.width = width\n" +
+                        "screen.height = height"
+            )
         } else {
             if (renderer != null) {
                 size(screen.width, screen.height, renderer)
@@ -100,12 +120,16 @@ open class BaseSketch(
         if (longClickClear && mousePressed && mouseDownTime > longClickResetCueMillis) {
             reverseTransformation?.invoke()
             // Darken screen before resetting
-            shape(resetOverlay.apply {
-                setFill(true) // needs to be called in case noFill() was set before creating the shape
-                val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
-                setFill(color(11f, 11f, 11f, overlayAlpha))
-            })
+            val overlayAlpha = map(mouseDownTime.toFloat(), 1000f, 2000f, 0f, 255f)
+            backgroundWithAlpha(color(11f, 11f, 11f, overlayAlpha))
         }
+    }
+
+    fun backgroundWithAlpha(color: Int) {
+        shape(resetOverlay.apply {
+            setFill(true) // needs to be called in case noFill() was set before creating the shape
+            setFill(color)
+        })
     }
 
     /* === Helper methods === */
@@ -136,8 +160,10 @@ open class BaseSketch(
 class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight, val fullscreen: Boolean = false) {
     val widthF: Float by lazy { width.toFloat() }
     val heightF: Float by lazy { height.toFloat() }
-    val centerX: Float by lazy { width / 2F }
-    val centerY: Float by lazy { height / 2F }
+    val centerX: Float
+        get() = width / 2F
+    val centerY: Float
+        get() = height / 2F
     val halfWidth: Float by lazy { width / 2F }
     val halfHeight: Float by lazy { height / 2F }
 }

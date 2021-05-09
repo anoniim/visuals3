@@ -1,9 +1,7 @@
 import processing.core.PApplet
+import shows.first.TestSketch
+import sketch.*
 import sketch.gameoflife.GameOfLife
-import sketch.patterns.CubeLikePattern
-import sketch.physics.QuadTreeTest
-import sketch.waves.WavyBackground
-import sketch.waves.WavyBackgroundDrops
 
 @ExperimentalStdlibApi
 fun main() {
