@@ -1,7 +1,5 @@
 import processing.core.PApplet
-import shows.first.TestSketch
-import sketch.*
-import sketch.gameoflife.GameOfLife
+import sketch.circles.CircleOscillator
 
 @ExperimentalStdlibApi
 fun main() {
@@ -46,6 +44,7 @@ fun main() {
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
+    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -75,6 +74,6 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
-    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
+//    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 }
