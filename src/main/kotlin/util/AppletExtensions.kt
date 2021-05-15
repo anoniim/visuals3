@@ -11,6 +11,10 @@ fun PApplet.translate(translation: PVector) {
     }
 }
 
+fun PApplet.translateToCenter() {
+    translate(width/2f, height/2f)
+}
+
 fun PApplet.vertex(vector: PVector) {
     vertex(vector.x, vector.y)
 }
