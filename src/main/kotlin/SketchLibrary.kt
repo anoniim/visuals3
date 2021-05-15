@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.circles.Circadian
 import sketch.circles.CircleOscillator
 import sketch.physics.SpinningBean
 
@@ -22,6 +23,8 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
+    PApplet.main(arrayOf(Circadian::class.qualifiedName))
+
 
     // Tools
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
@@ -46,7 +49,7 @@ fun main() {
 //    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
 //    PApplet.main(arrayOf(SpinningBean::class.qualifiedName))
-    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))

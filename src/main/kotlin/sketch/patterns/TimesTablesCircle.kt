@@ -17,7 +17,7 @@ class TimesTablesCircle : BaseSketch(Screen(800, 800, fullscreen = false)) {
     private val textSize = 24f
     private val textScale = 1.3f
     private var lastMultiplier = 0f
-    private var frameCountF = 0f
+    private var time = 0f
 
     override fun setup() {
         initDots()
@@ -43,12 +43,12 @@ class TimesTablesCircle : BaseSketch(Screen(800, 800, fullscreen = false)) {
     private fun mousePressControl(): Float {
         if (mousePressed) {
             if (mouseX < width / 2) {
-                frameCountF--
-                if(frameCountF < 0) frameCountF = loopTime
+                time--
+                if(time < 0) time = loopTime
             } else {
-                frameCountF++
+                time++
             }
-            lastMultiplier = map(frameCountF % loopTime, 0f, loopTime-1, minMultiplier, maxMultiplier)
+            lastMultiplier = map(time % loopTime, 0f, loopTime-1, minMultiplier, maxMultiplier)
         }
         return lastMultiplier
     }

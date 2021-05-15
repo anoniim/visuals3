@@ -64,6 +64,8 @@ open class BaseSketch(
         get() = width / 2f
     val halfHeightF: Float
         get() = height / 2f
+    val frameCountF: Float
+        get() = frameCount.toFloat()
 
     /* Initial settings */
     override fun settings() {
