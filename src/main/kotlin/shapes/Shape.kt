@@ -1,12 +1,16 @@
 package shapes
 
-import processing.core.PApplet
+import BaseSketch
 
 open class Shape(
-    private val applet: PApplet
+    protected val applet: BaseSketch
 ) {
 
-    fun display(displayFun: PApplet.() -> Unit) {
+    protected fun display(displayFun: BaseSketch.() -> Unit) {
         displayFun(applet)
+    }
+
+    open fun draw(drawModifiers: (BaseSketch.() -> Unit)? = null) {
+        drawModifiers?.invoke(applet)
     }
 }

@@ -1,7 +1,6 @@
 package sketch.circles
 
 import BaseSketch
-import processing.core.PApplet
 import kotlin.random.Random
 
 open class CirclePacking : BaseSketch() {
@@ -56,7 +55,7 @@ open class CirclePacking : BaseSketch() {
     protected open fun createCircle(x: Float, y: Float) = GrowingCircle(this, x, y)
 
     open inner class GrowingCircle(
-        applet: PApplet,
+        applet: BaseSketch,
         x: Float,
         y: Float,
         r: Float = 0f): shapes.Circle(applet, x, y, r) {

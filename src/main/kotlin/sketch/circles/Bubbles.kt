@@ -1,6 +1,6 @@
 package sketch.circles
 
-import processing.core.PApplet
+import BaseSketch
 
 class Bubbles : CirclePacking() {
 
@@ -35,7 +35,7 @@ class Bubbles : CirclePacking() {
         return Bubble(this, x, y)
     }
 
-    inner class Bubble(applet: PApplet, x: Float, y: Float) : GrowingCircle(applet, x, y) {
+    inner class Bubble(applet: BaseSketch, x: Float, y: Float) : GrowingCircle(applet, x, y) {
 
         var touches: MutableSet<Bubble> = mutableSetOf()
 
