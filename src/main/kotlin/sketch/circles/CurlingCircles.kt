@@ -25,7 +25,7 @@ class CurlingCircles : BaseSketch(Screen(800, 800)) {
         }
     }
 
-    inner class Arc(
+    private inner class Arc(
         val x: Float = 0f,
         val y: Float = 0f,
         val diameter: Float,

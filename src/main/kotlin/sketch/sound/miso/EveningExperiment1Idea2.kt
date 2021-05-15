@@ -185,7 +185,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
         }
     }
 
-    inner class InitialCircle {
+    private inner class InitialCircle {
 
         private var angleProgress = 0f
 
@@ -209,7 +209,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
         }
     }
 
-    inner class GrowingCircle(private var shape: PShape) {
+    private inner class GrowingCircle(private var shape: PShape) {
 
         var isVisible = true
         private var lastDistanceFromCenter = 0f

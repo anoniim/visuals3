@@ -12,9 +12,9 @@ class SoupParticles : BaseSketch() {
     private val fillColor2 = grey9
     private val backgroundColor = grey3
 
-    private val layer1: MutableList<Circle> = mutableListOf()
-    private val layer2: MutableList<Circle> = mutableListOf()
-    private val layer3: MutableList<Circle> = mutableListOf()
+    private val layer1: MutableList<Particle> = mutableListOf()
+    private val layer2: MutableList<Particle> = mutableListOf()
+    private val layer3: MutableList<Particle> = mutableListOf()
     private val layer1Count: Int = 300 // 500
     private val layer2Count: Int = 200 // 1000
     private val layer3Count: Int = 200 // 1000
@@ -25,15 +25,15 @@ class SoupParticles : BaseSketch() {
         fill(fillColor)
 
         for (i in 1..layer1Count) {
-            layer1.add(Circle(mass = 1.6F, maxShift = 100F, fill = fillColor2))
+            layer1.add(Particle(mass = 1.6F, maxShift = 100F, fill = fillColor2))
         }
 
         for (i in 1..layer2Count) {
-            layer2.add(Circle(mass = 1.2F, maxShift = 200F, fill = orange))
+            layer2.add(Particle(mass = 1.2F, maxShift = 200F, fill = orange))
         }
 
         for (i in 1..layer3Count) {
-            layer3.add(Circle(mass = 0.7F, maxShift = 380F, fill = yellow))
+            layer3.add(Particle(mass = 0.7F, maxShift = 380F, fill = yellow))
         }
     }
 
@@ -47,7 +47,7 @@ class SoupParticles : BaseSketch() {
         }
     }
 
-    open inner class Circle(
+    private inner class Particle(
         private val originX: Float = map(Random.nextFloat(), 0F, 1F, -screen.widthF/2, screen.widthF/2),
         private val originY: Float = map(Random.nextFloat(), 0F, 1F, -screen.heightF, screen.heightF),
 //        private val originX: Float = 0F,

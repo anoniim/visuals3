@@ -1,6 +1,7 @@
 package sketch.circles
 
 import BaseSketch
+import processing.core.PApplet
 import kotlin.random.Random
 
 open class CirclePacking : BaseSketch() {
@@ -14,7 +15,7 @@ open class CirclePacking : BaseSketch() {
     private val itemVerticalCount: Int = (screen.height / itemSize).toInt() + 3
     private val itemTotalCount: Int = itemHorizontalCount * itemVerticalCount
 
-    protected val circles = mutableListOf<Circle>()
+    protected val circles = mutableListOf<GrowingCircle>()
 
     override fun setup() {
         smooth()
@@ -31,11 +32,11 @@ open class CirclePacking : BaseSketch() {
 
         for (circle in circles) {
             circle.grow()
-            circle.show()
+            circle.draw()
         }
     }
 
-    protected fun newCircle(): Circle? {
+    protected fun newCircle(): GrowingCircle? {
         val x = map(Random.nextFloat(), 0F, 1F, 0F, width.toFloat())
         val y = map(Random.nextFloat(), 0F, 1F, 0F, height.toFloat())
         var isInside = false
@@ -52,16 +53,15 @@ open class CirclePacking : BaseSketch() {
         }
     }
 
-    protected open fun createCircle(x: Float, y: Float) = Circle(x, y)
+    protected open fun createCircle(x: Float, y: Float) = GrowingCircle(this, x, y)
 
-    open inner class Circle(val x: Float, val y: Float) {
+    open inner class GrowingCircle(
+        applet: PApplet,
+        x: Float,
+        y: Float,
+        r: Float = 0f): shapes.Circle(applet, x, y, r) {
 
         private var shouldGrow = true
-        var r: Float = 0F
-
-        fun show() {
-            ellipse(x, y, r * 2, r * 2)
-        }
 
         fun grow() {
             if (!isAtEdge() && !isOverlapping()) {

@@ -1,5 +1,7 @@
 package sketch.circles
 
+import processing.core.PApplet
+
 class Bubbles : CirclePacking() {
 
     private val strokeColor = grey9
@@ -17,7 +19,7 @@ class Bubbles : CirclePacking() {
         circles.removeIf { touchesOther(it) }
     }
 
-    private fun touchesOther(it: Circle): Boolean {
+    private fun touchesOther(it: GrowingCircle): Boolean {
         val touches = (it as Bubble).touches
         return if (touches.size > 1) {
             for (other in it.touches) {
@@ -29,11 +31,11 @@ class Bubbles : CirclePacking() {
         }
     }
 
-    override fun createCircle(x: Float, y: Float): Circle {
-        return Bubble(x, y)
+    override fun createCircle(x: Float, y: Float): GrowingCircle {
+        return Bubble(this, x, y)
     }
 
-    inner class Bubble(x: Float, y: Float) : Circle(x, y) {
+    inner class Bubble(applet: PApplet, x: Float, y: Float) : GrowingCircle(applet, x, y) {
 
         var touches: MutableSet<Bubble> = mutableSetOf()
 

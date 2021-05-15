@@ -13,7 +13,7 @@ class Dot : BaseSketch() {
     private val backgroundColor = grey3
 
     private val maxRadius: Float = 100F
-    private val dot = Circle(maxShift = 300F, fill = fillColor2)
+    private val dot = Dot(maxShift = 300F, fill = fillColor2)
 
     // Spring drawing constants for top bar
     var springHeight = 32 // Height
@@ -48,7 +48,7 @@ class Dot : BaseSketch() {
 //        dot.drawSpring()
     }
 
-    open inner class Circle(
+    private inner class Dot(
 //        private val originX: Float = map(Random.nextFloat(), 0F, 1F, -screen.widthF, screen.widthF),
 //        private val originY: Float = map(Random.nextFloat(), 0F, 1F, -screen.heightF, screen.heightF),
         private val originX: Float = 0F,

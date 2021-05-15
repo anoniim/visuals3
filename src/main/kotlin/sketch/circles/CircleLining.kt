@@ -1,6 +1,7 @@
 package sketch.circles
 
 import BaseSketch
+import shapes.Circle
 
 open class CircleLining : BaseSketch() {
 
@@ -25,7 +26,7 @@ open class CircleLining : BaseSketch() {
         val r1 = 150F
 
         // Center circle
-        Circle(0F, 0F, r1).show()
+        Circle(this, 0F, 0F, r1).draw()
 
 
 //        for (n in 1..100) {
@@ -60,18 +61,18 @@ open class CircleLining : BaseSketch() {
         var lastCircle: Circle = dummy()
 
         val thetaGrowth = 2 * asin(r2 / (r1 + r2))
-        var theta: Float = 0F
+        var theta = 0F
         while (theta < 2 * PI) {
             val x = sin(theta) * (r1 + r2)
             val y = cos(theta) * (r1 + r2)
-            val circle = Circle(x, y, r2)
+            val circle = Circle(this, x, y, r2)
 
             if (firstCircle.r == 0F) {
                 firstCircle = circle
             }
             lastCircle = circle
 
-            circle.show()
+            circle.draw()
             theta += thetaGrowth
         }
         return Pair(firstCircle, lastCircle)
@@ -96,21 +97,9 @@ open class CircleLining : BaseSketch() {
         }
     }
 
-    fun dummy(): Circle {
-        return Circle(0F, 0F, 0F)
+    private fun dummy(): Circle {
+        return Circle(this, 0F, 0F, 0F)
     }
-
-    open inner class Circle(
-        val x: Float,
-        val y: Float,
-        var r: Float
-    ) {
-
-        fun show() {
-            ellipse(x, y, r * 2, r * 2)
-        }
-    }
-
 }
 
 
