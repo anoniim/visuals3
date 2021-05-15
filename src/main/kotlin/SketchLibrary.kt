@@ -1,5 +1,6 @@
 import processing.core.PApplet
 import sketch.circles.CircleOscillator
+import sketch.physics.SpinningBean
 
 @ExperimentalStdlibApi
 fun main() {
@@ -44,6 +45,7 @@ fun main() {
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
+//    PApplet.main(arrayOf(SpinningBean::class.qualifiedName))
     PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 
     // Showcase
