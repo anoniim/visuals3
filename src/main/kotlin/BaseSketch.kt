@@ -2,8 +2,8 @@ import processing.core.PApplet
 import processing.core.PShape
 import sound.SoundHelper
 
-private const val defaultWidth = 1600
-private const val defaultHeight = 900
+private const val defaultWidth = 1520
+private const val defaultHeight = 950
 
 open class BaseSketch(
     val screen: Screen = Screen(defaultWidth, defaultHeight),
