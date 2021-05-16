@@ -1,7 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.Circadian
-import sketch.circles.CircleOscillator
-import sketch.physics.SpinningBean
+import sketch.walkers.CityExploration
 
 @ExperimentalStdlibApi
 fun main() {
@@ -23,7 +21,7 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingNeuron::class.qualifiedName))
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
-    PApplet.main(arrayOf(Circadian::class.qualifiedName))
+//    PApplet.main(arrayOf(Circadian::class.qualifiedName))
 
 
     // Tools
@@ -81,4 +79,5 @@ fun main() {
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
+    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
 }
