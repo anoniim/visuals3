@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.physics.AntiCollisionSystem
 import sketch.walkers.CityExploration
 
 @ExperimentalStdlibApi
@@ -79,5 +80,6 @@ fun main() {
 //    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
-    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
+//    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
+    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
 }
