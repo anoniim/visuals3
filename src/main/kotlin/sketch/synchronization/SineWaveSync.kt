@@ -3,7 +3,6 @@ package sketch.synchronization
 import BaseSketch
 import processing.core.PShape
 import processing.core.PVector
-import util.Vectors
 
 class SineWaveSync : BaseSketch(renderer = P2D) {
 
@@ -125,7 +124,7 @@ class SineWaveSync : BaseSketch(renderer = P2D) {
         val pathFunction: (Float, Float) -> PVector
     ) {
 
-        var position: PVector = Vectors.zero()
+        var position: PVector = PVector()
 
         fun update() {
             position = pathFunction(time, phase)

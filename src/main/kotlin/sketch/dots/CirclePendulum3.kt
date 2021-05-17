@@ -2,7 +2,6 @@ package sketch.dots
 
 import BaseSketch
 import processing.core.PVector
-import util.Vectors
 import util.translate
 
 class CirclePendulum3 : BaseSketch(renderer = P2D) {
@@ -71,7 +70,7 @@ class CirclePendulum3 : BaseSketch(renderer = P2D) {
         )
     ) {
 
-        private var position = Vectors.zero()
+        private var position = PVector()
 
         fun update() {
             position.x = travelDistance * sin(direction * time + offset)

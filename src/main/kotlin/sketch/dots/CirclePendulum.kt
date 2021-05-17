@@ -2,7 +2,6 @@ package sketch.dots
 
 import BaseSketch
 import processing.core.PVector
-import util.Vectors
 
 class CirclePendulum : BaseSketch(renderer = P2D) {
 
@@ -48,7 +47,7 @@ class CirclePendulum : BaseSketch(renderer = P2D) {
         private val color: Int = color(random(circleRadius, 255f), random(circleRadius, 255f), random(circleRadius, 255f))
     ) {
 
-        private var position = Vectors.zero()
+        private var position = PVector()
 
         fun update() {
             position.x = travelDistance * sin(frameCount / 50f + offset * TWO_PI / numOfDots)
