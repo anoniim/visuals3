@@ -1,5 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.FallApartImageTransformation
+import sketch.shapes.PolygonTunnel
 
 @ExperimentalStdlibApi
 fun main() {
@@ -48,6 +48,9 @@ fun main() {
 //    PApplet.main(arrayOf(WavyBackgroundDrops::class.qualifiedName))
 //    PApplet.main(arrayOf(SpinningBean::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
+//    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
+    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
+//    PApplet.main(arrayOf(PolygonSpiral::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -81,5 +84,4 @@ fun main() {
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
 //    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
-    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
 }
