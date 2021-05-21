@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.physics.AntiCollisionSystem
-import sketch.walkers.CityExploration
+import sketch.circles.FallApartImageTransformation
 
 @ExperimentalStdlibApi
 fun main() {
@@ -81,5 +80,6 @@ fun main() {
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
-    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
+//    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
+    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
 }
