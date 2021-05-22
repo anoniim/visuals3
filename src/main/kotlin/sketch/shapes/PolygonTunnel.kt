@@ -1,15 +1,16 @@
 package sketch.shapes
 
 import BaseSketch
+import Screen
 import processing.core.PVector
 import util.line
 import util.translateToCenter
 
-class PolygonTunnel : BaseSketch() {
+class PolygonTunnel : BaseSketch(Screen(fullscreen = true)) {
 
     // config
-    private val angleStep = 2*PI/3f // triangle
-//    private val angleStep = PI/2f // square
+//    private val angleStep = 2*PI/3f // triangle
+    private val angleStep = PI/2f // square
 //    private val angleStep = PI/3f // pentagon
 //    private val angleStep = TWO_PI/5f // hexagon
 
