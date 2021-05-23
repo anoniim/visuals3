@@ -2,20 +2,21 @@ package sketch.spirals
 
 import BaseSketch
 import Screen
+import com.hamoid.VideoExport
 import processing.core.PVector
 import util.line
 import util.translateToCenter
 
-class PolygonTunnel : BaseSketch(Screen(fullscreen = false)) {
+class PolygonTunnel : BaseSketch(Screen(fullscreen = true)) {
 
     // config
     private val shape = Shape.SQUARE
-    private val speed = 0.08f // 0.01 - 1
+    private val speed = 0.08f // 0.01 - 2
     private val initSize = 50f // 10 - 100
-    private val spin = 0 // (0.01) 0 - 0.1f
-    private val perspectiveEnabled = false
+    private val spin = 0.0f // (0.01) 0 - 0.1f
+    private val perspectiveEnabled = true
 
-    private val dissolveFactor = 1f + speed / if (spin > 0) 100f else 50f
+    private val dissolveFactor = 1f + speed / if (spin > 0) 200f else 50f
     private var zoomingIn = false
     private var animationProgress = 0f
     private var angle = shape.innerAngle
@@ -36,6 +37,7 @@ class PolygonTunnel : BaseSketch(Screen(fullscreen = false)) {
 
         drawPath()
         removeOutOfScreenSegments()
+//        videoExport.saveFrame() // record
     }
 
     private fun drawPath() {
@@ -99,5 +101,12 @@ class PolygonTunnel : BaseSketch(Screen(fullscreen = false)) {
         SQUARE(4, PI / 2f),
         PENTAGON(6, TWO_PI / 5f),
         HEXAGON(5, PI / 3f),
+    }
+
+    @Suppress("unused")
+    private val videoExport by lazy {
+        VideoExport(this).apply {
+            startMovie() // record
+        }
     }
 }
