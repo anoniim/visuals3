@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.shapes.PolygonTunnel
 import sketch.spirals.PolygonSpiralFlower
 
 @ExperimentalStdlibApi
@@ -49,8 +50,8 @@ fun main() {
 //    PApplet.main(arrayOf(SpinningBean::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 //    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
-//    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
-    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
+    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
+//    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))

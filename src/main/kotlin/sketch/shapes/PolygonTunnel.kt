@@ -9,10 +9,7 @@ import util.translateToCenter
 class PolygonTunnel : BaseSketch(Screen(fullscreen = true)) {
 
     // config
-//    private val angleStep = 2*PI/3f // triangle
-    private val angleStep = PI/2f // square
-//    private val angleStep = PI/3f // pentagon
-//    private val angleStep = TWO_PI/5f // hexagon
+    private val shape = Shape.HEXAGON
 
     private var angle = 0f
     private val path = mutableListOf(vectorFromAngle(0f))
@@ -35,11 +32,18 @@ class PolygonTunnel : BaseSketch(Screen(fullscreen = true)) {
     }
 
     private fun addNewPoint() {
-        angle += angleStep
+        angle += shape.internalAngle
         val newPoint = vectorFromAngle(angle)
         path.add(newPoint)
     }
 
     private fun vectorFromAngle(angle: Float) = PVector.fromAngle(angle).setMag(500f / frameCount)
 
+    @Suppress("unused")
+    private enum class Shape(val internalAngle: Float) {
+        TRIANGLE(2 * PI / 3f),
+        SQUARE(PI / 2f),
+        PENTAGON(TWO_PI / 5f),
+        HEXAGON(PI / 3f),
+    }
 }
