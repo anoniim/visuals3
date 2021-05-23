@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.shapes.PolygonTunnel
-import sketch.spirals.PolygonSpiralFlower
+import sketch.spirals.PolygonTunnel
 
 @ExperimentalStdlibApi
 fun main() {
