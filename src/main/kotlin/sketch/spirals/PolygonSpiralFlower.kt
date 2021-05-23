@@ -9,11 +9,10 @@ import util.translateToCenter
 class PolygonSpiralFlower : BaseSketch(Screen(fullscreen = true)) {
 
     // config
-    private val speed = 1
-    private val shape = Shape.HEXAGON
-    private val baseAngle = shape.angle
-    private val angleStep = baseAngle + 0.006f
-    private val radiusFactor = shape.radiusFactor
+    private val speed = 10 // 1-20
+    private val shape = Shape.SQUARE
+    private val angleStep = shape.baseAngle + 0.006f // lower for finer shape
+    private val radiusFactor = shape.radiusFactor + 0 // can be adjusted to zoom in/out
 
     private var scale = 0.1f
     private var angle = 0f
@@ -61,10 +60,10 @@ class PolygonSpiralFlower : BaseSketch(Screen(fullscreen = true)) {
     }
 
     @Suppress("unused")
-    private enum class Shape(val radiusFactor: Int, val angle: Float) {
+    private enum class Shape(val radiusFactor: Int, val baseAngle: Float) {
         TRIANGLE(5, 2 * PI / 3f),
         SQUARE(4, PI / 2f),
-        PENTAGON(5, PI / 3f),
-        HEXAGON(6, TWO_PI / 5f),
+        PENTAGON(6, TWO_PI / 5f),
+        HEXAGON(5, PI / 3f),
     }
 }
