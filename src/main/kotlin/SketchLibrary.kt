@@ -17,8 +17,8 @@ fun main() {
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
 //    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
-    PApplet.main(arrayOf(BrokenPianoStrings::class.qualifiedName))
-//    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
+//    PApplet.main(arrayOf(BrokenPianoStrings::class.qualifiedName))
+    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
