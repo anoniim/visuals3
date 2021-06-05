@@ -1,9 +1,10 @@
 package util
 
+import BaseSketch
 import processing.core.PApplet
 import java.util.*
 
-class Colors(val applet: PApplet) {
+class Colors(val applet: BaseSketch) {
 
     val pastel = with(applet) {
         listOf(
@@ -31,6 +32,13 @@ class Colors(val applet: PApplet) {
             color(77, 144, 142),
             color(87, 117, 144),
             color(39, 125, 161),
+        )
+    }
+
+    val blackAndWhite = with(applet) {
+        listOf(
+            grey3,
+            white,
         )
     }
 

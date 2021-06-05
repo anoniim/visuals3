@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.lines.BrokenPianoStrings
-import sketch.perspective.FieldWalking
+import sketch.perspective.FoldingStripes
 
 @ExperimentalStdlibApi
 fun main() {
@@ -18,7 +17,7 @@ fun main() {
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
 //    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
 //    PApplet.main(arrayOf(BrokenPianoStrings::class.qualifiedName))
-    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
+//    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -39,6 +38,7 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 //    PApplet.main(arrayOf(Circadian::class.qualifiedName))
+    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
