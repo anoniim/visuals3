@@ -1,13 +1,27 @@
 import processing.core.PApplet
+import sketch.lines.BrokenPianoStrings
 import sketch.perspective.FieldWalking
-import sketch.perspective.RainbowSunrise
-import sketch.spirals.PolygonTunnel
-import sketch.waves.InflatingCircles
 
 @ExperimentalStdlibApi
 fun main() {
 
-    // Practice
+
+/* ______________ IN PROGRESS ______________ */
+//    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
+//    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
+//    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
+//    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
+//    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
+//    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
+//    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
+//    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
+//    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
+    PApplet.main(arrayOf(BrokenPianoStrings::class.qualifiedName))
+//    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
+
+
+/* ______________ PRACTICE ______________ */
 //    PApplet.main(arrayOf(CircleLining::class.qualifiedName))
 //    PApplet.main(arrayOf(SkippingLines::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePacking::class.qualifiedName))
@@ -27,13 +41,14 @@ fun main() {
 //    PApplet.main(arrayOf(Circadian::class.qualifiedName))
 
 
-    // Tools
+/* ______________ TOOLS ______________ */
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(FourierTransform::class.qualifiedName))
 
-    // Ideas
+
+/* ______________ IDEAS ______________ */
 //    PApplet.main(arrayOf(HyperbolicPlane::class.qualifiedName))
 //    PApplet.main(arrayOf(FocusedSquares::class.qualifiedName))
 //    PApplet.main(arrayOf(SquareSpiral::class.qualifiedName))
@@ -56,7 +71,8 @@ fun main() {
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 
-    // Showcase
+
+/* ______________ SHOWCASE ______________ */
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
 //    PApplet.main(arrayOf(SmoothWalkers::class.qualifiedName))
 //    PApplet.main(arrayOf(RaisingTiles::class.qualifiedName))
@@ -76,18 +92,5 @@ fun main() {
 //    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingNeuron2::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
-
-    // In progress
-//    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
-//    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
-//    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
-//    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
-//    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-//    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
-//    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
-//    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
-//    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
-//    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
-//    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
-    PApplet.main(arrayOf(RainbowSunrise::class.qualifiedName))
+//    PApplet.main(arrayOf(RainbowSunrise::class.qualifiedName))
 }
