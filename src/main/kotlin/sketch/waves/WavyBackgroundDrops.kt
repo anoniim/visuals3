@@ -13,13 +13,6 @@ class WavyBackgroundDrops : BaseSketch(Screen(fullscreen = true)) {
     private val xZoom = 80f
     private val yZoom = 400f
     private val margin = 150f
-    private val colors = listOf(
-        color(255, 184, 222),
-        color(188, 184, 227),
-        color(166, 221, 215),
-        color(255, 249, 209),
-        color(167, 214, 175)
-    )
     private val layers = MutableList(1) {
         generateDrop()
     }
@@ -48,7 +41,7 @@ class WavyBackgroundDrops : BaseSketch(Screen(fullscreen = true)) {
     }
 
     private fun generateDrop(): Drop {
-        val randomColor = colors[Random.nextInt(colors.size)]
+        val randomColor = colors.pastel.random()
 //        val origin = PVector(random(margin, screen.widthF - margin), random(margin, screen.heightF - margin))
         val origin = PVector(screen.centerX, screen.centerY)
         return Drop(origin, randomColor)

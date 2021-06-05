@@ -61,33 +61,6 @@ open class EveningExperiment1Idea2 : BaseSketch(
     private var globalScaleFactor = 1f
     private var globalScaleStep = 0.001f
     private val globalScaleLimit = 2.4f
-    private val colors = LinkedList<Int>(
-        listOf(
-            color(111, 111, 111),
-            color(100, 100, 111),
-            color(100, 100, 145),
-            color(100, 130, 150),
-            color(95, 135, 160),
-            color(70, 140, 160),
-            color(70, 155, 175),
-            color(50, 165, 185),
-            color(29, 173, 211),
-            color(29, 173, 211),
-            color(19, 160, 211),
-            color(19, 160, 211),
-            color(19, 173, 228),
-            color(19, 173, 228),
-            color(20, 183, 243),
-            color(20, 183, 243),
-            color(0, 160, 255),
-            color(0, 160, 255),
-            color(80, 180, 255),
-            color(120, 200, 255),
-            color(180, 230, 255),
-            color(220, 255, 255),
-            color(255, 255, 255)
-        )
-    )
 
     private val videoExport: VideoExport by lazy {
         VideoExport(this).apply {
@@ -154,7 +127,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
     }
 
     private fun onPianoTriggered() {
-        centralColor = colors.poll() ?: white
+        centralColor = colors.blues.poll() ?: white
         growingCircles.add(GrowingCircle(vibratingCircle(centralColor)))
     }
 

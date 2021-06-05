@@ -25,7 +25,7 @@ class Scene2(applet: BaseSketch) : Scene(applet) {
 
     private fun boom() {
         time = 0f
-        color = applet.pastelColors.random()
+        color = applet.colors.pastel.random()
         angleOffset = applet.random(PI)
     }
 

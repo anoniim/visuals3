@@ -29,7 +29,7 @@ class Circadian : BaseSketch(renderer = P2D) {
         noFill()
 
         repeat(nGroups) {
-            stroke(pastelColors[it+1])
+            stroke(colors.pastel[it+1])
             rotate(groupRotation)
             repeat(nCircles) { circleIndex ->
                 drawCircle(it, circleIndex)

@@ -1,6 +1,7 @@
 import processing.core.PApplet
 import processing.core.PShape
 import sound.SoundHelper
+import util.Colors
 
 private const val defaultWidth = 1520
 private const val defaultHeight = 950
@@ -36,24 +37,7 @@ open class BaseSketch(
     internal val transparent = color(0, 0, 0, 255)
     internal val transparentDark = color(0, 0, 0, 100)
     internal val transparentLight = color(255, 255, 255, 100)
-    val pastelColors = listOf(
-        color(255, 173, 173),
-        color(255, 214, 165),
-        color(253, 255, 182),
-        color(202, 255, 191),
-        color(155, 246, 255),
-        color(160, 196, 255),
-        color(189, 178, 255),
-        color(255, 198, 255),
-        color(255, 255, 252),
-    )
-    private val augustiniColors = listOf(
-        color(0, 0, 0)
-    )
-
-    fun randomColor(): Int {
-        return color(random(50f, 200f), random(50f, 200f), random(50f, 200f))
-    }
+    internal val colors = Colors(this)
 
     /* Floats */
     val mouseXF: Float

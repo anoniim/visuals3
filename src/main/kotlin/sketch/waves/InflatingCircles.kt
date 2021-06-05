@@ -37,7 +37,7 @@ class InflatingCircles : BaseSketch(Screen(fullscreen = false)) {
         var extent: Float = random(5f, 50f)
     ) {
 
-        private val color = randomColor()
+        private val color = colors.random
         private val origin = PVector()
         private val edgePadding = 1f
 

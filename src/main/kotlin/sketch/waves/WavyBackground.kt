@@ -13,13 +13,6 @@ class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
     private val pronunciation = 50f
     private val xZoom = 80f
     private val yZoom = 400f
-    private val colors = listOf(
-        color(255, 184, 222),
-        color(188, 184, 227),
-        color(166, 221, 215),
-        color(255, 249, 209),
-        color(167, 214, 175))
-
     private val noise = SimplexNoise()
     private var noisePointer = 0f
 
@@ -29,7 +22,7 @@ class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
     }
 
     override fun draw() {
-        background(colors[1])
+        background(colors.pastel[1])
 
         val layerRange = when (orientation) {
             Orientation.HORIZONTAL -> 0..layers
@@ -47,7 +40,7 @@ class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
                 val layer = index * screen.heightF / layers
                 val xOffset = layer / xZoom
                 noStroke()
-                fill(colors[index % colors.size])
+                fill(colors.pastel[index % colors.pastel.size])
                 beginShape()
                 vertex(0f, screen.heightF)
                 vertex(0f, getNoisyDimension(layer, xOffset, 0f))
@@ -63,7 +56,7 @@ class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
                 val layer = index * screen.widthF / layers
                 val xOffset = layer / xZoom
                 noStroke()
-                fill(colors[index % colors.size])
+                fill(colors.pastel[index % colors.pastel.size])
                 beginShape()
                 vertex(0f, -0f)
                 vertex(getNoisyDimension(layer, xOffset, 0f), -0f)
