@@ -1,4 +1,6 @@
 import processing.core.PApplet
+import sketch.perspective.FieldWalking
+import sketch.perspective.RainbowSunrise
 import sketch.spirals.PolygonTunnel
 import sketch.waves.InflatingCircles
 
@@ -52,7 +54,7 @@ fun main() {
 //    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
-    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
+//    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 
     // Showcase
 //    PApplet.main(arrayOf(PixelatedWalkers::class.qualifiedName))
@@ -86,4 +88,6 @@ fun main() {
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
 //    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
+//    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
+    PApplet.main(arrayOf(RainbowSunrise::class.qualifiedName))
 }

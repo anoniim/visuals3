@@ -4,6 +4,7 @@ import processing.core.PApplet
 import java.util.*
 
 class Colors(val applet: PApplet) {
+
     val pastel = with(applet) {
         listOf(
             color(255, 173, 173),
@@ -15,6 +16,21 @@ class Colors(val applet: PApplet) {
             color(189, 178, 255),
             color(255, 198, 255),
             color(255, 255, 252),
+        )
+    }
+
+    val sunrise = with(applet) {
+        listOf(
+            color(249, 65, 68),
+            color(243, 114, 44),
+            color(248, 150, 30),
+            color(249, 132, 74),
+            color(249, 199, 79),
+            color(144, 190, 109),
+            color(67, 170, 139),
+            color(77, 144, 142),
+            color(87, 117, 144),
+            color(39, 125, 161),
         )
     }
 
