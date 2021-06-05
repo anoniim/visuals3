@@ -9,6 +9,7 @@ private const val defaultHeight = 950
 open class BaseSketch(
     val screen: Screen = Screen(defaultWidth, defaultHeight),
     private val renderer: String? = null,
+    private val smoothLevel: Int = 0,
     private val longClickClear: Boolean = false
 ) : PApplet() {
 
@@ -37,7 +38,7 @@ open class BaseSketch(
     internal val transparent = color(0, 0, 0, 255)
     internal val transparentDark = color(0, 0, 0, 100)
     internal val transparentLight = color(255, 255, 255, 100)
-    internal val colors = Colors(this)
+    internal val colors by lazy { Colors(this) }
 
     /* Floats */
     val mouseXF: Float
@@ -74,6 +75,9 @@ open class BaseSketch(
             } else {
                 size(screen.width, screen.height)
             }
+        }
+        if (smoothLevel != 0) {
+            smooth(smoothLevel)
         }
     }
 
