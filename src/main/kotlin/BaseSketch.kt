@@ -48,8 +48,12 @@ open class BaseSketch(
         color(255, 255, 252),
     )
     private val augustiniColors = listOf(
-        color(0,0,0)
+        color(0, 0, 0)
     )
+
+    fun randomColor(): Int {
+        return color(random(50f, 200f), random(50f, 200f), random(50f, 200f))
+    }
 
     /* Floats */
     val mouseXF: Float
