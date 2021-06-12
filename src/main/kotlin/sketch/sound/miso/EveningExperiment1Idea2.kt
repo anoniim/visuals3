@@ -7,10 +7,10 @@ import processing.core.PShape
 import processing.core.PVector
 import processing.sound.SoundFile
 import sound.SoundHelper
-import java.util.*
 
 open class EveningExperiment1Idea2 : BaseSketch(
-    Screen(1600, 900, fullscreen = false),
+    Screen(1600, 900),
+    fullscreen = false,
     longClickClear = true,
     renderer = P2D
 ) {

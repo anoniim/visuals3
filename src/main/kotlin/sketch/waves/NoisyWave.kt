@@ -3,7 +3,10 @@ package sketch.waves
 import RecordedSketch
 import Screen
 
-class NoisyWave : RecordedSketch(Screen(1200, 800, fullscreen = true)) {
+class NoisyWave : RecordedSketch(
+    Screen(1200, 800),
+    fullscreen = true
+) {
 
     private val backgroundColor = grey3
 

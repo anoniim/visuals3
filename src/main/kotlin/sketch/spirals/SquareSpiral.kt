@@ -5,24 +5,27 @@ import Screen
 import processing.core.PVector
 
 @ExperimentalStdlibApi
-class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
+class SquareSpiral : BaseSketch(
+    Screen(400, 400),
+    fullscreen = false,
+) {
 
     private val step = 10f
     private val strokeWeight = 5f
     private val lines by lazy {
         listOf(
-        // 1 line
+            // 1 line
 //            Line(step, step, Direction.RIGHT)
-        // 1 Pyramid
+            // 1 Pyramid
 //            Line(step, step, Direction.RIGHT),
 //            Line(width - step, step, Direction.DOWN),
 //            Line(width - step, height - step, Direction.LEFT),
 //            Line(step, height - step, Direction.UP)
-        // 4 Pyramids
-            Line(width/2 - step/2, height/2 - step/2, Direction.LEFT),
-            Line(width/2 - step/2, height/2 + step/2, Direction.LEFT),
-            Line(width/2 + step/2, height/2 - step/2, Direction.RIGHT),
-            Line(width/2 + step/2, height/2 + step/2, Direction.RIGHT)
+            // 4 Pyramids
+            Line(width / 2 - step / 2, height / 2 - step / 2, Direction.LEFT),
+            Line(width / 2 - step / 2, height / 2 + step / 2, Direction.LEFT),
+            Line(width / 2 + step / 2, height / 2 - step / 2, Direction.RIGHT),
+            Line(width / 2 + step / 2, height / 2 + step / 2, Direction.RIGHT)
         )
     }
     private val obstacles by lazy {
@@ -57,7 +60,8 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
     inner class Line(
         private val startX: Float,
         private val startY: Float,
-        private var direction: Direction) {
+        private var direction: Direction
+    ) {
 
         private var turnCount: Int = 0
         private var path = mutableListOf(PVector(startX, startY))
@@ -84,14 +88,14 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
 //                    setNewTarget(target)
 //                }
 //            } else {
-                // go straight
-                val target = current.add(direction.vector.mult(step))
-                if (!target.isOutOfBounds() && !target.isCollision()) {
-                    setReturnDirections()
-                    setNewTarget(target)
-                } else {
-                    turn()
-                }
+            // go straight
+            val target = current.add(direction.vector.mult(step))
+            if (!target.isOutOfBounds() && !target.isCollision()) {
+                setReturnDirections()
+                setNewTarget(target)
+            } else {
+                turn()
+            }
 //            }
         }
 
@@ -175,7 +179,8 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
             if (this.x < step
                 || this.y < step
                 || this.x > width - step
-                || this.y > height - step) {
+                || this.y > height - step
+            ) {
                 return true
             }
             return false
@@ -199,7 +204,7 @@ class SquareSpiral : BaseSketch(Screen(400, 400, fullscreen = false)) {
         val vector: PVector = _vector
             get() = field.copy()
 
-        constructor(x: Float, y: Float): this(PVector(x, y))
+        constructor(x: Float, y: Float) : this(PVector(x, y))
 
         fun turnRight(): Direction {
             return when (this) {

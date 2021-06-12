@@ -4,7 +4,7 @@ import BaseSketch
 import Screen
 import processing.core.PVector
 
-class TimesTablesCircle : BaseSketch(Screen(800, 800, fullscreen = false)) {
+class TimesTablesCircle : BaseSketch(Screen(800, 800), fullscreen = false) {
 
     /* Some interesting multipliers: 17, 31, 49, 51, 56.x, 300 */
     private val maxNumber = 200 // 10-800 (200)
@@ -37,18 +37,18 @@ class TimesTablesCircle : BaseSketch(Screen(800, 800, fullscreen = false)) {
     private fun drawMultiplierText(multiplier: Float) {
         fill(grey9)
         textSize(textSize)
-        text(multiplier, -widthF/2 + textSize * textScale, -heightF/2 + textSize * textScale)
+        text(multiplier, -widthF / 2 + textSize * textScale, -heightF / 2 + textSize * textScale)
     }
 
     private fun mousePressControl(): Float {
         if (mousePressed) {
             if (mouseX < width / 2) {
                 time--
-                if(time < 0) time = loopTime
+                if (time < 0) time = loopTime
             } else {
                 time++
             }
-            lastMultiplier = map(time % loopTime, 0f, loopTime-1, minMultiplier, maxMultiplier)
+            lastMultiplier = map(time % loopTime, 0f, loopTime - 1, minMultiplier, maxMultiplier)
         }
         return lastMultiplier
     }
@@ -71,7 +71,7 @@ class TimesTablesCircle : BaseSketch(Screen(800, 800, fullscreen = false)) {
 
     private fun initDots() {
         val radius = size / 2
-        for (i in 0 .. maxNumber) {
+        for (i in 0..maxNumber) {
             val angle = i * TWO_PI / maxNumber
             numbers.add(PVector(cos(angle) * radius, sin(angle) * radius))
         }

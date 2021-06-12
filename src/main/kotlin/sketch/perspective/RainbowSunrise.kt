@@ -6,7 +6,7 @@ import processing.core.PVector
 import util.*
 
 class RainbowSunrise : BaseSketch(
-    Screen(fullscreen = false),
+    fullscreen = false,
     renderer = P2D,
     smoothLevel = 8
 ) {

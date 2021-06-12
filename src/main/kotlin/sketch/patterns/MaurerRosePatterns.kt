@@ -4,7 +4,10 @@ import BaseSketch
 import Screen
 import util.roundTo
 
-class MaurerRosePatterns : BaseSketch(Screen(800, 800, fullscreen = true)) {
+class MaurerRosePatterns : BaseSketch(
+    Screen(800, 800),
+    fullscreen = true
+) {
 
     private val nProgress = ValueProgress(minValue = 2f, maxValue = 8f)
     private val dProgress = ValueProgress(minValue = 0f, maxValue = 360f)
@@ -12,7 +15,7 @@ class MaurerRosePatterns : BaseSketch(Screen(800, 800, fullscreen = true)) {
     private val scale = 450f
     private val textSize = 24f
     private val textScale = 1.3f
-    private val stopArea = screen.widthF/8
+    private val stopArea = screen.widthF / 8
 
     override fun draw() {
         translate(width / 2f, height / 2f)
@@ -78,7 +81,7 @@ class MaurerRosePatterns : BaseSketch(Screen(800, 800, fullscreen = true)) {
             val mouseControl = mouseX - halfWidthF
             if (mouseControl < -stopArea) {
                 decrement()
-            } else if (mouseControl > stopArea){
+            } else if (mouseControl > stopArea) {
                 increment()
             }
             increment = map(abs(mouseControl), stopArea, halfWidthF, 0.1f, 10f)

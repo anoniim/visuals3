@@ -4,7 +4,10 @@ import BaseSketch
 import Screen
 
 
-class SpinningSpiral : BaseSketch(Screen(800, 800, fullscreen = false)) {
+class SpinningSpiral : BaseSketch(
+    Screen(800, 800),
+    fullscreen = false,
+) {
 
     private val frequencyFrames = 300f // 300-1000 (300)
     private val speed = 0.01f // 0.01
@@ -81,10 +84,10 @@ class SpinningSpiral : BaseSketch(Screen(800, 800, fullscreen = false)) {
         }
 
         private fun generateNewColor(index: Float): Int {
-            val random = index/50f
+            val random = index / 50f
             val r = map(noise(random), 0f, 1f, 0f, 200f)
-            val g = map(noise(random+1000), 0f, 1f, 0f, 200f)
-            val b = map(noise(random+5000), 0f, 1f, 0f, 200f)
+            val g = map(noise(random + 1000), 0f, 1f, 0f, 200f)
+            val b = map(noise(random + 5000), 0f, 1f, 0f, 200f)
             return color(r, g, b)
         }
 

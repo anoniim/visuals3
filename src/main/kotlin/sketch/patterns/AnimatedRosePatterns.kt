@@ -4,7 +4,10 @@ import RecordedSketch
 import Screen
 import processing.core.PVector
 
-class AnimatedRosePatterns : RecordedSketch(Screen(800, 800, fullscreen = false)) {
+class AnimatedRosePatterns : RecordedSketch(
+    Screen(800, 800),
+    fullscreen = false
+) {
 
     // If n/d is rational, then the curve is closed
     // Interesting: (1, 6), (2, 7), (15.5, 17.5), (12.0, 17.9), (21.24, 42.75), (21.24, 44.81),

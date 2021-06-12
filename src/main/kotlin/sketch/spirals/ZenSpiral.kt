@@ -3,7 +3,7 @@ package sketch.spirals
 import BaseSketch
 import Screen
 
-class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = false)) {
+class ZenSpiral : BaseSketch(Screen(1200, 800), fullscreen = false) {
 
     private val circularSpeed = 0.05f // 0.05f
     private val heightThreshold = 1.32f // 1.32f / 1.3f when fullscreen
@@ -32,7 +32,7 @@ class ZenSpiral: BaseSketch(Screen(1200, 800, fullscreen = false)) {
             reverseDirection(false)
         }
         val arcDiameter = diameter + constrain(diameter, 0f, noiseFactor) * noise(radianProgress)
-        arc(width/2f, height/2f, arcDiameter, arcDiameter, radianProgress, radianProgress + circularSpeed)
+        arc(width / 2f, height / 2f, arcDiameter, arcDiameter, radianProgress, radianProgress + circularSpeed)
     }
 
     private fun reverseDirection(reachedEnd: Boolean) {

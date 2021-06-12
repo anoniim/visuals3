@@ -4,7 +4,8 @@ import BaseSketch
 import Screen
 
 class FieldWalking : BaseSketch(
-    Screen(fullscreen = false),
+    Screen(),
+    fullscreen = false,
     renderer = P3D,
     smoothLevel = 8
 ) {

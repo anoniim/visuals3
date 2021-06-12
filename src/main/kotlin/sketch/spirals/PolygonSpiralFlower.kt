@@ -1,12 +1,11 @@
 package sketch.spirals
 
 import BaseSketch
-import Screen
 import processing.core.PVector
 import util.line
 import util.translateToCenter
 
-class PolygonSpiralFlower : BaseSketch(Screen(fullscreen = true)) {
+class PolygonSpiralFlower : BaseSketch(fullscreen = true) {
 
     // config
     private val speed = 10 // 1-20

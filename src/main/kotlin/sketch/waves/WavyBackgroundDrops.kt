@@ -4,9 +4,8 @@ import BaseSketch
 import Screen
 import processing.core.PVector
 import util.SimplexNoise
-import kotlin.random.Random
 
-class WavyBackgroundDrops : BaseSketch(Screen(fullscreen = true)) {
+class WavyBackgroundDrops : BaseSketch(fullscreen = true) {
 
     // CONFIG
     private val pronunciation = 5f

@@ -7,7 +7,7 @@ import processing.core.PVector
 import util.line
 import util.translateToCenter
 
-class PolygonTunnel : BaseSketch(Screen(fullscreen = true)) {
+class PolygonTunnel : BaseSketch(Screen()) {
 
     // config
     private val shape = Shape.SQUARE

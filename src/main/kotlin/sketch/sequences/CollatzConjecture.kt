@@ -3,7 +3,10 @@ package sketch.sequences
 import BaseSketch
 import Screen
 
-class CollatzConjecture : BaseSketch(Screen(1500, 900, fullscreen = true)) {
+class CollatzConjecture : BaseSketch(
+    Screen(1500, 900),
+    fullscreen = false,
+) {
 
     private var length = 12f
     private val evenAngle = PI / 8

@@ -8,9 +8,10 @@ private const val defaultHeight = 950
 
 open class BaseSketch(
     val screen: Screen = Screen(defaultWidth, defaultHeight),
+    private val fullscreen: Boolean = false,
     private val renderer: String? = null,
     private val smoothLevel: Int = 0,
-    private val longClickClear: Boolean = false
+    private val longClickClear: Boolean = false,
 ) : PApplet() {
 
     /* Helpers */
@@ -58,7 +59,7 @@ open class BaseSketch(
 
     /* Initial settings */
     override fun settings() {
-        if (screen.fullscreen) {
+        if (fullscreen) {
             if (renderer != null) {
                 fullScreen(renderer)
             } else {
@@ -151,7 +152,7 @@ open class BaseSketch(
     }
 }
 
-class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight, val fullscreen: Boolean = false) {
+class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight) {
     val widthF: Float by lazy { width.toFloat() }
     val heightF: Float by lazy { height.toFloat() }
     val centerX: Float

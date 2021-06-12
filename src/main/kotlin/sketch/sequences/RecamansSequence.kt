@@ -3,7 +3,10 @@ package sketch.sequences
 import BaseSketch
 import Screen
 
-class RecamansSequence : BaseSketch(Screen(1600, 900, fullscreen = true)) {
+class RecamansSequence : BaseSketch(
+    Screen(1600, 900),
+    fullscreen = true
+) {
 
     private val seen = mutableListOf(0)
     private val arcs = mutableListOf<Arc>()
@@ -84,9 +87,11 @@ class RecamansSequence : BaseSketch(Screen(1600, 900, fullscreen = true)) {
     ) {
 
         constructor(start: Int, end: Int, sequenceStep: Int) :
-                this(start.toFloat(), end.toFloat(),
+                this(
+                    start.toFloat(), end.toFloat(),
                     isUp = sequenceStep % 2 == 1,
-                    isLeftToRight = start < end)
+                    isLeftToRight = start < end
+                )
 
         private var progress = 0f
         private var complete = 1f
@@ -100,7 +105,7 @@ class RecamansSequence : BaseSketch(Screen(1600, 900, fullscreen = true)) {
 
         private fun calculateSection(): Pair<Float, Float> {
             return if (isUp && isLeftToRight) {
-                Pair(-PI,  PI * (progress - 1))
+                Pair(-PI, PI * (progress - 1))
             } else if (isUp && !isLeftToRight) {
                 Pair(-PI * (progress), 0f)
             } else if (!isUp && isLeftToRight) {

@@ -5,7 +5,7 @@ import Screen
 import shows.first.MidiController.Companion.PAD_16
 
 
-class TestSketch: BaseSketch(Screen(fullscreen=true)){
+class TestSketch : BaseSketch(fullscreen = true) {
 
     // TODO MIDI signals are currently sent to all MidiControllers (how to send them only to the active scene?)
 
@@ -32,7 +32,7 @@ class TestSketch: BaseSketch(Screen(fullscreen=true)){
     }
 
     override fun keyPressed() {
-        if (key == ENTER){
+        if (key == ENTER) {
             transitionToNextScene(0, 0)
         }
         for (scene in scenes) {

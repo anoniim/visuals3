@@ -6,7 +6,11 @@ import processing.core.PVector
 import structures.QuadTree
 import kotlin.random.Random
 
-class SpaceSimulation : BaseSketch(Screen(1600, 900, fullscreen = false), renderer = P2D) {
+class SpaceSimulation : BaseSketch(
+    Screen(1600, 900),
+    fullscreen = false,
+    renderer = P2D
+) {
 
     private val collisionAge = 5000f
     private val explosionAcceleration = 10000f
@@ -50,7 +54,7 @@ class SpaceSimulation : BaseSketch(Screen(1600, 900, fullscreen = false), render
         newParticles.clear()
     }
 
-    open inner class Particle (
+    open inner class Particle(
         x: Float,
         y: Float,
         var mass: Float,
@@ -128,10 +132,10 @@ class SpaceSimulation : BaseSketch(Screen(1600, 900, fullscreen = false), render
             val newPosition = position.add(other.position.copy().sub(position).mult(0.5f))
             val newMass = mass + other.mass
             val mergeAcceleration = velocity.add(other.velocity)
-            val newParticle = Particle(newPosition.x, newPosition.y, 2 * newMass/3f)
+            val newParticle = Particle(newPosition.x, newPosition.y, 2 * newMass / 3f)
             newParticle.applyForce(mergeAcceleration)
             newParticles.add(newParticle)
-            explode(newMass/3f)
+            explode(newMass / 3f)
         }
 
         private fun attract(other: Particle) {

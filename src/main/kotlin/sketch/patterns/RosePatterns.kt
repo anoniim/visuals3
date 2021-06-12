@@ -4,7 +4,10 @@ import BaseSketch
 import Screen
 import util.roundTo
 
-class RosePatterns : BaseSketch(Screen(800, 800, fullscreen = false)) {
+class RosePatterns : BaseSketch(
+    Screen(800, 800),
+    fullscreen = false
+) {
 
     // Interesting n (for d: 8): 3.5-4.5, 8-9, 13.5
     private val nProgress = ValueProgress(minValue = 0f, maxValue = 6f)

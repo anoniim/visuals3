@@ -5,7 +5,8 @@ import Screen
 import processing.core.PVector
 
 class Prsoid : BaseSketch(
-    Screen(800, 800, fullscreen = false),
+    Screen(800, 800),
+    fullscreen = false,
     renderer = P2D
 ) {
 

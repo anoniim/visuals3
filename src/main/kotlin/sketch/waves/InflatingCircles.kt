@@ -6,7 +6,7 @@ import processing.core.PVector
 import util.circle
 import util.translateToCenter
 
-class InflatingCircles : BaseSketch(Screen(fullscreen = false)) {
+class InflatingCircles : BaseSketch() {
 
     private val maxVelocity = 50f
 

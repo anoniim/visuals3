@@ -4,7 +4,7 @@ import BaseSketch
 import Screen
 import util.SimplexNoise
 
-class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
+class WavyBackground : BaseSketch(fullscreen = true) {
 
     // CONFIG
     private val orientation = Orientation.VERTICAL
@@ -72,7 +72,7 @@ class WavyBackground: BaseSketch(Screen(fullscreen = true)) {
     }
 
     private fun getNoisyDimension(layer: Float, xOffset: Float, yOffset: Float) =
-        layer + noise.eval(xOffset + noisePointer, yOffset + noisePointer/5f) * pronunciation
+        layer + noise.eval(xOffset + noisePointer, yOffset + noisePointer / 5f) * pronunciation
 
     private enum class Orientation {
         HORIZONTAL,
