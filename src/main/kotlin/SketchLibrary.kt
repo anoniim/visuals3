@@ -1,5 +1,7 @@
 import processing.core.PApplet
+import sketch.patterns.MazeBuilder
 import sketch.perspective.FoldingStripes
+import sketch.walkers.Explorer
 
 @ExperimentalStdlibApi
 fun main() {
@@ -38,7 +40,8 @@ fun main() {
 //    PApplet.main(arrayOf(AudioClock::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 //    PApplet.main(arrayOf(Circadian::class.qualifiedName))
-    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
+//    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
+//    PApplet.main(arrayOf(MazeBuilder::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
@@ -70,6 +73,7 @@ fun main() {
 //    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
+    PApplet.main(arrayOf(Explorer::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
