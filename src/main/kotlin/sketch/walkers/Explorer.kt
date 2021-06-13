@@ -13,8 +13,11 @@ class Explorer : BaseSketch() {
 
     private val numOfCols: Int by lazy { ceil(width / stepSize) }
     private val numOfRows: Int by lazy { ceil(height / stepSize) }
-    private val path = mutableListOf(Position(0, 0))
-    private var pointer = Position(0, 0)
+    private val path by lazy {
+        pointer = Position(numOfCols / 2, numOfRows / 2)
+        mutableListOf(pointer)
+    }
+    private lateinit var pointer: Position
     private var deadEnds = mutableListOf<Position>()
     private var deadEndPath = mutableListOf(Position(0, 0))
 
