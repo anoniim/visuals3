@@ -1,5 +1,7 @@
 import processing.core.PApplet
+import sketch.mazes.MazeBuilder
 import sketch.mazes.SinglePathMazeBuilder
+import sketch.walkers.Explorer
 
 @ExperimentalStdlibApi
 fun main() {
@@ -18,7 +20,7 @@ fun main() {
 //    PApplet.main(arrayOf(AntiCollisionSystem::class.qualifiedName))
 //    PApplet.main(arrayOf(BrokenPianoStrings::class.qualifiedName))
 //    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
-    PApplet.main(arrayOf(SinglePathMazeBuilder::class.qualifiedName))
+//    PApplet.main(arrayOf(SinglePathMazeBuilder::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -72,6 +74,7 @@ fun main() {
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Explorer::class.qualifiedName))
+    PApplet.main(arrayOf(MazeBuilder::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
