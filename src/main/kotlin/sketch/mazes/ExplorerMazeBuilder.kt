@@ -7,24 +7,26 @@ import util.wtf
 import kotlin.random.Random
 
 /**
- * TODO make the algorithm less likely to turn
- * TODO Make the algorithm as simple as possible
- * TODO Implement some algorithms from https://en.wikipedia.org/wiki/Maze_generation_algorithm
+ * This uses a simple recursive backtracker algorithm but stores path data as a pair of nodes to be able to animate
+ * the pass through.
+ *
+ * TODO make the algorithm less/more likely to turn
  */
-class MazeBuilder : BaseSketch() {
+class ExplorerMazeBuilder : BaseSketch() {
 
+    // config
     private val stepSize = 20f
 
     private val numOfCols by lazy { ceil(width / stepSize) }
     private val numOfRows by lazy { ceil(height / stepSize) }
     private val path: MutableList<Pair<Position, Position>> = mutableListOf()
-    private val exploreQueue: MutableList<Position> = mutableListOf()
+    private val exploreStack: MutableList<Position> = mutableListOf()
 
     override fun setup() {
         frameRate(20f)
         val start = Position(numOfCols / 2, numOfRows / 2)
         path.add(Pair(start, start))
-        exploreQueue.add(start)
+        exploreStack.add(start)
     }
 
     override fun draw() {
@@ -50,8 +52,8 @@ class MazeBuilder : BaseSketch() {
     }
 
     private fun tryAlternative() {
-        if (path.size > 0) {
-            exploreQueue.removeLast()
+        if (exploreStack.size > 0) {
+            exploreStack.removeLast()
         } else {
             drawPath()
             noLoop()
@@ -59,13 +61,13 @@ class MazeBuilder : BaseSketch() {
     }
 
     private fun addNewPosition(newPosition: Position) {
-        path.add(Pair(exploreQueue.last(), newPosition))
-        exploreQueue.add(newPosition)
+        path.add(Pair(exploreStack.last(), newPosition))
+        exploreStack.add(newPosition)
     }
 
     private fun generateNewPosition(): Position? {
-        if (exploreQueue.isEmpty()) return null
-        val last = exploreQueue.last()
+        if (exploreStack.isEmpty()) return null
+        val last = exploreStack.last()
         return when (Random.nextInt(4)) {
             0 -> last.up()
             1 -> last.down()
@@ -85,11 +87,11 @@ class MazeBuilder : BaseSketch() {
 
     private fun drawExplorer() {
         strokeWeight(3f)
-        exploreQueue.forEachIndexed { i, current ->
-            if (i < exploreQueue.size - 1) {
+        exploreStack.forEachIndexed { i, current ->
+            if (i < exploreStack.size - 1) {
                 val color = getColor(i)
                 stroke(color)
-                val next = exploreQueue[i + 1]
+                val next = exploreStack[i + 1]
                 line(current, next)
             }
         }
