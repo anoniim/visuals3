@@ -98,7 +98,7 @@ open class BaseSketch(
     }
 
     open fun reset() {
-        background(grey1)
+        background(grey3)
     }
 
     private val resetOverlay: PShape by lazy {

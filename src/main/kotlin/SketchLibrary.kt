@@ -1,7 +1,6 @@
 import processing.core.PApplet
-import sketch.mazes.MazeBuilder
-import sketch.mazes.SinglePathMazeBuilder
-import sketch.walkers.Explorer
+import sketch.mazes.ExplorerMazeBuilder
+import sketch.patterns.VoronoiTessellation
 
 @ExperimentalStdlibApi
 fun main() {
@@ -42,6 +41,7 @@ fun main() {
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 //    PApplet.main(arrayOf(Circadian::class.qualifiedName))
 //    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
+    PApplet.main(arrayOf(VoronoiTessellation::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
@@ -74,7 +74,7 @@ fun main() {
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Explorer::class.qualifiedName))
-    PApplet.main(arrayOf(MazeBuilder::class.qualifiedName))
+//    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
