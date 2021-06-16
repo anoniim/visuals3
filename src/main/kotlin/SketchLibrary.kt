@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.mazes.AlgorithmicMazeBuilder
 import sketch.mazes.ExplorerMazeBuilder
 import sketch.patterns.VoronoiTessellation
 
@@ -20,6 +21,7 @@ fun main() {
 //    PApplet.main(arrayOf(BrokenPianoStrings::class.qualifiedName))
 //    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
 //    PApplet.main(arrayOf(SinglePathMazeBuilder::class.qualifiedName))
+//    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
