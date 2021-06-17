@@ -58,14 +58,14 @@ class SpaceSimulation : BaseSketch(
         x: Float,
         y: Float,
         var mass: Float,
-    ) : QuadTree.Particle {
+    ) : PVector(x, y) {
 
         private val velocity: PVector = PVector(0f, 0f)
         private val position = PVector(x, y)
         private var acceleration = PVector(0f, 0f)
-        override var x: Float = position.x
+        val x: Float
             get() = position.x
-        override var y: Float = position.y
+        val y: Float
             get() = position.y
         private val size = log(mass)
         var isDying = false

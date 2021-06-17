@@ -1,8 +1,9 @@
 package structures
 
 import processing.core.PApplet.abs
+import processing.core.PVector
 
-class QuadTree<Particle: QuadTree.Particle>(x: Float, y: Float, halfDimension: Float) {
+class QuadTree<Particle: PVector>(x: Float, y: Float, halfDimension: Float) {
 
     private val boundary = Boundary(x, y, halfDimension)
     private val maxSize: Int = 4
@@ -76,13 +77,8 @@ class QuadTree<Particle: QuadTree.Particle>(x: Float, y: Float, halfDimension: F
         }
     }
 
-    interface Particle {
-        var x: Float
-        var y: Float
-
-        fun isIn(boundary: Boundary): Boolean {
-            return x in (boundary.x - boundary.halfDimension..boundary.x + boundary.halfDimension)
-                    && y in (boundary.y - boundary.halfDimension..boundary.y + boundary.halfDimension)
-        }
+    private fun PVector.isIn(boundary: Boundary): Boolean {
+        return x in (boundary.x - boundary.halfDimension..boundary.x + boundary.halfDimension)
+                && y in (boundary.y - boundary.halfDimension..boundary.y + boundary.halfDimension)
     }
 }

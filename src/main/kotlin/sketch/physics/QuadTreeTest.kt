@@ -8,9 +8,9 @@ import structures.QuadTree
 class QuadTreeTest : BaseSketch(screen = Screen(800, 800), renderer = P2D) {
 
     private val particles = MutableList(200) {
-        Particle(PVector(random(screen.widthF), random(screen.heightF)))
+        PVector(random(screen.widthF), random(screen.heightF))
     }
-    val qTree = QuadTree<Particle>(screen.centerX, screen.centerY, screen.centerX)
+    val qTree = QuadTree<PVector>(screen.centerX, screen.centerY, screen.centerX)
 
     override fun setup() {
 //        smooth()
@@ -33,11 +33,6 @@ class QuadTreeTest : BaseSketch(screen = Screen(800, 800), renderer = P2D) {
             stroke(red)
             point(particle.x, particle.y)
         }
-    }
-
-    class Particle(position: PVector): QuadTree.Particle {
-        override var x: Float = position.x
-        override var y: Float = position.y
     }
 }
 
