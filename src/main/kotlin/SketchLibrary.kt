@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.cells.WorleyNoiseCells
 import sketch.mazes.AlgorithmicMazeBuilder
 import sketch.mazes.ExplorerMazeBuilder
 import sketch.patterns.VoronoiTessellation
@@ -43,7 +44,8 @@ fun main() {
 //    PApplet.main(arrayOf(CirclePendulum::class.qualifiedName))
 //    PApplet.main(arrayOf(Circadian::class.qualifiedName))
 //    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
-    PApplet.main(arrayOf(VoronoiTessellation::class.qualifiedName))
+//    PApplet.main(arrayOf(VoronoiTessellation::class.qualifiedName))
+    PApplet.main(arrayOf(WorleyNoiseCells::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
