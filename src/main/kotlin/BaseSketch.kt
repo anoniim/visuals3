@@ -1,5 +1,6 @@
 import processing.core.PApplet
 import processing.core.PShape
+import processing.core.PVector
 import sound.SoundHelper
 import util.Colors
 
@@ -161,4 +162,6 @@ class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight) {
         get() = height / 2F
     val halfWidth: Float by lazy { width / 2F }
     val halfHeight: Float by lazy { height / 2F }
+    val center by lazy { PVector(centerX, centerY) }
+    val negativeCenter by lazy { PVector(-centerX, -centerY) }
 }

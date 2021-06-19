@@ -1,7 +1,9 @@
 import processing.core.PApplet
 import sketch.cells.WorleyNoiseCells
+import sketch.cells.WorleyOutline
 import sketch.mazes.AlgorithmicMazeBuilder
 import sketch.mazes.ExplorerMazeBuilder
+import sketch.patterns.HilbertCurve
 import sketch.patterns.VoronoiTessellation
 
 @ExperimentalStdlibApi
@@ -23,6 +25,8 @@ fun main() {
 //    PApplet.main(arrayOf(FieldWalking::class.qualifiedName))
 //    PApplet.main(arrayOf(SinglePathMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
+//    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
+    PApplet.main(arrayOf(HilbertCurve::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -45,7 +49,7 @@ fun main() {
 //    PApplet.main(arrayOf(Circadian::class.qualifiedName))
 //    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
 //    PApplet.main(arrayOf(VoronoiTessellation::class.qualifiedName))
-    PApplet.main(arrayOf(WorleyNoiseCells::class.qualifiedName))
+//    PApplet.main(arrayOf(WorleyNoiseCells::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
