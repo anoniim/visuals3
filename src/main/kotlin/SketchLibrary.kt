@@ -1,10 +1,12 @@
 import processing.core.PApplet
 import sketch.cells.WorleyNoiseCells
 import sketch.cells.WorleyOutline
+import sketch.dots.AtomicFlicker
 import sketch.mazes.AlgorithmicMazeBuilder
 import sketch.mazes.ExplorerMazeBuilder
 import sketch.patterns.HilbertCurve
 import sketch.patterns.VoronoiTessellation
+import sketch.perspective.GrassFromAbove
 
 @ExperimentalStdlibApi
 fun main() {
@@ -26,7 +28,8 @@ fun main() {
 //    PApplet.main(arrayOf(SinglePathMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
-    PApplet.main(arrayOf(HilbertCurve::class.qualifiedName))
+//    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
+    PApplet.main(arrayOf(AtomicFlicker::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -50,6 +53,7 @@ fun main() {
 //    PApplet.main(arrayOf(FoldingStripes::class.qualifiedName))
 //    PApplet.main(arrayOf(VoronoiTessellation::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyNoiseCells::class.qualifiedName))
+//    PApplet.main(arrayOf(HilbertCurve::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
