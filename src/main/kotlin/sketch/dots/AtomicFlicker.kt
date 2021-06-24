@@ -20,7 +20,6 @@ class AtomicFlicker : BaseSketch(
     private val startProgress = 0f
     private val fullAlpha = PI
     private val alphaIncrease = 0.1f
-
     private val nCols by lazy { floor(widthF / cellSize) + 1 }
     private val nRows by lazy { floor(heightF / cellSize) + 1 }
     private val stencil by lazy { loadImage("data/input/earth_and_moon.jpeg") }
@@ -35,7 +34,7 @@ class AtomicFlicker : BaseSketch(
         noStroke()
         background(black)
         stencil.resize(nCols, nRows)
-        if (!revealEnabled) drawStencil(cellSize) // config
+        if (!revealEnabled) drawStencil() // config
     }
 
     override fun draw() {
@@ -51,15 +50,11 @@ class AtomicFlicker : BaseSketch(
 
     private fun removeOld() {
         shiningToBeRemoved.run {
-            forEach {
-                shiningPixels.remove(it)
-            }
+            forEach { shiningPixels.remove(it) }
             clear()
         }
         dimmingToBeRemoved.run {
-            forEach {
-                dimmingPixels.remove(it)
-            }
+            forEach { dimmingPixels.remove(it) }
             clear()
         }
     }
@@ -85,31 +80,31 @@ class AtomicFlicker : BaseSketch(
     }
 
     private fun updateAndDraw() {
-        shiningPixels.forEach { (i, alphaProgress) ->
-            if (alphaProgress <= fullAlpha) {
-                drawPixel(i, stencil.pixels[i], cellSize, nCols)
-                shiningPixels[i] = alphaProgress + alphaIncrease
-                drawPixel(i, color(255f, 255f * sin(alphaProgress)), cellSize, nCols)
-            } else {
-                shiningToBeRemoved.add(i)
-                dimmingPixels[i] = startProgress
-            }
+        updateAndDraw(shiningPixels, 255f) { i ->
+            shiningToBeRemoved.add(i)
+            dimmingPixels[i] = startProgress
         }
-        dimmingPixels.forEach { (i, alphaProgress) ->
+        updateAndDraw(dimmingPixels, 0f) { i ->
+            dimmingToBeRemoved.add(i)
+        }
+    }
+
+    private fun updateAndDraw(pixelMap: MutableMap<Int, Float>, targetGrey: Float, onFinish: (Int) -> Unit) {
+        pixelMap.forEach { (i, alphaProgress) ->
             if (alphaProgress <= fullAlpha) {
-                drawPixel(i, stencil.pixels[i], cellSize, nCols)
-                dimmingPixels[i] = alphaProgress + alphaIncrease
-                drawPixel(i, color(0f, 255f * sin(alphaProgress)), cellSize, nCols)
+                drawPixel(i, stencil.pixels[i])
+                pixelMap[i] = alphaProgress + alphaIncrease
+                drawPixel(i, color(targetGrey, 255f * sin(alphaProgress)))
             } else {
-                dimmingToBeRemoved.add(i)
+                onFinish(i)
             }
         }
     }
 
-    private fun drawStencil(pixelSize: Float) {
+    private fun drawStencil() {
         translateEdges()
         stencil.pixels.forEachIndexed { i, color ->
-            drawPixel(i, color, pixelSize, nCols)
+            drawPixel(i, color)
         }
     }
 
@@ -117,10 +112,10 @@ class AtomicFlicker : BaseSketch(
         translate(cellSize / 2f, cellSize / 2f)
     }
 
-    private fun drawPixel(i: Int, color: Int, pixelSize: Float, width: Int) {
-        val x = (i % width) * pixelSize
-        val y = (i / width) * pixelSize
+    private fun drawPixel(i: Int, color: Int) {
+        val x = (i % nCols) * cellSize
+        val y = (i / nCols) * cellSize
         fill(color)
-        circle(x, y, pixelSize)
+        circle(x, y, cellSize)
     }
 }
