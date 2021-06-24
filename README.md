@@ -49,6 +49,7 @@ The project uses the following Processing libraries:
 
 * [Processing Sound library](https://processing.org/reference/libraries/sound/index.html)
 * [VideoExport by Abe Pazos](https://github.com/hamoid/video_export_processing)
+* [PeasyCam by Jonathan Feinberg](http://mrfeinberg.com/peasycam/)
 
 Running Sketches with Kotlin
 ===
