@@ -1,12 +1,5 @@
 import processing.core.PApplet
-import sketch.cells.WorleyNoiseCells
-import sketch.cells.WorleyOutline
-import sketch.dots.AtomicFlicker
-import sketch.mazes.AlgorithmicMazeBuilder
-import sketch.mazes.ExplorerMazeBuilder
-import sketch.patterns.HilbertCurve
-import sketch.patterns.VoronoiTessellation
-import sketch.perspective.GrassFromAbove
+import sketch.shapes.Flower1
 
 @ExperimentalStdlibApi
 fun main() {
@@ -29,7 +22,6 @@ fun main() {
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
-    PApplet.main(arrayOf(AtomicFlicker::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -73,6 +65,7 @@ fun main() {
 //    PApplet.main(arrayOf(SineFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(CurlingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Prsoid::class.qualifiedName))
+//    PApplet.main(arrayOf(Flower1::class.qualifiedName))
 //    PApplet.main(arrayOf(SpaceSimulation::class.qualifiedName))
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
@@ -110,4 +103,5 @@ fun main() {
 //    PApplet.main(arrayOf(GrowingNeuron2::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
 //    PApplet.main(arrayOf(RainbowSunrise::class.qualifiedName))
+//    PApplet.main(arrayOf(AtomicFlicker::class.qualifiedName))
 }
