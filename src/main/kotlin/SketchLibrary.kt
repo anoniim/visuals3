@@ -1,5 +1,5 @@
 import processing.core.PApplet
-import sketch.shapes.Flower1
+import sketch.shapes.NsormaFlameStar
 
 @ExperimentalStdlibApi
 fun main() {
@@ -22,6 +22,7 @@ fun main() {
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
+    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */

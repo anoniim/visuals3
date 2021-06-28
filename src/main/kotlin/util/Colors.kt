@@ -6,6 +6,16 @@ import java.util.*
 
 class Colors(val applet: BaseSketch) {
 
+    val flame = with(applet) {
+        listOf(
+            color(236, 167, 44),
+            color(238, 86, 34),
+            color(34, 30, 34),
+            color(49, 38, 62),
+            color(68, 53, 91)
+        )
+    }
+
     val pastel = with(applet) {
         listOf(
             color(255, 173, 173),
