@@ -1,5 +1,6 @@
 import processing.core.PApplet
 import sketch.shapes.NsormaFlameStar
+import sketch.stars.SilhouetteSparks
 
 @ExperimentalStdlibApi
 fun main() {
@@ -22,7 +23,6 @@ fun main() {
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
-    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -47,6 +47,7 @@ fun main() {
 //    PApplet.main(arrayOf(VoronoiTessellation::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyNoiseCells::class.qualifiedName))
 //    PApplet.main(arrayOf(HilbertCurve::class.qualifiedName))
+    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
 
 
 /* ______________ TOOLS ______________ */
@@ -81,6 +82,7 @@ fun main() {
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Explorer::class.qualifiedName))
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
+//    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
