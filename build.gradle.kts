@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
 
     // Local (copied from Processing4)
     implementation(fileTree(mapOf("dir" to "libs/processing", "include" to listOf("*.jar"))))
