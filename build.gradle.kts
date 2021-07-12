@@ -1,5 +1,7 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.5.0"
+    kotlin("jvm") version "1.5.20"
 }
 
 group = "net.solvetheriddle"
@@ -11,16 +13,12 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-
     // Local (copied from Processing4)
-    implementation(fileTree(mapOf("dir" to "libs/processing", "include" to listOf("*.jar"))))
-    implementation(fileTree(mapOf("dir" to "libs/contributed/sound", "include" to listOf("*.jar"))))
-    implementation(fileTree(mapOf("dir" to "libs/contributed/VideoExport", "include" to listOf("*.jar"))))
-    implementation(fileTree(mapOf("dir" to "libs/contributed/themidibus", "include" to listOf("*.jar"))))
-    implementation(fileTree(mapOf("dir" to "libs/contributed/peasycam", "include" to listOf("*.jar"))))
-//    implementation(files("/libs/processing"))
-//    implementation(files("/libs/contributed/sound"))
+    implementation(jarsFrom("libs/processing"))
+    implementation(jarsFrom("libs/contributed/sound"))
+    implementation(jarsFrom("libs/contributed/VideoExport"))
+    implementation(jarsFrom("libs/contributed/themidibus"))
+    implementation(jarsFrom("libs/contributed/peasycam"))
 
     // Installed in local maven
 //    implementation(group = "org.processing", name = "core", version = "3.5.4")
@@ -37,11 +35,14 @@ dependencies {
 //    implementation("net.compartmental.code:minim:2.2.2")
 }
 
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions.jvmTarget = "11"
+
+fun jarsFrom(folder: String): ConfigurableFileTree {
+    return fileTree(
+            mapOf(
+                "dir" to folder,
+                "include" to listOf("*.jar")
+            )
+        )
 }
