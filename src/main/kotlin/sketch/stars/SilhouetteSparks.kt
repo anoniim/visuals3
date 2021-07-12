@@ -7,12 +7,14 @@ import java.util.*
 
 class SilhouetteSparks : BaseSketch() {
 
+    // config
     private val forceDampening = 0.8f
     private val forceReduction = 0.01f
     private val maxMouseHistorySize = 3
     private val maxLocationHistory = 10
     private val pixelReduction = 200 // 200
 
+    // config
 //    private val sparks = doubleCircle()
     private val sparks by lazy { imgStencil }
 
