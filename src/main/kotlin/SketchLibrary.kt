@@ -1,8 +1,5 @@
 import processing.core.PApplet
-import sketch.patterns.MaurerRosePatterns
-import sketch.patterns.MaurerRosePatterns2
-import sketch.perspective.RainbowSunrise
-import sketch.stars.SilhouetteSparks
+import sketch.spirals.PolygonStripeTunnel
 import sketch.walkers.*
 
 @ExperimentalStdlibApi
@@ -81,12 +78,13 @@ fun main() {
 //    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 //    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
+    PApplet.main(arrayOf(PolygonStripeTunnel::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Explorer::class.qualifiedName))
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
-    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
+//    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
