@@ -13,6 +13,9 @@ repositories {
 }
 
 dependencies {
+//    implementation(kotlin("stdlib-jdk8")) // Probably included automatically
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
+
     // Local (copied from Processing4)
     implementation(jarsFrom("libs/processing"))
     implementation(jarsFrom("libs/contributed/sound"))
