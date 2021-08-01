@@ -2,10 +2,7 @@ package sketch.stars
 
 import BaseSketch
 import processing.core.PVector
-import util.line
-import util.minus
-import util.point
-import util.translateToCenter
+import util.*
 import java.util.*
 
 class SilhouetteSparks : BaseSketch() {
@@ -14,18 +11,50 @@ class SilhouetteSparks : BaseSketch() {
     private val forceReduction = 0.01f
     private val maxMouseHistorySize = 3
     private val maxLocationHistory = 10
+    private val pixelReduction = 200 // 200
+
+//    private val sparks = doubleCircle()
+    private val sparks by lazy { imgStencil }
+
+    private fun doubleCircle() = List(400) {
+            val offset = if (it % 2 == 0) 200f else -200f
+            val x = offset + cos(it * TWO_PI / 100) * 300f
+            val y = sin(it * TWO_PI / 100) * 300f
+            Spark(PVector(x, y))
+        }
 
     private val mouseHistory = LinkedList<PVector>()
-    private val sparks = List(400) {
-        val offset = if (it % 2 == 0) 200f else -200f
-        val x = offset + cos(it * TWO_PI / 100) * 300f
-        val y = sin(it * TWO_PI / 100) * 300f
-        Spark(PVector(x, y))
+    private val img by lazy {
+        loadImage("data/input/flower_stencil.png").apply {
+            filter(THRESHOLD)
+            filter(INVERT)
+            val aspectRatio = heightF / height
+            val imgWidth = round(width * aspectRatio)
+            val imgHeight = this@SilhouetteSparks.height
+            resize(imgWidth, imgHeight)
+        }
+    }
+    private val imgStencil by lazy {
+        val stencilPixels = mutableListOf<Spark>()
+        img.loadPixels()
+        for (i in img.pixels.indices) {
+            if (img.pixels[i] != black) {
+                val x = (i % img.width).toFloat()
+                val y = (i / img.width).toFloat()
+                stencilPixels.add(Spark(PVector(x, y)))
+            }
+        }
+        stencilPixels.shuffle()
+        stencilPixels.subList(0, stencilPixels.size / pixelReduction)
     }
 
     override fun draw() {
         background(grey3)
-        translateToCenter()
+        // config
+//        translateToCenter()
+        translate((widthF - img.width)/2f, (height - img.height)/2f)
+
+//        drawStencilImg()
 
         addToHistory(mouseVector())
         val force = calculateForce()
@@ -37,6 +66,14 @@ class SilhouetteSparks : BaseSketch() {
             spark.draw()
         }
 
+    }
+
+    private fun drawStencilImg() {
+        stroke(white)
+        imgStencil.forEach {
+            point(it.origin)
+        }
+        noLoop()
     }
 
     private fun addToHistory(mouseVector: PVector) {
@@ -60,7 +97,7 @@ class SilhouetteSparks : BaseSketch() {
 
     private fun mouseVector() = PVector(mouseXF, mouseYF).sub(PVector(halfWidthF, halfHeightF))
 
-    private inner class Spark(private val origin: PVector) {
+    private inner class Spark(val origin: PVector) {
 
         private val locationHistory = LinkedList<PVector>()
         private var location = getOriginLocation()
@@ -81,6 +118,7 @@ class SilhouetteSparks : BaseSketch() {
             acceleration = PVector()
             if (isStill()) {
                 location = getOriginLocation()
+                locationHistory.clear()
             }
         }
 
@@ -100,18 +138,21 @@ class SilhouetteSparks : BaseSketch() {
         }
 
         fun draw() {
-            drawHistory()
+            drawTrail()
             stroke(getColor())
             strokeWeight(getSize())
             point(location)
         }
 
-        private fun drawHistory() {
+        private fun drawTrail() {
             if (isStill()) return
-            locationHistory.forEach {
-                strokeWeight(2f)
-                stroke(yellow)
-                point(it)
+            strokeWeight(2f)
+            noFill()
+            locationHistory.windowed(2).forEachIndexed { i, segment ->
+                stroke(colors.sunrise[i])
+                beginShape()
+                line(segment[0], segment[1])
+                endShape()
             }
         }
 
