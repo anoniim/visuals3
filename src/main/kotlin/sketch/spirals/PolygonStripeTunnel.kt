@@ -15,7 +15,7 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
     private val frameWidth = -1f // -1f - 50f
     private val fadeRate = 0.007f // 0.005 - 0.1
     private val flashingSpeed = 20 // 1 - 30 (lower is faster)
-    private val colorPalette = listOf(colors.blues, colors.dirtyBeach, colors.sunrise, colors.pastel)
+    private val colorPalette = listOf(colors.blues, colors.dirtyBeach, colors.sunrise, colors.reds, colors.pastel, colors.greens)
     private val bgColor = grey3
 
     private var stripeColors = colorPalette[0]

@@ -102,6 +102,40 @@ class Colors(val applet: BaseSketch) {
         ))
     }
 
+    val reds = with(applet) {
+        LinkedList(listOf(
+            color(89, 13, 34),
+            color(128, 15, 47),
+            color(164, 19, 60),
+            color(184, 21, 68),
+            color(201, 24, 74),
+            color(221, 34, 84),
+            color(241, 64, 94),
+            color(255, 77, 109),
+            color(255, 117, 143),
+            color(255, 143, 163),
+            color(255, 179, 193),
+            color(255, 204, 213),
+            color(255, 240, 243),
+        ))
+    }
+
+    val greens = with(applet) {
+        LinkedList(listOf(
+            color(0, 75, 35),
+            color(0, 100, 0),
+            color(0, 114, 0),
+            color(0, 128, 0),
+            color(20, 148, 0),
+            color(40, 168, 0),
+            color(56, 176, 0),
+            color(76, 196, 0),
+            color(112, 224, 0),
+            color(158, 240, 26),
+            color(204, 255, 51),
+        ))
+    }
+
     private val augustiniColors = with(applet) {
         listOf(
             color(0, 0, 0)
