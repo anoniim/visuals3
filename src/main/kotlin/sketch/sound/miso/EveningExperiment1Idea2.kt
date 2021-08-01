@@ -127,7 +127,7 @@ open class EveningExperiment1Idea2 : BaseSketch(
     }
 
     private fun onPianoTriggered() {
-        centralColor = colors.blues.poll() ?: white
+        centralColor = colors.dirtyBeach.poll() ?: white
         growingCircles.add(GrowingCircle(vibratingCircle(centralColor)))
     }
 

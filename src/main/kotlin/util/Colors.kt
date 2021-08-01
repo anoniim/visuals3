@@ -52,7 +52,7 @@ class Colors(val applet: BaseSketch) {
         )
     }
 
-    val blues = with(applet) {
+    val dirtyBeach = with(applet) {
         LinkedList(
             listOf(
                 color(111, 111, 111),
@@ -80,6 +80,26 @@ class Colors(val applet: BaseSketch) {
                 color(255, 255, 255)
             )
         )
+    }
+
+    val blues = with(applet) {
+        LinkedList(listOf(
+            color(3, 4, 94),
+            color(3, 44, 104),
+            color(2, 62, 138),
+            color(2, 72, 148),
+            color(2, 82, 153),
+            color(2, 92, 158),
+            color(0, 119, 182),
+            color(0, 150, 199),
+            color(0, 165, 205),
+            color(0, 180, 216),
+            color(0, 190, 220),
+            color(72, 202, 228),
+            color(144, 224, 239),
+            color(173, 232, 244),
+            color(202, 240, 248),
+        ))
     }
 
     private val augustiniColors = with(applet) {
