@@ -1,9 +1,9 @@
 package sketch.perspective
 
 import BaseSketch
-import Screen
 import processing.core.PVector
-import util.*
+import util.getRolling
+import util.vertex
 
 class RainbowSunrise : BaseSketch(
     fullscreen = false,
