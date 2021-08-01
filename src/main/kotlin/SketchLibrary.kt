@@ -1,6 +1,11 @@
 import processing.core.PApplet
+import sketch.mazes.ExplorerMazeBuilder
+import sketch.patterns.HilbertCurve
+import sketch.patterns.MaurerRosePatterns2
+import sketch.perspective.RainbowSunrise
+import sketch.physics.SpinningBean
+import sketch.spirals.PolygonSpiralTunnel
 import sketch.spirals.PolygonStripeTunnel
-import sketch.walkers.*
 
 @ExperimentalStdlibApi
 fun main() {
@@ -77,7 +82,7 @@ fun main() {
 //    PApplet.main(arrayOf(SpinningBean::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 //    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
-//    PApplet.main(arrayOf(PolygonTunnel::class.qualifiedName))
+//    PApplet.main(arrayOf(PolygonSpiralTunnel::class.qualifiedName))
     PApplet.main(arrayOf(PolygonStripeTunnel::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
