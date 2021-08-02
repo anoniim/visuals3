@@ -4,13 +4,14 @@ import BaseSketch
 import Screen
 import com.hamoid.VideoExport
 import processing.core.PShape
+import util.Polygon
 import util.getRolling
 import util.translateToCenter
 
 class PolygonStripeTunnel : BaseSketch(Screen()) {
 
     // config
-    private val shape = Shape.OCTAGON
+    private val polygon = Polygon.OCTAGON
     private val numOfStripes = 15
     private val frameWidth = -1f // -1f - 50f
     private val fadeRate = 0.007f // 0.005 - 0.1
@@ -27,7 +28,7 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
     }
     private val stripes by lazy {
         List(numOfStripes) {
-            Stripe(shape, (it + 1) * stripeWidth, bgColor)
+            Stripe(polygon, (it + 1) * stripeWidth, bgColor)
         }
     }
 
@@ -67,12 +68,12 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
     }
 
     private inner class Stripe(
-        shape: Shape,
+        polygon: Polygon,
         val radius: Float,
         var color: Int,
     ) {
 
-        val shape: PShape = createPolygonShape(shape)
+        val shape: PShape = createPolygonShape(polygon)
         var colorProgress = 0f
         var newColor = color
         var currentColor = color
@@ -97,7 +98,7 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
             shape(shape)
         }
 
-        private fun createPolygonShape(shape: Shape): PShape {
+        private fun createPolygonShape(polygon: Polygon): PShape {
             val s = createShape()
             with(s) {
                 beginShape()
@@ -107,12 +108,12 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
                     val x = radius * cos(angle)
                     val y = radius * sin(angle)
                     vertex(x, y)
-                    angle += shape.innerAngle
+                    angle += polygon.innerAngle
                 }
                 beginContour()
                 val contourRadius = radius - (stripeWidth - frameWidth)
                 while (angle > 0) {
-                    angle -= shape.innerAngle
+                    angle -= polygon.innerAngle
                     val x = contourRadius * cos(angle)
                     val y = contourRadius * sin(angle)
                     vertex(x, y)
@@ -122,15 +123,6 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
             }
             return s
         }
-    }
-
-    @Suppress("unused")
-    private enum class Shape(val innerAngle: Float) {
-        TRIANGLE(2 * PI / 3f),
-        SQUARE(PI / 2f),
-        PENTAGON(TWO_PI / 5f),
-        HEXAGON(PI / 3f),
-        OCTAGON(PI / 4f),
     }
 
     @Suppress("unused")
