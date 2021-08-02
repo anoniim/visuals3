@@ -4,8 +4,10 @@ import sketch.patterns.HilbertCurve
 import sketch.patterns.MaurerRosePatterns2
 import sketch.perspective.RainbowSunrise
 import sketch.physics.SpinningBean
+import sketch.shapes.RepeatedPolygons
 import sketch.spirals.PolygonSpiralTunnel
 import sketch.spirals.PolygonStripeTunnel
+import sketch.stars.SilhouetteSparks
 
 @ExperimentalStdlibApi
 fun main() {
@@ -83,13 +85,14 @@ fun main() {
 //    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 //    PApplet.main(arrayOf(FallApartImageTransformation::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonSpiralTunnel::class.qualifiedName))
-    PApplet.main(arrayOf(PolygonStripeTunnel::class.qualifiedName))
+//    PApplet.main(arrayOf(PolygonStripeTunnel::class.qualifiedName))
 //    PApplet.main(arrayOf(PolygonSpiralFlower::class.qualifiedName))
 //    PApplet.main(arrayOf(InflatingCircles::class.qualifiedName))
 //    PApplet.main(arrayOf(Explorer::class.qualifiedName))
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 //    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
+    PApplet.main(arrayOf(RepeatedPolygons::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
