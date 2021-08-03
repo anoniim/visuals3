@@ -1,13 +1,5 @@
 import processing.core.PApplet
-import sketch.mazes.ExplorerMazeBuilder
-import sketch.patterns.HilbertCurve
-import sketch.patterns.MaurerRosePatterns2
-import sketch.perspective.RainbowSunrise
-import sketch.physics.SpinningBean
-import sketch.shapes.RepeatedPolygons
-import sketch.spirals.PolygonSpiralTunnel
-import sketch.spirals.PolygonStripeTunnel
-import sketch.stars.SilhouetteSparks
+import sketch.shapes.PolygonDance
 
 @ExperimentalStdlibApi
 fun main() {
@@ -92,7 +84,7 @@ fun main() {
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 //    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
-    PApplet.main(arrayOf(RepeatedPolygons::class.qualifiedName))
+    PApplet.main(arrayOf(PolygonDance::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
