@@ -1,5 +1,7 @@
 import processing.core.PApplet
-import sketch.shapes.PolygonDance
+import sketch.TestWithVioleta
+import sketch.lines.CircleTangents
+import sketch.lines.CircleTangents2
 
 @ExperimentalStdlibApi
 fun main() {
@@ -51,6 +53,7 @@ fun main() {
 
 /* ______________ TOOLS ______________ */
 //    PApplet.main(arrayOf(Dot::class.qualifiedName))
+//    PApplet.main(arrayOf(TestWithVioleta::class.qualifiedName))
 //    PApplet.main(arrayOf(RosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Visualizer::class.qualifiedName))
 //    PApplet.main(arrayOf(FourierTransform::class.qualifiedName))
@@ -69,6 +72,7 @@ fun main() {
 //    PApplet.main(arrayOf(Flower1::class.qualifiedName))
 //    PApplet.main(arrayOf(SpaceSimulation::class.qualifiedName))
 //    PApplet.main(arrayOf(VortexGroups::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePendulum3::class.qualifiedName))
 //    PApplet.main(arrayOf(SineWaveSync::class.qualifiedName))
 //    PApplet.main(arrayOf(WavyBackground::class.qualifiedName))
@@ -84,7 +88,7 @@ fun main() {
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 //    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
-    PApplet.main(arrayOf(PolygonDance::class.qualifiedName))
+//    PApplet.main(arrayOf(PolygonDance::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
@@ -101,7 +105,7 @@ fun main() {
 //    PApplet.main(arrayOf(ZenSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(MaurerRosePatterns::class.qualifiedName))
-//    PApplet.main(arrayOf(CircleTangents::class.qualifiedName))
+    PApplet.main(arrayOf(CircleTangents2::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))

@@ -136,6 +136,17 @@ class Colors(val applet: BaseSketch) {
         ))
     }
 
+    val yellowToPurple = with(applet) {
+        LinkedList(listOf(
+            color(150, 150, 70),
+            color(237, 226, 12),
+            color(237, 124, 58),
+            color(230, 77, 122),
+            color(222, 29, 186),
+            color(100, 70, 200),
+        ))
+    }
+
     private val augustiniColors = with(applet) {
         listOf(
             color(0, 0, 0)
