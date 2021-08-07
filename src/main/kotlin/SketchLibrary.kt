@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.CircleOscillator
-import sketch.lines.Broadcast
+import sketch.shapes.CircleDance
 
 @ExperimentalStdlibApi
 fun main() {
@@ -11,7 +10,6 @@ fun main() {
 //    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-//    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
@@ -23,10 +21,11 @@ fun main() {
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
 //    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
+    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
-    PApplet.main(arrayOf(Broadcast::class.qualifiedName))
+//    PApplet.main(arrayOf(Broadcast::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleLining::class.qualifiedName))
 //    PApplet.main(arrayOf(SkippingLines::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePacking::class.qualifiedName))

@@ -22,7 +22,7 @@ abstract class Choreography : BaseSketch() {
         background(grey3)
 
         drawFrameCount()
-        if(testMode) text(mouseXF.toString(), 20f, 70f)
+        if (testMode) text(mouseXF.toString(), 20f, 70f)
 
         translateToCenter()
         rotate(-HALF_PI)
@@ -69,19 +69,20 @@ abstract class Choreography : BaseSketch() {
 
     protected inner class ShapeUnit(
         private val shape: Shape,
-        var initialRotation: Float = 0f,
+        val index: Int,
+        var initialAngle: Float = 0f,
+        var radius: Float = 0f
     ) {
 
-        private var position = PVector()
+        var angle: Float = 0f
         var rotation: Float = 0f
-        var radius: Float = 0f
-            set(value) = move(value, initialRotation)
-
-        fun move(radius: Float, angle: Float) {
-            val x = radius * cos(angle)
-            val y = radius * sin(angle)
-            position = PVector(x, y)
-        }
+        val position: PVector
+            get() {
+                val currentAngle = initialAngle + angle
+                val x = radius * cos(currentAngle)
+                val y = radius * sin(currentAngle)
+                return PVector(x, y)
+            }
 
         fun update(updateFun: ShapeUnit.() -> Unit) {
             updateFun(this)
@@ -90,7 +91,7 @@ abstract class Choreography : BaseSketch() {
         fun draw() {
             pushMatrix()
             translate(position.x, position.y)
-            rotate(initialRotation + globalRotation + rotation)
+            rotate(initialAngle + angle + globalRotation + rotation)
             shape.draw()
             popMatrix()
         }

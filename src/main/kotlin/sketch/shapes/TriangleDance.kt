@@ -18,7 +18,7 @@ class TriangleDance: Choreography() {
         val angleSegment = TWO_PI / shapeCount
         List(shapeCount) {
             val shape = Polygon(this, Polygon.Type.TRIANGLE, shapeSize)
-            ShapeUnit(shape, initialRotation = it * angleSegment)
+            ShapeUnit(shape, it, it * angleSegment)
         }
     }
 
