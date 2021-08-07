@@ -2,6 +2,7 @@ package sketch
 
 import BaseSketch
 import Screen
+import util.Interpolation
 
 class TestWithVioleta: BaseSketch(Screen(800, 400)) {
 
@@ -18,6 +19,7 @@ class TestWithVioleta: BaseSketch(Screen(800, 400)) {
 
     private val animationLength = 200f
     private val maxAmt = calculateMaxAmt(animationLength)
+    private val interpolation = Interpolation(animationLength)
 
     private fun interpolationFormula(animationProgress: Float) = -1 * cos(animationProgress) + 1
 
@@ -38,10 +40,11 @@ class TestWithVioleta: BaseSketch(Screen(800, 400)) {
         stroke(red)
         strokeWeight(10f)
 
-        val animationProgress = map(frameCountF % animationLength, 0f, animationLength, 0f, TWO_PI)
-        xProgress += interpolationFormula(animationProgress)
+//        val animationProgress = map(frameCountF % animationLength, 0f, animationLength, 0f, TWO_PI)
+//        xProgress += interpolationFormula(animationProgress)
+//        val x = map(xProgress, 0f, maxAmt, 0f, 300f)
 
-        val x = map(xProgress, 0f, maxAmt, 0f, 300f)
+        val x = interpolation.interpolate(0f, 300f, frameCountF % animationLength)
         point(x, 0f)
     }
 

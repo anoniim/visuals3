@@ -7,11 +7,13 @@ class Interpolation(
     private val method: Method = Method.Smooth
 ) {
 
-    var accumulatedProgress = 0f
-
     internal fun interpolate(from: Float, to: Float, animationProgress: Float): Float {
-        val normalizedProgress = PApplet.map(animationProgress, 0f, animationLength, 0f, PApplet.TWO_PI)
-        accumulatedProgress += method.formula(normalizedProgress)
+        var accumulatedProgress = 0f
+        repeat(animationProgress.toInt()) {
+            val normalizedProgress = PApplet.map(it.toFloat(), 0f, animationLength, 0f, PApplet.TWO_PI)
+            val increment = method.formula(normalizedProgress)
+            accumulatedProgress += increment
+        }
         return PApplet.map(accumulatedProgress, 0f, maxAccumulatedProgress, from, to)
     }
 
