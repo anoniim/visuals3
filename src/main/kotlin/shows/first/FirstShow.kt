@@ -7,7 +7,7 @@ import sketch.dots.CirclePendulum
 import sketch.dots.CirclePendulum2
 import sketch.lines.CircleTangents
 import sketch.lines.ConstrainedNoiseWithStencil
-import sketch.lines.RoundingLines
+import sketch.lines.Broadcast
 import sketch.physics.SoupParticles
 import sketch.spirals.SpinningSpiral
 import sketch.spirals.VortexGroups
@@ -36,7 +36,7 @@ fun main() {
 
 // Beginning of the journey / call to adventure
 //    PApplet.main(arrayOf(EveningExperiment1Idea1::class.qualifiedName))
-//    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
+//    PApplet.main(arrayOf(Broadcast::class.qualifiedName))
 //    PApplet.main(arrayOf(Starfield::class.qualifiedName))
 //    PApplet.main(arrayOf(TimesTablesCircle::class.qualifiedName))
 //    PApplet.main(arrayOf(RaisingTiles::class.qualifiedName))

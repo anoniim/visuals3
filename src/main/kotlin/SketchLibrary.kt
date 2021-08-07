@@ -1,21 +1,17 @@
 import processing.core.PApplet
-import sketch.TestWithVioleta
-import sketch.lines.CircleTangents
-import sketch.lines.CircleTangents2
-import sketch.shapes.PolygonDance
-import sketch.shapes.TriangleDance
+import sketch.circles.CircleOscillator
+import sketch.lines.Broadcast
 
 @ExperimentalStdlibApi
 fun main() {
 
 
 /* ______________ IN PROGRESS ______________ */
-//    PApplet.main(arrayOf(RoundingLines::class.qualifiedName))
 //    PApplet.main(arrayOf(MoireHexagons::class.qualifiedName))
 //    PApplet.main(arrayOf(BeatDetectorClock::class.qualifiedName))
 //    PApplet.main(arrayOf(GrowingTreeBranch::class.qualifiedName))
 //    PApplet.main(arrayOf(NeuronNetwork::class.qualifiedName))
-//    PApplet.main(arrayOf(CircleOscillators::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleOscillator::class.qualifiedName))
 //    PApplet.main(arrayOf(GameOfLife::class.qualifiedName))
 //    PApplet.main(arrayOf(CubeLikePattern::class.qualifiedName))
 //    PApplet.main(arrayOf(CityExploration::class.qualifiedName))
@@ -26,10 +22,11 @@ fun main() {
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
-    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
+//    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
+    PApplet.main(arrayOf(Broadcast::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleLining::class.qualifiedName))
 //    PApplet.main(arrayOf(SkippingLines::class.qualifiedName))
 //    PApplet.main(arrayOf(CirclePacking::class.qualifiedName))
