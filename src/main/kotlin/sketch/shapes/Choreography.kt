@@ -1,42 +1,35 @@
 package sketch.shapes
 
 import BaseSketch
-import shapes.Polygon
+import processing.core.PVector
+import shapes.Shape
 import util.Interpolation
 import util.translateToCenter
 
-abstract class PolygonDance : BaseSketch() {
+abstract class Choreography : BaseSketch() {
 
-    private val circleRadius = 200f
-    private val repeatCount = 16
-    private val shapeSize = 100f
+    // config
+    private val testMode = false
 
-    abstract val shape: Polygon
-    abstract val scaleBaseRadius: Float
+    protected abstract val shapes: List<ShapeUnit>
 
     protected var globalScale: Float = 1f
     protected var globalRotation: Float = 0f
 
     private val moves = mutableListOf<Move>()
-    private val angleSegment = TWO_PI / repeatCount
-    protected val shapes by lazy {
-        List(repeatCount) {
-            ShapeUnit(shape, angle = it * angleSegment)
-        }
-    }
 
     override fun draw() {
         background(grey3)
 
         drawFrameCount()
-//        text(mouseXF.toString(), 20f, 70f)
+        if(testMode) text(mouseXF.toString(), 20f, 70f)
 
         translateToCenter()
         rotate(-HALF_PI)
-
-//        test()
-        executeMoves()
         scale(globalScale)
+
+        if (!testMode) executeMoves() else test()
+
         drawShapes()
     }
 
@@ -59,6 +52,7 @@ abstract class PolygonDance : BaseSketch() {
                 it.action(it)
             }
         }
+//        moves.removeIf { frameCount > it.startFrame + it.moveLength } // XXX Probably not a great performance improvement
     }
 
     private fun drawShapes() {
@@ -74,14 +68,20 @@ abstract class PolygonDance : BaseSketch() {
     }
 
     protected inner class ShapeUnit(
-        private val polygon: Polygon,
-        var size: Float = shapeSize,
-        var radius: Float = circleRadius,
-        var rotation: Float = 0f,
-        var angle: Float,
+        private val shape: Shape,
+        var initialRotation: Float = 0f,
     ) {
 
-        private val pShape by lazyShapeCreation()
+        private var position = PVector()
+        var rotation: Float = 0f
+        var radius: Float = 0f
+            set(value) = move(value, initialRotation)
+
+        fun move(radius: Float, angle: Float) {
+            val x = radius * cos(angle)
+            val y = radius * sin(angle)
+            position = PVector(x, y)
+        }
 
         fun update(updateFun: ShapeUnit.() -> Unit) {
             updateFun(this)
@@ -89,30 +89,10 @@ abstract class PolygonDance : BaseSketch() {
 
         fun draw() {
             pushMatrix()
-            val x = radius * cos(angle)
-            val y = radius * sin(angle)
-            translate(x, y)
-            rotate(angle)
-            rotate(globalRotation + rotation)
-            shape(pShape)
+            translate(position.x, position.y)
+            rotate(initialRotation + globalRotation + rotation)
+            shape.draw()
             popMatrix()
-        }
-
-        private fun lazyShapeCreation() = lazy {
-            createShape().apply {
-                beginShape()
-                stroke(grey11)
-                strokeWeight(1.5f)
-                noFill()
-                var angle = 0f
-                while (angle <= TWO_PI) {
-                    val x = size * cos(angle)
-                    val y = size * sin(angle)
-                    vertex(x, y)
-                    angle += polygon.innerAngle
-                }
-                endShape(CLOSE)
-            }
         }
     }
 
@@ -162,9 +142,5 @@ abstract class PolygonDance : BaseSketch() {
     }
 
     protected fun cycle(times: Float = 1f) = times * TWO_PI * 100
-
-    protected fun scaleWithRadius(radius: Float): Float {
-        return 1 + (scaleBaseRadius - radius) / 300f
-    }
 }
 

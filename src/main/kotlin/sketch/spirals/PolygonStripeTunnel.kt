@@ -11,7 +11,7 @@ import util.translateToCenter
 class PolygonStripeTunnel : BaseSketch(Screen()) {
 
     // config
-    private val polygon = Polygon.OCTAGON
+    private val polygon = Polygon.Type.OCTAGON
     private val numOfStripes = 15
     private val frameWidth = -1f // -1f - 50f
     private val fadeRate = 0.007f // 0.005 - 0.1
@@ -68,7 +68,7 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
     }
 
     private inner class Stripe(
-        polygon: Polygon,
+        polygon: Polygon.Type,
         val radius: Float,
         var color: Int,
     ) {
@@ -98,7 +98,7 @@ class PolygonStripeTunnel : BaseSketch(Screen()) {
             shape(shape)
         }
 
-        private fun createPolygonShape(polygon: Polygon): PShape {
+        private fun createPolygonShape(polygon: Polygon.Type): PShape {
             val s = createShape()
             with(s) {
                 beginShape()

@@ -8,10 +8,19 @@ import shapes.Polygon
  * In the same fashion, even the simples actions can give impressive results when they are repeated.
  * Don't underestimate simple actions.
  */
-class TriangleDance: PolygonDance() {
+class TriangleDance: Choreography() {
 
-    override val shape: Polygon = Polygon.TRIANGLE
-    override val scaleBaseRadius: Float = OUT_P9
+    // config
+    private val shapeCount = 16
+    private val shapeSize = 100f
+
+    override val shapes by lazy {
+        val angleSegment = TWO_PI / shapeCount
+        List(shapeCount) {
+            val shape = Polygon(this, Polygon.Type.TRIANGLE, shapeSize)
+            ShapeUnit(shape, initialRotation = it * angleSegment)
+        }
+    }
 
     override fun setup() {
         start(140f) {
@@ -153,7 +162,7 @@ class TriangleDance: PolygonDance() {
             }
     }
 
-    private fun PolygonDance.Move.showEvenAndOdd(startingRadius: Float, jumpAmount: Float): Move {
+    private fun Choreography.Move.showEvenAndOdd(startingRadius: Float, jumpAmount: Float): Move {
         val jumpLength = 60f
         return then(jumpLength) {
             shapes.forEvery(2) { radius = smerp(startingRadius, startingRadius + jumpAmount) }
@@ -166,7 +175,7 @@ class TriangleDance: PolygonDance() {
         }
     }
 
-    private fun PolygonDance.Move.gettingCloser(): Move {
+    private fun Choreography.Move.gettingCloser(): Move {
         return then(120f) {
             smerp(IN_P5, OUT_P9).let {
                 shapes.forEvery { radius = it }
@@ -182,7 +191,7 @@ class TriangleDance: PolygonDance() {
             }
     }
 
-    private fun PolygonDance.Move.rotateOdd(): Move {
+    private fun Choreography.Move.rotateOdd(): Move {
         return then(120f) {
             shapes.forEvery(2, 1) { radius = smerp(OUT_P5, OUT_P7) }
         }
@@ -216,7 +225,7 @@ class TriangleDance: PolygonDance() {
             }
     }
 
-    private fun PolygonDance.Move.bringEvenBack(): Move =
+    private fun Choreography.Move.bringEvenBack(): Move =
         then(300f) {
             shapes.forEvery(2) {
                 radius = smerp(OUT_P9, IN_P4)
@@ -239,7 +248,7 @@ class TriangleDance: PolygonDance() {
                 }
             }
 
-    private fun PolygonDance.Move.spiralRotation(): Move {
+    private fun Choreography.Move.spiralRotation(): Move {
         return then(cycle(2f)) {
             globalRotation = smerp(TWO_PI / 3, 2 * TWO_PI)
         }
@@ -258,6 +267,11 @@ class TriangleDance: PolygonDance() {
             }
     }
 
+    private fun scaleWithRadius(radius: Float): Float {
+        return 1 + (OUT_P9 - radius) / 300f
+    }
+
+    @Suppress("unused")
     companion object {
         private const val IN_P0 = 0f
         private const val IN_P1 = 37f

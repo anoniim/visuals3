@@ -2,15 +2,14 @@ package shapes
 
 import BaseSketch
 
-open class Shape(
+abstract class Shape(
     protected val applet: BaseSketch
 ) {
 
-    protected fun display(displayFun: BaseSketch.() -> Unit) {
+    protected fun display(drawModifiers: (BaseSketch.() -> Unit)? = null, displayFun: BaseSketch.() -> Unit) {
+        drawModifiers?.invoke(applet)
         displayFun(applet)
     }
 
-    open fun draw(drawModifiers: (BaseSketch.() -> Unit)? = null) {
-        drawModifiers?.invoke(applet)
-    }
+    abstract fun draw(drawModifiers: (BaseSketch.() -> Unit)? = null)
 }

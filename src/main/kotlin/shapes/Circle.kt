@@ -10,8 +10,7 @@ open class Circle(
 ): Shape(applet) {
 
     override fun draw(drawModifiers: (BaseSketch.() -> Unit)?) {
-        super.draw(drawModifiers)
-        display {
+        display(drawModifiers) {
             ellipse(x, y, r * 2, r * 2)
         }
     }
