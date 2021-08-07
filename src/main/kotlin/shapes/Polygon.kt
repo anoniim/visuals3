@@ -4,7 +4,7 @@ import processing.core.PConstants.PI
 import processing.core.PConstants.TWO_PI
 
 @Suppress("unused")
-internal enum class Polygon(val innerAngle: Float) {
+enum class Polygon(val innerAngle: Float) {
     TRIANGLE(2 * PI / 3f),
     SQUARE(PI / 2f),
     PENTAGON(TWO_PI / 5f),

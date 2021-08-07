@@ -2,6 +2,8 @@ import processing.core.PApplet
 import sketch.TestWithVioleta
 import sketch.lines.CircleTangents
 import sketch.lines.CircleTangents2
+import sketch.shapes.PolygonDance
+import sketch.shapes.TriangleDance
 
 @ExperimentalStdlibApi
 fun main() {
@@ -24,6 +26,7 @@ fun main() {
 //    PApplet.main(arrayOf(AlgorithmicMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
+    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
@@ -88,7 +91,6 @@ fun main() {
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 //    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
-//    PApplet.main(arrayOf(PolygonDance::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
@@ -105,7 +107,7 @@ fun main() {
 //    PApplet.main(arrayOf(ZenSpiral::class.qualifiedName))
 //    PApplet.main(arrayOf(AnimatedRosePatterns::class.qualifiedName))
 //    PApplet.main(arrayOf(MaurerRosePatterns::class.qualifiedName))
-    PApplet.main(arrayOf(CircleTangents2::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleTangents2::class.qualifiedName))
 //    PApplet.main(arrayOf(EveningExperiment1Idea2::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstraintNoise::class.qualifiedName))
 //    PApplet.main(arrayOf(ConstrainedNoiseWithStencil::class.qualifiedName))
