@@ -13,7 +13,7 @@ import util.times
 class CircleDance : Choreography() {
 
     // config
-    private val shapeCount = 160 // 16
+    private val shapeCount = 100 // 16
     private val shapeSize = 115f
 
     override val shapes by lazy {
@@ -54,14 +54,14 @@ class CircleDance : Choreography() {
 
     private fun Choreography.Move.waves(): Move = then(60f) {
         shapes.forEvery {
-            val newRadius = smerp(R3, R3 + 40 * sin(index / 3f))
+            val newRadius = smerp(R3, R3 + 40 * sin(index / 3f)) - initialAngle
             radius = newRadius
         }
     }
         .then(400f) {
             shapes.forEvery {
                 val newAngle = smerp(0f, 8 * TWO_PI + PI)
-                radius = R3 + 40 * sin(index / 2f + newAngle)
+                radius = R3 + 40 * sin(index / 2f + newAngle) - initialAngle
             }
         }
 

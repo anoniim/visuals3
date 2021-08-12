@@ -1,23 +1,7 @@
 package shows.first
 
 import processing.core.PApplet
-import sketch.sound.miso.EveningExperiment1Idea1
 import sketch.*
-import sketch.dots.CirclePendulum
-import sketch.dots.CirclePendulum2
-import sketch.lines.CircleTangents
-import sketch.lines.ConstrainedNoiseWithStencil
-import sketch.lines.Broadcast
-import sketch.physics.SoupParticles
-import sketch.spirals.SpinningSpiral
-import sketch.spirals.VortexGroups
-import sketch.squares.RaisingTiles
-import sketch.synchronization.SineWaveSync
-import sketch.walkers.GrowingNeuron2
-import sketch.walkers.PixelatedWalkers
-import sketch.waves.NoisyWaveSurface
-import sketch.waves.SineFlower
-import sketch.waves.WavyBackground
 
 @ExperimentalStdlibApi
 fun main() {
