@@ -1,4 +1,4 @@
-package sketch.shapes
+package sketch.dance
 
 import shapes.Polygon
 
@@ -18,7 +18,7 @@ class TriangleDance: Choreography() {
         val angleSegment = TWO_PI / shapeCount
         List(shapeCount) {
             val shape = Polygon(this, Polygon.Type.TRIANGLE, shapeSize)
-            ShapeUnit(shape, it, it * angleSegment)
+            ShapeUnit(it, shape, it * angleSegment)
         }
     }
 
@@ -162,7 +162,7 @@ class TriangleDance: Choreography() {
             }
     }
 
-    private fun Choreography.Move.showEvenAndOdd(startingRadius: Float, jumpAmount: Float): Move {
+    private fun Move.showEvenAndOdd(startingRadius: Float, jumpAmount: Float): Move {
         val jumpLength = 60f
         return then(jumpLength) {
             shapes.forEvery(2) { radius = smerp(startingRadius, startingRadius + jumpAmount) }
@@ -175,7 +175,7 @@ class TriangleDance: Choreography() {
         }
     }
 
-    private fun Choreography.Move.gettingCloser(): Move {
+    private fun Move.gettingCloser(): Move {
         return then(120f) {
             smerp(IN_P5, OUT_P9).let {
                 shapes.forEvery { radius = it }
@@ -191,7 +191,7 @@ class TriangleDance: Choreography() {
             }
     }
 
-    private fun Choreography.Move.rotateOdd(): Move {
+    private fun Move.rotateOdd(): Move {
         return then(120f) {
             shapes.forEvery(2, 1) { radius = smerp(OUT_P5, OUT_P7) }
         }
@@ -225,7 +225,7 @@ class TriangleDance: Choreography() {
             }
     }
 
-    private fun Choreography.Move.bringEvenBack(): Move =
+    private fun Move.bringEvenBack(): Move =
         then(300f) {
             shapes.forEvery(2) {
                 radius = smerp(OUT_P9, IN_P4)
@@ -248,7 +248,7 @@ class TriangleDance: Choreography() {
                 }
             }
 
-    private fun Choreography.Move.spiralRotation(): Move {
+    private fun Move.spiralRotation(): Move {
         return then(cycle(2f)) {
             globalRotation = smerp(TWO_PI / 3, 2 * TWO_PI)
         }

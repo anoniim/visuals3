@@ -1,8 +1,6 @@
-package sketch.shapes
+package sketch.dance
 
-import processing.core.PVector
 import shapes.Circle
-import util.times
 
 /**
  * Even the simplest shapes can create intricate patterns when they are repeated.
@@ -24,7 +22,7 @@ class CircleDance : Choreography() {
                 stroke(grey11)
                 strokeWeight(1.5f)
             }
-            ShapeUnit(shape, it, it * angleSegment, R3)
+            ShapeUnit(it, shape, it * angleSegment, R3)
         }
     }
 
@@ -38,21 +36,21 @@ class CircleDance : Choreography() {
             }
     }
 
-    private fun Choreography.Move.spreadOut() = then(240f) {
+    private fun Move.spreadOut() = then(240f) {
         shapes.forEvery {
             val newAngle = smerp(0f, TWO_PI)
             angle = if (newAngle < initialAngle) -initialAngle + newAngle else 0f
         }
     }
 
-    private fun Choreography.Move.spreadIn(): Move = then(240f) {
+    private fun Move.spreadIn(): Move = then(240f) {
         shapes.forEvery {
             val newAngle = smerp(0f, TWO_PI)
             if (newAngle > initialAngle) angle = newAngle - initialAngle
         }
     }
 
-    private fun Choreography.Move.waves(): Move = then(60f) {
+    private fun Move.waves(): Move = then(60f) {
         shapes.forEvery {
             val newRadius = smerp(R3, R3 + 40 * sin(index / 3f)) - initialAngle
             radius = newRadius

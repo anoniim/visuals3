@@ -1,4 +1,4 @@
-package sketch.lines
+package sketch.dance
 
 import BaseSketch
 import processing.core.PApplet

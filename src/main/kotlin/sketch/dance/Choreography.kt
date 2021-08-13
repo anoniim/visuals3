@@ -1,4 +1,4 @@
-package sketch.shapes
+package sketch.dance
 
 import BaseSketch
 import processing.core.PVector
@@ -68,8 +68,8 @@ abstract class Choreography : BaseSketch() {
     }
 
     protected inner class ShapeUnit(
-        private val shape: Shape,
         val index: Int,
+        var shape: Shape,
         var initialAngle: Float = 0f,
         var radius: Float = 0f
     ) {
