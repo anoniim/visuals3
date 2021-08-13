@@ -1,5 +1,5 @@
 import processing.core.PApplet
-import sketch.shapes.CircleDance
+import sketch.lines.SineDance
 
 @ExperimentalStdlibApi
 fun main() {
@@ -21,7 +21,8 @@ fun main() {
 //    PApplet.main(arrayOf(WorleyOutline::class.qualifiedName))
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
 //    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
-    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
+//    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
+    PApplet.main(arrayOf(SineDance::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
