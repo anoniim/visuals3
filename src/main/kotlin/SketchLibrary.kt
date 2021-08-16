@@ -1,5 +1,6 @@
 import processing.core.PApplet
-import sketch.lines.SineDance
+import sketch.physics.AntiCollisionSystem
+import sketch.synchronization.SyncOrbits
 
 @ExperimentalStdlibApi
 fun main() {
@@ -22,7 +23,8 @@ fun main() {
 //    PApplet.main(arrayOf(GrassFromAbove::class.qualifiedName))
 //    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
-    PApplet.main(arrayOf(SineDance::class.qualifiedName))
+//    PApplet.main(arrayOf(SineDance::class.qualifiedName))
+//    PApplet.main(arrayOf(SyncOrbits::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
