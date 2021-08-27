@@ -26,6 +26,7 @@ fun main() {
 //    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
 //    PApplet.main(arrayOf(SineDance::class.qualifiedName))
 //    PApplet.main(arrayOf(SyncOrbits::class.qualifiedName))
+//    PApplet.main(arrayOf(Eyeballs::class.qualifiedName))
 
 
 /* ______________ PRACTICE ______________ */
