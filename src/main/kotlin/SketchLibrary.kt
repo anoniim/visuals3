@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.circles.Incircles
 import sketch.physics.AntiCollisionSystem
 import sketch.synchronization.SyncOrbits
 
@@ -90,6 +91,7 @@ fun main() {
 //    PApplet.main(arrayOf(ExplorerMazeBuilder::class.qualifiedName))
 //    PApplet.main(arrayOf(NsormaFlameStar::class.qualifiedName))
 //    PApplet.main(arrayOf(SilhouetteSparks::class.qualifiedName))
+//    PApplet.main(arrayOf(Incircles::class.qualifiedName))
 
 
 /* ______________ SHOWCASE ______________ */
