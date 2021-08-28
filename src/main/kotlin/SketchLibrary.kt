@@ -1,7 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.Incircles
-import sketch.physics.AntiCollisionSystem
-import sketch.synchronization.SyncOrbits
+import sketch.synchronization.SimpleSyncOrbit
 
 @ExperimentalStdlibApi
 fun main() {
@@ -25,7 +23,7 @@ fun main() {
 //    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
 //    PApplet.main(arrayOf(SineDance::class.qualifiedName))
-//    PApplet.main(arrayOf(SyncOrbits::class.qualifiedName))
+    PApplet.main(arrayOf(SimpleSyncOrbit::class.qualifiedName))
 //    PApplet.main(arrayOf(Eyeballs::class.qualifiedName))
 
 
