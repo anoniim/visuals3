@@ -1,5 +1,6 @@
 import processing.core.PApplet
 import sketch.synchronization.SimpleSyncOrbit
+import sketch.synchronization.SyncOrbits
 
 @ExperimentalStdlibApi
 fun main() {
@@ -23,7 +24,7 @@ fun main() {
 //    PApplet.main(arrayOf(TriangleDance::class.qualifiedName))
 //    PApplet.main(arrayOf(CircleDance::class.qualifiedName))
 //    PApplet.main(arrayOf(SineDance::class.qualifiedName))
-    PApplet.main(arrayOf(SimpleSyncOrbit::class.qualifiedName))
+//    PApplet.main(arrayOf(SimpleSyncOrbit::class.qualifiedName))
 //    PApplet.main(arrayOf(Eyeballs::class.qualifiedName))
 
 
@@ -115,4 +116,5 @@ fun main() {
 //    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
 //    PApplet.main(arrayOf(RainbowSunrise::class.qualifiedName))
 //    PApplet.main(arrayOf(AtomicFlicker::class.qualifiedName))
+    PApplet.main(arrayOf(SyncOrbits::class.qualifiedName))
 }
