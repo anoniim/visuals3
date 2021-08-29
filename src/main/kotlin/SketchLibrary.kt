@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.synchronization.SimpleSyncOrbit
-import sketch.synchronization.SyncOrbits
+import sketch.growth.GrowingTreeBranch
 
 @ExperimentalStdlibApi
 fun main() {
@@ -116,5 +115,5 @@ fun main() {
 //    PApplet.main(arrayOf(CirclePendulum2::class.qualifiedName))
 //    PApplet.main(arrayOf(RainbowSunrise::class.qualifiedName))
 //    PApplet.main(arrayOf(AtomicFlicker::class.qualifiedName))
-    PApplet.main(arrayOf(SyncOrbits::class.qualifiedName))
+//    PApplet.main(arrayOf(SyncOrbits::class.qualifiedName))
 }
