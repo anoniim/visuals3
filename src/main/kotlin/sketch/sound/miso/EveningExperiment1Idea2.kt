@@ -7,10 +7,11 @@ import processing.core.PShape
 import processing.core.PVector
 import processing.sound.SoundFile
 import sound.SoundHelper
+import javax.swing.Spring.scale
 
 open class EveningExperiment1Idea2 : BaseSketch(
     Screen(1600, 900),
-    fullscreen = false,
+    fullscreen = true,
     longClickClear = true,
     renderer = P2D
 ) {

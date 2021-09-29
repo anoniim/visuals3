@@ -13,6 +13,7 @@ import util.Interpolation
  */
 class CircleTangents2 : BaseSketch(
     Screen(800, 800),
+    fullscreen = true    ,
 ) {
 
     companion object {
