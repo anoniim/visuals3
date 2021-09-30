@@ -1,4 +1,7 @@
 import processing.core.PApplet
+import sketch.dance.CircleDance
+import sketch.dance.SineDance
+import sketch.dance.TriangleDance
 import sketch.dots.AtomicFlicker
 import sketch.dots.CirclePendulum2
 import sketch.graphs.NeuronNetwork
@@ -6,7 +9,9 @@ import sketch.growth.GrowingNeuron2
 import sketch.growth.GrowingTreeBranch
 import sketch.lines.CircleTangents2
 import sketch.lines.ConstraintNoise
-import sketch.patterns.MaurerRosePatterns
+import sketch.mazes.AlgorithmicMazeBuilder
+import sketch.mazes.SinglePathMazeBuilder
+import sketch.patterns.*
 import sketch.perspective.RainbowSunrise
 import sketch.sound.miso.EveningExperiment1Idea2
 import sketch.synchronization.SyncOrbits
@@ -14,12 +19,11 @@ import sketch.walkers.CityExploration
 //import sketch.walkers.CityExploration
 import sketch.walkers.PixelatedWalkers
 import sketch.walkers.SmoothWalkers
-import sketch.patterns.Clouds
-import sketch.patterns.TimesTablesCircle
-import sketch.patterns.Toothpicks
+import sketch.perspective.FieldWalking
 import sketch.physics.SoupParticles
 import sketch.sequences.RecamansSequence
 import sketch.synchronization.Eyeballs
+import sketch.synchronization.SimpleSyncOrbit
 import sketch.text.MatrixLetters
 import sketch.text.TextFromRandom
 import sketch.waves.NoisyWave
@@ -48,7 +52,8 @@ fun main() {
 //    PApplet.main(SineDance::class.java)
 //    PApplet.main(SimpleSyncOrbit::class.java)
 //    PApplet.main(Eyeballs::class.java)
-    PApplet.main(Clouds::class.java)
+//    PApplet.main(Clouds::class.java)
+    PApplet.main(SomeRosePatterns::class.java)
 
 
 /* ______________ PRACTICE ______________ */
