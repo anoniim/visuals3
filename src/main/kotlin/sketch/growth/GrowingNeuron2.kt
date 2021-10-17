@@ -5,7 +5,7 @@ import processing.core.PVector
 import util.SimplexNoise
 
 
-class GrowingNeuron2 : BaseSketch(renderer = P2D) {
+class GrowingNeuron2 : BaseSketch(fullscreen = true, renderer = P2D) {
 
     // config
     private val speed: Int = 2 // 1-5
@@ -14,7 +14,7 @@ class GrowingNeuron2 : BaseSketch(renderer = P2D) {
     private val maxLength = 1000
     private val offset = 80f
 
-    private val activeCountFraction = activeCount/20
+    private val activeCountFraction = activeCount / 20
     private var toIndex: Int = activeCount
     private var fromIndex: Int = 0
     private val dendrites = List(6000) { Dendrite() }

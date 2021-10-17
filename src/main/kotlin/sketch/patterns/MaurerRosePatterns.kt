@@ -44,7 +44,7 @@ class MaurerRosePatterns : BaseSketch(
             val radius = scale * sin(radians(n * i * d))
             val x = radius * cos(radians(i * d))
             val y = radius * sin(radians(i * d))
-            vertex(x, y)
+            curveVertex(x, y)
             i += 1f
         }
         endShape()
