@@ -63,6 +63,7 @@ fun main() {
 //    PApplet.main(RosePatterns::class.java)
 //    PApplet.main(EveningExperiment1Visualizer::class.java)
 //    PApplet.main(FourierTransform::class.java)
+    PApplet.main(CuriosityBoxSummer21::class.java)
 
 
 /* ______________ IDEAS ______________ */
@@ -95,7 +96,6 @@ fun main() {
 //    PApplet.main(NsormaFlameStar::class.java)
 //    PApplet.main(SilhouetteSparks::class.java)
 //    PApplet.main(Incircles::class.java)
-    PApplet.main(CuriosityBoxSummer21::class.java)
 
 
 /* ______________ SHOWCASE ______________ */
