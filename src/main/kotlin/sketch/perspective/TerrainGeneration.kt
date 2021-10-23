@@ -23,9 +23,15 @@ class TerrainGeneration : BaseSketch(
         background(grey3)
 
         drawTerrain()
-        time += speed
+        advanceTime()
         terrain = generateTerrain(time)
     }
+
+    private fun advanceTime() {
+        if (!isSpacebarPressed()) time += speed
+    }
+
+    private fun isSpacebarPressed() = keyPressed && key == ' '
 
     private fun drawTerrain() {
         noFill()
