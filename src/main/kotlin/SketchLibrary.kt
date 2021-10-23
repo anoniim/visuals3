@@ -1,5 +1,14 @@
 import processing.core.PApplet
+import sketch.dance.TriangleDance
+import sketch.dots.CirclePendulum2
 import sketch.patterns.*
+import sketch.perspective.TerrainGeneration
+import sketch.synchronization.SyncOrbits
+import sketch.text.MatrixLetters
+import sketch.walkers.CityExploration
+import sketch.walkers.PixelatedWalkers
+import sketch.walkers.SmoothWalkers
+
 //import sketch.walkers.CityExploration
 
 @ExperimentalStdlibApi
@@ -55,6 +64,7 @@ fun main() {
 //    PApplet.main(WorleyNoiseCells::class.java)
 //    PApplet.main(HilbertCurve::class.java)
 //    PApplet.main(MaurerRosePatterns2::class.java)
+    PApplet.main(TerrainGeneration::class.java)
 
 
 /* ______________ TOOLS ______________ */
@@ -63,7 +73,7 @@ fun main() {
 //    PApplet.main(RosePatterns::class.java)
 //    PApplet.main(EveningExperiment1Visualizer::class.java)
 //    PApplet.main(FourierTransform::class.java)
-    PApplet.main(CuriosityBoxSummer21::class.java)
+//    PApplet.main(CuriosityBoxSummer21::class.java)
 
 
 /* ______________ IDEAS ______________ */
