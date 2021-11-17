@@ -8,6 +8,7 @@ import sketch.text.MatrixLetters
 import sketch.walkers.CityExploration
 import sketch.walkers.PixelatedWalkers
 import sketch.walkers.SmoothWalkers
+import sketch.waves.TileWave
 
 //import sketch.walkers.CityExploration
 
@@ -38,6 +39,7 @@ fun main() {
 //    PApplet.main(Clouds::class.java)
 //    PApplet.main(SomeRosePatterns::class.java)
 //    PApplet.main(Mandala::class.java)
+    PApplet.main(TileWave::class.java)
 
 
 /* ______________ PRACTICE ______________ */
@@ -64,7 +66,7 @@ fun main() {
 //    PApplet.main(WorleyNoiseCells::class.java)
 //    PApplet.main(HilbertCurve::class.java)
 //    PApplet.main(MaurerRosePatterns2::class.java)
-    PApplet.main(TerrainGeneration::class.java)
+//    PApplet.main(TerrainGeneration::class.java)
 
 
 /* ______________ TOOLS ______________ */
