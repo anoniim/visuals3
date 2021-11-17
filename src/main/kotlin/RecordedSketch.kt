@@ -26,7 +26,7 @@ abstract class RecordedSketch(
         render(percent)
         if (recording) {
             if (skipFrames == 0 || frameCount % skipFrames == 1) {
-                saveFrame("recordings/${this::class.simpleName}/$label/###.png")
+                saveFrame("export/${this::class.simpleName}/$label/###.png")
             }
             if (frameCount > totalFrames) {
                 exit()

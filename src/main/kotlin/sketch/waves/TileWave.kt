@@ -23,7 +23,7 @@ class TileWave : BaseSketch() {
         }
 
         noLoop()
-        saveFrame("recordings/tileWave/1.png")
+        saveFrame("export/tileWave/1.png")
     }
 
     private fun drawParticleLayer(radius: Float) {
