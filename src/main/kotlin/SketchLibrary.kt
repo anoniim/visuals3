@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.circles.VipassanaWindow
 import sketch.dance.TriangleDance
 import sketch.dots.CirclePendulum2
 import sketch.patterns.*
@@ -39,7 +40,7 @@ fun main() {
 //    PApplet.main(Clouds::class.java)
 //    PApplet.main(SomeRosePatterns::class.java)
 //    PApplet.main(Mandala::class.java)
-    PApplet.main(TileWave::class.java)
+    PApplet.main(VipassanaWindow::class.java)
 
 
 /* ______________ PRACTICE ______________ */
@@ -133,4 +134,5 @@ fun main() {
 //    PApplet.main(RainbowSunrise::class.java)
 //    PApplet.main(AtomicFlicker::class.java)
 //    PApplet.main(SyncOrbits::class.java)
+//    PApplet.main(TileWave::class.java)
 }
