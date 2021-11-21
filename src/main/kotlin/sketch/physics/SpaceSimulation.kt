@@ -54,7 +54,7 @@ class SpaceSimulation : BaseSketch(
         newParticles.clear()
     }
 
-    open inner class Particle(
+    private open inner class Particle(
         x: Float,
         y: Float,
         var mass: Float,

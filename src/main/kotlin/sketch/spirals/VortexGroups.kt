@@ -37,7 +37,7 @@ class VortexGroups : BaseSketch(renderer = P3D) {
         scale *= 0.9985f
     }
 
-    inner class Particle(
+    private inner class Particle(
         private val spiralCoef: Float,
         val strokeColor: Int
     ) {
