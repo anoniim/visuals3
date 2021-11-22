@@ -1,15 +1,5 @@
 import processing.core.PApplet
-import sketch.circles.VipassanaWindow
-import sketch.dance.TriangleDance
-import sketch.dots.CirclePendulum2
-import sketch.patterns.*
-import sketch.perspective.TerrainGeneration
-import sketch.synchronization.SyncOrbits
-import sketch.text.MatrixLetters
-import sketch.walkers.CityExploration
-import sketch.walkers.PixelatedWalkers
-import sketch.walkers.SmoothWalkers
-import sketch.waves.TileWave
+import sketch.patterns.ToiletPaper
 
 //import sketch.walkers.CityExploration
 
@@ -40,7 +30,7 @@ fun main() {
 //    PApplet.main(Clouds::class.java)
 //    PApplet.main(SomeRosePatterns::class.java)
 //    PApplet.main(Mandala::class.java)
-    PApplet.main(VipassanaWindow::class.java)
+    PApplet.main(ToiletPaper::class.java)
 
 
 /* ______________ PRACTICE ______________ */
@@ -109,6 +99,7 @@ fun main() {
 //    PApplet.main(NsormaFlameStar::class.java)
 //    PApplet.main(SilhouetteSparks::class.java)
 //    PApplet.main(Incircles::class.java)
+//    PApplet.main(VipassanaWindow::class.java)
 
 
 /* ______________ SHOWCASE ______________ */
