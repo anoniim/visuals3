@@ -1,8 +1,8 @@
-package shows.first
+package show.first
 
 import BaseSketch
 import Screen
-import shows.first.MidiController.Companion.PAD_16
+import show.first.MidiController.Companion.PAD_16
 
 
 class TestSketch : BaseSketch(fullscreen = true) {

@@ -1,4 +1,4 @@
-package shows.first
+package show.first
 
 import BaseSketch
 

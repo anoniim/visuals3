@@ -1,10 +1,10 @@
-package shows.first
+package show.first
 
 import BaseSketch
 import processing.core.PConstants.PI
 import processing.core.PConstants.TWO_PI
 import processing.core.PVector
-import shows.first.MidiController.Companion.PAD_1
+import show.first.MidiController.Companion.PAD_1
 
 class Scene2(applet: BaseSketch) : Scene(applet) {
 

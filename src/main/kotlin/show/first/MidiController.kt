@@ -1,4 +1,4 @@
-package shows.first
+package show.first
 
 import processing.core.PApplet
 import themidibus.MidiBus

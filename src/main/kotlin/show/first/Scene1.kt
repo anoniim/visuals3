@@ -1,9 +1,9 @@
-package shows.first
+package show.first
 
 import BaseSketch
 import processing.core.PConstants.*
 import processing.core.PVector
-import shows.first.MidiController.Companion.PAD_1
+import show.first.MidiController.Companion.PAD_1
 import util.plus
 import util.times
 
