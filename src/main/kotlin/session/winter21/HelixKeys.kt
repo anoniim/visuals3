@@ -9,12 +9,6 @@ fun main() {
     PApplet.main(HelixKeys::class.java)
 }
 
-/**
- * There is a problem with Processing's [keyPressed] which is called multiple times when the key press is too long.
- * That will hopefully go away when MIDI controller is used.
- *
- * TODO: make the lines to spiral to the center of the screen
- */
 class HelixKeys : BaseSketch() {
 
     private val lineLength = 80f
