@@ -14,6 +14,8 @@ fun main() {
 class RevealingSquares : BaseSketch() {
 
     // config
+    private val minSize = 20f
+    private val maxSize = 200f
     private val minAlpha = 100f
     private val randomnessSpeed = 0.005f
     private val radius = 600f
@@ -48,7 +50,7 @@ class RevealingSquares : BaseSketch() {
     }
 
     private fun generateNewSquare() {
-        val size = random(20f, 200f)
+        val size = random(minSize, maxSize)
         // config
         addColorSquare(size)
 //        addCutoutImage(size)
