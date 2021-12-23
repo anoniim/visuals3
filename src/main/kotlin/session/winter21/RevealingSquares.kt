@@ -23,7 +23,7 @@ class RevealingSquares : BaseSketch() {
     private var time = 0f
     private var pointer = PVector()
     private val squares = mutableListOf<Square>()
-    private val background by lazy { loadImage("input/winter21/surfer_scaled.png") }
+    private val background by lazy { loadImage("input/winter21/sunset_scaled.png") } // surfer, cliff
 
     override fun setup() {
         shapeMode(CENTER)
