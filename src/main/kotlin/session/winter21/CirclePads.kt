@@ -4,6 +4,9 @@ import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
 import processing.event.KeyEvent
+import shapes.Circle
+import show.first.MidiController
+import themidibus.MidiBus
 import util.circle
 
 fun main() {
@@ -12,8 +15,8 @@ fun main() {
 
 class CirclePads : BaseSketch() {
 
-    private val numOfRows = 3
-    private val numOfCols = 3
+    private val numOfRows = 4
+    private val numOfCols = 4
     private val alphaSpeed = 0.1f
 
     private val numOfCircles = numOfCols * numOfRows
@@ -23,10 +26,20 @@ class CirclePads : BaseSketch() {
     private val horizontalOffset by lazy { (widthF - gridWidth) / 2f }
     private val verticalOffset by lazy { (heightF - gridHeight) / 2f }
     private val margin by lazy { circleSize * 0.1f }
+    private val controller by lazy { MidiController(this, 1, 2) }
+
+    override fun setup() {
+        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+            triggerAction = { pitch, _ ->
+                pads[pitch-12].setPressed()
+            },
+            releaseAction = { pitch ->
+                pads[pitch-12].setReleased()
+            })
+    }
 
     private val pads by lazy {
         List(numOfCircles) {
-
             val row = it / numOfCols
             val column = it % numOfCols
             val x = column * (circleSize + margin) + horizontalOffset + circleSize / 2f
@@ -46,12 +59,16 @@ class CirclePads : BaseSketch() {
 
     override fun keyPressed() {
         println("keyPressed: $keyCode")
-        if (keyCode in 97..106) { pads[keyCode - 97].setPressed() }
+        if (keyCode in 97..106) {
+            pads[keyCode - 97].setPressed()
+        }
     }
 
     override fun keyReleased() {
         println("keyReleased: $keyCode")
-        if (keyCode in 97..106) { pads[keyCode - 97].setReleased() }
+        if (keyCode in 97..106) {
+            pads[keyCode - 97].setReleased()
+        }
     }
 
     private inner class Circle(
@@ -64,7 +81,7 @@ class CirclePads : BaseSketch() {
         private var timePressed = 0f
 
         fun update() {
-            if(isPressed) {
+            if (isPressed) {
                 timePressed += alphaSpeed
                 currentAlpha = abs(sin(timePressed)) * 255f
             }
