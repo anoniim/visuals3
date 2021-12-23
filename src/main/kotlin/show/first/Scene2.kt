@@ -14,7 +14,7 @@ class Scene2(applet: BaseSketch) : Scene(applet) {
     private val controller by lazy { MidiController(applet, 1, 2) }
 
     init {
-        controller.on(PAD_1) { _, _ -> boom() }
+        controller.on(PAD_1, { _, _ -> boom() })
     }
 
     override fun keyPressed(key: Char) {

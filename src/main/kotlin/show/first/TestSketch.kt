@@ -2,8 +2,13 @@ package show.first
 
 import BaseSketch
 import Screen
+import processing.core.PApplet
 import show.first.MidiController.Companion.PAD_16
+import themidibus.MidiBus
 
+fun main() {
+    PApplet.main(TestSketch::class.java)
+}
 
 class TestSketch : BaseSketch(fullscreen = true) {
 
@@ -14,6 +19,9 @@ class TestSketch : BaseSketch(fullscreen = true) {
     private var scenePointer = 0
 
     override fun setup() {
+        // List all available Midi devices to help find the right input and output
+        MidiBus.list()
+
         val scene1 = Scene1(this)
         val scene2 = Scene2(this)
         scenes = listOf(
