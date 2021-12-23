@@ -3,6 +3,7 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
+import show.first.MidiController
 import util.line
 
 fun main() {
@@ -17,15 +18,18 @@ fun main() {
  */
 class PianoKeys : BaseSketch() {
 
+    // config
     private val movementSpeed = 3f
-
-    private val numOfPads = 10
+    private val numOfPads = 16
     private val padSize = 40f
-    private val gridWidth by lazy { numOfPads * padSize + (numOfPads - 1) * margin }
-    private val horizontalOffset by lazy { (widthF - gridWidth) / 2f }
-    private val margin by lazy { padSize * 2f }
     private val bottomMargin = 50f
 
+    private val margin by lazy { padSize }
+    private val gridWidth by lazy { numOfPads * padSize + (numOfPads - 1) * margin }
+    private val horizontalOffset by lazy { (widthF - gridWidth) / 2f }
+    private val controller by lazy { MidiController(this, 1, 2) }
+
+    private val pads = mutableMapOf<Int, MutableList<Pad>>()
     private val padPositions by lazy {
         List(numOfPads) { index ->
             val x = index * (padSize + margin) + horizontalOffset + (padSize + margin) / 2f
@@ -33,7 +37,15 @@ class PianoKeys : BaseSketch() {
         }
     }
 
-    private val pads = mutableMapOf<Int, MutableList<Pad>>()
+    override fun setup() {
+        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+            triggerAction = { pitch, velocity ->
+                addPad(pitch - 12)
+            },
+            releaseAction = { pitch ->
+                releasePad(pitch - 12)
+            })
+    }
 
     override fun draw() {
         background(grey3)
@@ -48,10 +60,14 @@ class PianoKeys : BaseSketch() {
         println("keyPressed: $keyCode")
         if (keyCode in 97..106) {
             val pitch = keyCode - 97
-            val newPad = Pad(padPositions[pitch].copy(), yellow).apply { setPressed() }
-            val existingPads = (pads[pitch] ?: mutableListOf()).apply { add(newPad) }
-            pads[pitch] = existingPads
+            addPad(pitch)
         }
+    }
+
+    private fun addPad(pitch: Int) {
+        val newPad = Pad(padPositions[pitch].copy(), yellow).apply { setPressed() }
+        val existingPads = (pads[pitch] ?: mutableListOf()).apply { add(newPad) }
+        pads[pitch] = existingPads
     }
 
     override fun keyReleased() {
@@ -59,7 +75,13 @@ class PianoKeys : BaseSketch() {
         if (keyCode in 97..106) {
             // FIXME Throws IllegalArgumentException: Collection contains more than one matching element
             // if pressed for too long (limitation of Processing's keyPress()
-            pads[keyCode - 97]?.single { it.isPressed }?.setReleased() }
+            val pitch = keyCode - 97
+            releasePad(pitch)
+        }
+    }
+
+    private fun releasePad(pitch: Int) {
+        pads[pitch]?.single { it.isPressed }?.setReleased()
     }
 
     private inner class Pad(
