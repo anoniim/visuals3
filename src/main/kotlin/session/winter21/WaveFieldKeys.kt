@@ -17,7 +17,6 @@ class WaveFieldKeys : BaseSketch(renderer = P3D) {
     private val moveSpeed = 4f
     private val addLineOnFrame = 6 // 3 - 20
     private val waveReach = 200f
-    private val maxWaveHeight = 100f
     private val waveRiseDelay = 10f // 1-10
     private val sideMargin = 10f
     private val lineColor = green
@@ -164,6 +163,7 @@ class WaveFieldKeys : BaseSketch(renderer = P3D) {
 
     private inner class Note(val pitch: Int, val velocity: Float) {
 
+        val maxWaveHeight = 2 * velocity
         val position: PVector = PVector(pointDensity * (2 + pitch), 0f)
         var waveHeight: Float = 0f
         var time: Float = 0f
