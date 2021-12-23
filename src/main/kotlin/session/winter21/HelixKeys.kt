@@ -3,7 +3,9 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
+import show.first.MidiController
 import util.translate
+import kotlin.random.Random
 
 fun main() {
     PApplet.main(HelixKeys::class.java)
@@ -11,40 +13,76 @@ fun main() {
 
 class HelixKeys : BaseSketch() {
 
+    private val numOfSlots = 16
     private val lineLength = 80f
     private val helixRadius = 10f
     private val moveSpeed = 5f
     private val rotationSpeed = 0.05f
-    private val fadeSpeed = 1f
+    private val fadeSpeed = 0.6f
     private val lineColor = purple
-    private val helices = mutableListOf<Helix>()
+    private val helices = mutableMapOf<Int, MutableList<Helix>>()
+    private val newHelices = mutableMapOf<Int, MutableList<Helix>>()
+    private val spacing by lazy { widthF / numOfSlots }
+    private val controller by lazy { MidiController(this, 1, 2) }
+
+    override fun setup() {
+        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+            triggerAction = { pitch, velocity ->
+                generateNewHelix(pitch - 12)
+            },
+            releaseAction = { pitch ->
+                helices[pitch - 12]
+                    ?.takeLast(2)
+                    ?.forEach {
+                        it.finish()
+                    }
+            })
+    }
 
     override fun draw() {
         translate(halfWidthF, 0.9f * heightF)
         background(grey3)
 
-        helices.forEach {
-            it.update()
-            it.draw()
+        helices.values.forEach { helicesForPitch ->
+            helicesForPitch.forEach {
+                it.update()
+                it.draw()
+            }
         }
 
         if (keyPressed && key == 'c') {
-            helices.forEach {
-                it.finish()
+            helices.values.forEach { helicesForPitch ->
+                helicesForPitch.forEach {
+                    it.finish()
+                }
             }
         }
+        addNewHelices()
     }
 
     override fun keyTyped() {
         if (keyPressed && key == ' ') {
-            generateNewHelix()
+            generateNewHelix(Random.nextInt(numOfSlots))
         }
     }
 
-    private fun generateNewHelix() {
-        val origin = PVector(random(-halfWidthF, halfWidthF), 0f)
-        helices.add(Helix(origin, random(0f, TWO_PI), 1f, lineColor))
-        helices.add(Helix(origin, random(0f, TWO_PI), -1f, lineColor))
+    private fun generateNewHelix(index: Int) {
+        val origin = PVector(-halfWidthF + index * spacing, 0f)
+        newHelices[index] = mutableListOf(
+            Helix(origin, random(0f, TWO_PI), 1f, lineColor),
+            Helix(origin, random(0f, TWO_PI), -1f, lineColor)
+        )
+    }
+
+    private fun addNewHelices() {
+        newHelices.forEach { (index, newList) ->
+            if (helices[index] == null) {
+                helices[index] = newList
+            } else {
+                helices[index]?.addAll(newList)
+            }
+        }
+        newHelices.clear()
     }
 
     inner class Helix(
@@ -60,7 +98,7 @@ class HelixKeys : BaseSketch() {
 
         fun update() {
             time += direction * rotationSpeed
-            if(!finished) tail.addNewLine(time)
+            if (!finished) tail.addNewLine(time)
             tail.removeIf { it.hasFinished }
         }
 
@@ -115,7 +153,7 @@ class HelixKeys : BaseSketch() {
             rotate(angle)
             stroke(color, alpha)
             strokeWeight(10f)
-            val halfLineLength = constrain(length, 0f,lineLength / 2f)
+            val halfLineLength = constrain(length, 0f, lineLength / 2f)
             line(-halfLineLength, 0f, halfLineLength, 0f)
             popMatrix()
         }
