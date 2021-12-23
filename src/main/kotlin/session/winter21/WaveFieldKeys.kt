@@ -3,6 +3,7 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
+import show.first.MidiController
 import kotlin.random.Random
 
 fun main() {
@@ -12,7 +13,7 @@ fun main() {
 class WaveFieldKeys : BaseSketch(renderer = P3D) {
 
     // config
-    private val numOfPoints = 32
+    private val numOfPoints = 16
     private val moveSpeed = 4f
     private val addLineOnFrame = 6 // 3 - 20
     private val waveReach = 200f
@@ -21,10 +22,18 @@ class WaveFieldKeys : BaseSketch(renderer = P3D) {
     private val sideMargin = 10f
     private val lineColor = green
 
-    private val pointDensity by lazy { (widthF - 2 * sideMargin) / (numOfPoints + 2) }
+    private val pointDensity by lazy { (widthF - 2 * sideMargin) / (numOfPoints) }
     private val maxDistance by lazy { -2f * heightF }
     private val lines = mutableListOf<Line>()
     private val notes = mutableListOf<Note>()
+    private val controller by lazy { MidiController(this, 1, 2) }
+
+    override fun setup() {
+        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+            triggerAction = { pitch, velocity ->
+                addWave(pitch - 12, velocity.toFloat())
+            })
+    }
 
     override fun draw() {
         translate(0f, heightF)
@@ -45,8 +54,12 @@ class WaveFieldKeys : BaseSketch(renderer = P3D) {
 
     override fun keyTyped() {
         if (keyPressed && key == ' ') {
-            notes.add(Note(Random.nextInt(numOfPoints), random(20f)))
+            addWave(Random.nextInt(numOfPoints), random(20f))
         }
+    }
+
+    private fun addWave(index: Int, velocity: Float) {
+        notes.add(Note(index, velocity))
     }
 
     private fun manageLists() {
