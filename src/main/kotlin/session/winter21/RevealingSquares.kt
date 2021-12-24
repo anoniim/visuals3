@@ -16,6 +16,7 @@ class RevealingSquares : BaseSketch() {
 
     // config
     private val minSize = 20f
+    private val revealBackgroundImage = false
     private val maxSize = 200f
     private val minAlpha = 100f
     private val randomnessSpeed = 0.005f
@@ -31,7 +32,7 @@ class RevealingSquares : BaseSketch() {
         controller.on(
             MidiController.PAD_1..MidiController.PAD_16,
             triggerAction = { pitch, velocity ->
-                generateNewSquare()
+                generateNewSquare(2f * velocity)
             })
 
         shapeMode(CENTER)
@@ -58,15 +59,16 @@ class RevealingSquares : BaseSketch() {
 
     override fun keyTyped() {
         if (key == ' ') {
-            generateNewSquare()
+            generateNewSquare(random(minSize, maxSize))
         }
     }
 
-    private fun generateNewSquare() {
-        val size = random(minSize, maxSize)
-        // config
-        addColorSquare(size)
-//        addCutoutImage(size)
+    private fun generateNewSquare(size: Float) {
+        if (revealBackgroundImage) {
+            addCutoutImage(size)
+        } else {
+            addColorSquare(size)
+        }
     }
 
     @Synchronized
