@@ -1,7 +1,6 @@
 package util
 
 import BaseSketch
-import processing.core.PApplet
 import java.util.*
 
 class Colors(val applet: BaseSketch) {
@@ -147,11 +146,21 @@ class Colors(val applet: BaseSketch) {
         ))
     }
 
-    private val augustiniColors = with(applet) {
+    val augustiniColors = with(applet) {
         listOf(
             color(0, 0, 0)
         )
     }
+
+    val collections = listOf(
+        flame,
+        pastel,
+        sunrise,
+        dirtyBeach,
+        blues,
+        reds,
+        greens,
+        yellowToPurple)
 
     val random: Int
         get() {
