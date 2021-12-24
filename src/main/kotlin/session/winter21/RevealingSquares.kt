@@ -103,6 +103,7 @@ class RevealingSquares : BaseSketch() {
         var alpha = 355f
 
         fun update() {
+            // TODO optimization: fade out completely and remove from list after some time (20s)
             if (alpha > minAlpha) alpha -= 1f
         }
 

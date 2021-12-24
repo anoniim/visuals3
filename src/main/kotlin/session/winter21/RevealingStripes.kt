@@ -16,6 +16,7 @@ class RevealingStripes : BaseSketch(Screen(1430, 950)) {
     private val minAlpha = 100f
     private val numOfSegments = 44
     private val middleStripeDelayFrames = 1200
+    private val revealBackgroundImage = true
 
     private val segmentSize by lazy { ceil(widthF / numOfSegments) }
     private val stripes = mutableListOf<Stripe>()
@@ -52,14 +53,16 @@ class RevealingStripes : BaseSketch(Screen(1430, 950)) {
 
     private fun generateNewStripe() {
         val segment = random(numOfSegments).toInt()
-        // config
+        if(revealBackgroundImage) {
+            addCutoutImage(segment)
+        } else {
 //        addColorSquare(segment)
-        addCutoutImage(segment)
+        }
     }
 
     @Synchronized
     private fun addColorSquare(segment: Int) {
-        stripes.add(Stripe(segment, color = colors.random))
+        stripes.add(segment, Stripe(segment, color = colors.random))
     }
 
     @Synchronized
