@@ -35,6 +35,15 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
     override fun draw() {
         background(grey3)
 
+        // debug
+//        val trianglesToShow = listOf(
+//            triangles[numOfCols * 2 + 1],
+//            triangles[numOfCols * 2 + 5],
+//            triangles[numOfCols * 2 + 11],
+//            triangles[numOfCols * 2 + 19],
+//        )
+//        trianglesToShow.forEach { it.showNeighbors() }
+
         triangles.forEach {
             it.draw()
             it.update()
@@ -49,7 +58,7 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
 
     private fun startNewTrail() {
         val haventBeenActive = triangles.filter { it.state == State.INITIAL }
-        if (haventBeenActive.isNotEmpty()) {
+        if (haventBeenActive.size > triangles.size / 10) {
             haventBeenActive.random().activate(0)
         } else {
             triangles.forEach { it.deactivate() }
@@ -63,12 +72,20 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
             if (index != triangles.lastIndex && indexInRow != itemsInRow - 1) {
                 it.addNeighbor(triangles[index + 1])
             }
-            if (it.row != 0 && indexInRow % 2 == 0 && indexInRow % 4 != 0) {
-                val topNeighborIndex = index - itemsInRow + 1
+            if (it.row % 2 == 0 && it.row != 0 && indexInRow % 2 == 0 && indexInRow % 4 != 0) {
+                val topNeighborIndex = index - itemsInRow
                 it.addNeighbor(triangles[topNeighborIndex])
             }
-            if (it.row != 0 && indexInRow % 2 == 1 && indexInRow % 4 != 3) {
-                val topNeighborIndex = index - itemsInRow - 1
+            if (it.row % 2 == 0 && it.row != 0 && indexInRow % 2 == 1 && indexInRow % 4 != 3) {
+                val topNeighborIndex = index - itemsInRow
+                it.addNeighbor(triangles[topNeighborIndex])
+            }
+            if (it.row % 2 == 1 && indexInRow % 2 == 0 && indexInRow % 4 == 0) {
+                val topNeighborIndex = index - itemsInRow
+                it.addNeighbor(triangles[topNeighborIndex])
+            }
+            if (it.row % 2 == 1 && indexInRow % 2 == 1 && indexInRow % 4 == 3) {
+                val topNeighborIndex = index - itemsInRow
                 it.addNeighbor(triangles[topNeighborIndex])
             }
         }
@@ -84,7 +101,7 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
                 val xRight = col * squareSize + squareSize
                 if (row % 2 == 0 && col % 2 == 0) {
                     grid.addAll(addTrianglesInEvenCol(col, row, xLeft, yTop, yBottom, xRight))
-                } else if (row % 2 == 0 ) {
+                } else if (row % 2 == 0) {
                     grid.addAll(addTrianglesInOddCol(col, row, xLeft, yTop, yBottom, xRight))
                 } else if (row % 2 == 1 && col % 2 == 0) {
                     grid.addAll(addTrianglesInOddCol(col, row, xLeft, yTop, yBottom, xRight))
@@ -158,6 +175,14 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
         private var timeToNeighbor: Int = 0
         val neighbors = mutableListOf<Triangle>()
         private lateinit var colorCollection: List<Int>
+
+        fun showNeighbors() {
+            // for debug purposes
+            fillColor = red
+            neighbors.forEach {
+                it.fillColor = orange
+            }
+        }
 
         fun activate(
             jumpToNeighborIn: Int = Random.nextInt(neighborJumpMaxDelay),
