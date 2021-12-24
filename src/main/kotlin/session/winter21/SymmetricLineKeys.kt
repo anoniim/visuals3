@@ -3,6 +3,7 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
+import show.first.MidiController
 import util.translate
 
 fun main() {
@@ -12,19 +13,34 @@ fun main() {
 class SymmetricLineKeys : BaseSketch() {
 
     // config
-    private val moveSpeed = 4f // low without fixed spacing, higher otherwise
-    private val fadeInSpeed = 1f
-    private val expandSpeed = 3f
-    private val lineColor = purple
+    private val moveSpeed = 3f // 2-5 low without fixed spacing, higher otherwise
+    private val pitchLengthFactor = 30f
     private val fixedSpacingEnabled = true
-    private val fixedSpacing = 50f
+    private val fixedSpacing = 40f
+    private val fadeInSpeed = 1f
+    private val expandSpeed = 4f
+    private val lineColor = purple
 
     private val lines = mutableListOf<Line>()
+    private val controller by lazy { MidiController(this, 1, 2) }
+
+    override fun setup() {
+        controller.on(
+            MidiController.PAD_1..MidiController.PAD_16,
+            triggerAction = { pitch, velocity ->
+                generateNewLine(pitch * pitchLengthFactor)
+            })
+    }
 
     override fun draw() {
         translate(halfWidthF, 0.9f * heightF)
         background(grey3)
 
+        updateLines()
+    }
+
+    @Synchronized
+    private fun updateLines() {
         lines.forEach {
             it.update()
             it.draw()
@@ -33,12 +49,12 @@ class SymmetricLineKeys : BaseSketch() {
 
     override fun keyTyped() {
         if (keyPressed && key == ' ') {
-            generateNewLine()
+            generateNewLine(random(800f))
         }
     }
 
-    private fun generateNewLine() {
-        val length = random(800f)
+    @Synchronized
+    private fun generateNewLine(length: Float) {
         lines.forEach { it.moveUp() }
         lines.add(Line(lineLength = length, color = lineColor))
     }
