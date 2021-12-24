@@ -4,6 +4,7 @@ import BaseSketch
 import processing.core.PApplet
 import processing.core.PImage
 import processing.core.PVector
+import show.first.MidiController
 import util.plus
 import util.translateToCenter
 
@@ -24,8 +25,15 @@ class RevealingSquares : BaseSketch() {
     private var pointer = PVector()
     private val squares = mutableListOf<Square>()
     private val background by lazy { loadImage("input/winter21/sunset_scaled.png") } // surfer, cliff
+    private val controller by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
+        controller.on(
+            MidiController.PAD_1..MidiController.PAD_16,
+            triggerAction = { pitch, velocity ->
+                generateNewSquare()
+            })
+
         shapeMode(CENTER)
         // config
 //        imageMode(CENTER) // enable for the cutout positions to be a bit off
@@ -36,11 +44,16 @@ class RevealingSquares : BaseSketch() {
         translateToCenter()
 //        image(background, 0f, 0f)
 
+        updateSquares()
+        updatePointer()
+    }
+
+    @Synchronized
+    private fun updateSquares() {
         squares.forEach {
             it.update()
             it.draw()
         }
-        updatePointer()
     }
 
     override fun keyTyped() {
@@ -56,10 +69,12 @@ class RevealingSquares : BaseSketch() {
 //        addCutoutImage(size)
     }
 
+    @Synchronized
     private fun addColorSquare(size: Float) {
         squares.add(Square(pointer.copy(), size, color = colors.random))
     }
 
+    @Synchronized
     private fun addCutoutImage(size: Float) {
         val cutout = getCutout(size)
         squares.add(Square(pointer.copy(), size, image = cutout))
