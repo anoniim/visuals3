@@ -186,6 +186,13 @@ open class BaseSketch(
     }
 }
 
+/**
+ * [display] - must be set when launching fullscreen on an external monitor (usually 1 or 2).
+ *
+ * When [isProjector] is set, sketch is automatically fullscreen.
+ *
+ * [windowPosition] is function invoked during [BaseSketch.setup] to, you guessed it, adjust window position on the screen.
+ */
 class Screen(
     var width: Int = defaultWidth,
     var height: Int = defaultHeight,
@@ -210,7 +217,9 @@ class Screen(
 
     companion object {
         private const val taskBarWidth = 70
-        val LG_ULTRAWIDE = Screen(2000, 1300) { surface.setLocation(displayWidth - 2000 - taskBarWidth, 0) }
+        val LG_ULTRAWIDE = Screen(2000, 1280) {
+            surface.setLocation(displayWidth - 2000 - taskBarWidth, 0)
+        }
         val EPSON_PROJECTOR = Screen(800, 600, display = 1, isProjector = true)
     }
 }
