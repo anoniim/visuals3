@@ -100,13 +100,19 @@ open class BaseSketch(
      */
     override fun setup() {
         syncScreenSizeWhenFullscreen()
-        screen.adjustWindowPosition(this)
+        adjustWindowPositionIfNeeded()
     }
 
     private fun syncScreenSizeWhenFullscreen() {
         if (fullscreen) {
             screen.width = width
             screen.height = height
+        }
+    }
+
+    private fun adjustWindowPositionIfNeeded() {
+        if (!fullscreen) {
+            screen.adjustWindowPosition(this)
         }
     }
 
