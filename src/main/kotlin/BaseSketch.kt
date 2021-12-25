@@ -9,7 +9,7 @@ private const val defaultHeight = 950
 
 open class BaseSketch(
     val screen: Screen = Screen(defaultWidth, defaultHeight),
-    private val fullscreen: Boolean = false,
+    private var fullscreen: Boolean = false,
     private val renderer: String? = null,
     private val smoothLevel: Int = 0,
     private val longClickClear: Boolean = false,
@@ -60,17 +60,9 @@ open class BaseSketch(
 
     /* Initial settings */
     override fun settings() {
+        setFullscreenOnProjectors()
         if (fullscreen) {
-            if (renderer != null) {
-                fullScreen(renderer)
-            } else {
-                fullScreen()
-            }
-            System.err.println(
-                "Fullscreen, don't forget to set the screen size in setup()\n" +
-                        "screen.width = width\n" +
-                        "screen.height = height"
-            )
+            setFullscreen()
         } else {
             if (renderer != null) {
                 size(screen.width, screen.height, renderer)
@@ -80,6 +72,41 @@ open class BaseSketch(
         }
         if (smoothLevel != 0) {
             smooth(smoothLevel)
+        }
+    }
+
+    private fun setFullscreenOnProjectors() {
+        if (screen.isProjector) {
+            fullscreen = true
+            println("Fullscreen set since we're running on a projector (${screen.width}:${screen.height})")
+        }
+    }
+
+    private fun setFullscreen() {
+        if (screen.display != 0) {
+            if (renderer != null) fullScreen(renderer, screen.display) else fullScreen(screen.display)
+        } else {
+            if (renderer != null) fullScreen(renderer) else fullScreen()
+        }
+    }
+
+    protected fun printScreenSize() {
+        println("This screen size is $width:$height")
+    }
+
+    /**
+     * Initial setup, happens after [settings].
+     * Sketches must call super.setup() to function correctly.
+     */
+    override fun setup() {
+        syncScreenSizeWhenFullscreen()
+        screen.adjustWindowPosition(this)
+    }
+
+    private fun syncScreenSizeWhenFullscreen() {
+        if (fullscreen) {
+            screen.width = width
+            screen.height = height
         }
     }
 
@@ -153,7 +180,17 @@ open class BaseSketch(
     }
 }
 
-class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight) {
+class Screen(
+    var width: Int = defaultWidth,
+    var height: Int = defaultHeight,
+    val display: Int = 0,
+    val isProjector: Boolean = false,
+    private val windowPosition: (PApplet.() -> Unit)? = null,
+) {
+    fun adjustWindowPosition(applet: PApplet) {
+        windowPosition?.invoke(applet)
+    }
+
     val widthF: Float by lazy { width.toFloat() }
     val heightF: Float by lazy { height.toFloat() }
     val centerX: Float
@@ -164,4 +201,10 @@ class Screen(var width: Int = defaultWidth, var height: Int = defaultHeight) {
     val halfHeight: Float by lazy { height / 2F }
     val center by lazy { PVector(centerX, centerY) }
     val negativeCenter by lazy { PVector(-centerX, -centerY) }
+
+    companion object {
+        private const val taskBarWidth = 70
+        val LG_ULTRAWIDE = Screen(2000, 1300) { surface.setLocation(displayWidth - 2000 - taskBarWidth, 0) }
+        val EPSON_PROJECTOR = Screen(800, 600, display = 1, isProjector = true)
+    }
 }
