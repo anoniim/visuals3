@@ -9,9 +9,11 @@ fun main() {
 
 class BrightnessReveal : BaseSketch(Screen.LG_ULTRAWIDE) {
 
-    private var brightnessThreshold = 255f
+    private var colorThreshold = 0f
+    private val speed = 0.5f
+
     private val image by lazy {
-        val original = loadImage("input/winter21/cliff_full.png")
+        val original = loadImage("input/winter21/park.png") // cliff_full
         original.resize(width, 0)
         original.get(0, 0, width, height)
     }
@@ -26,21 +28,20 @@ class BrightnessReveal : BaseSketch(Screen.LG_ULTRAWIDE) {
         val imagePixels = image.pixels
         for (i in imagePixels.indices) {
             val pixel = imagePixels[i]
-            val brightness = brightness(pixel)
-            if (brightness > brightnessThreshold) {
+            if (brightness(pixel) <= colorThreshold) {
                 pixels[i] = pixel
             }
         }
         updatePixels()
 
-        showBrightnessThreshold()
-        brightnessThreshold -= 1f
-        if (brightnessThreshold < 0f) noLoop()
+//        showBrightnessThreshold()
+        colorThreshold += speed
+        if (colorThreshold > 255) noLoop()
     }
 
     private fun showBrightnessThreshold() {
         stroke(white)
         textSize(40f)
-        text(brightnessThreshold, 10f, 50f)
+        text(colorThreshold, 10f, 50f)
     }
 }
