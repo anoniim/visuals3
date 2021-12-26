@@ -76,6 +76,10 @@ class MidiController(applet: PApplet, input: Int, output: Int) {
         bus.dispose()
     }
 
+    fun printDevices() {
+        MidiBus.list()
+    }
+
     companion object {
         const val PAD_1 = 12
         const val PAD_2 = 13
@@ -101,6 +105,10 @@ class MidiController(applet: PApplet, input: Int, output: Int) {
         const val PAD_22 = 33
         const val PAD_23 = 34
         const val PAD_24 = 35
+
+        fun printDevices() {
+            MidiBus.list()
+        }
     }
 
     class Signal() {
