@@ -26,6 +26,7 @@ class CircularStrings : BaseSketch(Screen.LG_ULTRAWIDE) {
     private val midiController by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
+        super.setup()
         midiController.on(MidiController.PAD_1..MidiController.PAD_16,
             { pitch, velocity ->
                 circles[pitch - 12].pluck(velocity)
