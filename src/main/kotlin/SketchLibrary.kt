@@ -68,8 +68,8 @@ fun main() {
 //    PApplet.main(HilbertCurve::class.java)
 //    PApplet.main(MaurerRosePatterns2::class.java)
 //    PApplet.main(TerrainGeneration::class.java)
-    PApplet.main(BrightnessReveal::class.java)
-
+//    PApplet.main(BrightnessReveal::class.java)
+    PApplet.main(Pointillism::class.java)
 
 /* ______________ TOOLS ______________ */
 //    PApplet.main(Dot::class.java)
