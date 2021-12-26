@@ -2,16 +2,12 @@ package sketch.pixels
 
 import BaseSketch
 import processing.core.PApplet
-import processing.core.PVector
-import java.awt.Color.green
-import java.awt.Color.red
-import kotlin.random.Random
 
 fun main() {
-    PApplet.main(Pointillism::class.java)
+    PApplet.main(BrightnessReveal::class.java)
 }
 
-class Pointillism : BaseSketch(Screen.LG_ULTRAWIDE) {
+class BrightnessReveal : BaseSketch(Screen.LG_ULTRAWIDE) {
 
     private var brightnessThreshold = 255f
     private val image by lazy {

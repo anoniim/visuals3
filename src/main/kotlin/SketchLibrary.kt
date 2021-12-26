@@ -1,5 +1,15 @@
 import processing.core.PApplet
+import session.winter21.RevealingStripes
+import sketch.dots.AtomicFlicker
+import sketch.dots.CirclePendulum2
+import sketch.dots.Pointillism
+import sketch.growth.GrowingNeuron2
+import sketch.perspective.RainbowSunrise
+import sketch.perspective.TerrainGeneration
+import sketch.pixels.BrightnessReveal
 import sketch.squares.LowResFire
+import sketch.synchronization.SyncOrbits
+import sketch.waves.TileWave
 
 //import sketch.walkers.CityExploration
 
@@ -58,6 +68,7 @@ fun main() {
 //    PApplet.main(HilbertCurve::class.java)
 //    PApplet.main(MaurerRosePatterns2::class.java)
 //    PApplet.main(TerrainGeneration::class.java)
+    PApplet.main(BrightnessReveal::class.java)
 
 
 /* ______________ TOOLS ______________ */
@@ -100,7 +111,7 @@ fun main() {
 //    PApplet.main(SilhouetteSparks::class.java)
 //    PApplet.main(Incircles::class.java)
 //    PApplet.main(VipassanaWindow::class.java)
-    PApplet.main(LowResFire::class.java)
+//    PApplet.main(LowResFire::class.java)
 
 
 /* ______________ SHOWCASE ______________ */
@@ -127,4 +138,5 @@ fun main() {
 //    PApplet.main(AtomicFlicker::class.java)
 //    PApplet.main(SyncOrbits::class.java)
 //    PApplet.main(TileWave::class.java)
+//    PApplet.main(RevealingStripes::class.java)
 }
