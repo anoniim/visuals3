@@ -11,7 +11,10 @@ fun main() {
     PApplet.main(TriangleBreakDown::class.java)
 }
 
-class TriangleBreakDown : BaseSketch(renderer = P2D) {
+class TriangleBreakDown : BaseSketch(
+    renderer = P2D,
+    smoothLevel = 8
+) {
 
     // config
     private val minAlpha = 20f
@@ -19,6 +22,7 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
     private val squareSize = 40f
     private val neighborJumpMaxDelay = 10
     private val maxNeighborJumpAttempts = 10
+    private val resetThresholdFraction = 5
 
     private val numOfRows by lazy { ceil(heightF / squareSize) }
     private val numOfCols by lazy { ceil(widthF / squareSize) }
@@ -58,7 +62,7 @@ class TriangleBreakDown : BaseSketch(renderer = P2D) {
 
     private fun startNewTrail() {
         val haventBeenActive = triangles.filter { it.state == State.INITIAL }
-        if (haventBeenActive.size > triangles.size / 10) {
+        if (haventBeenActive.size > triangles.size / resetThresholdFraction) {
             haventBeenActive.random().activate(0)
         } else {
             triangles.forEach { it.deactivate() }
