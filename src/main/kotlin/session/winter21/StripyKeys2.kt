@@ -8,7 +8,11 @@ fun main() {
     PApplet.main(StripyKeys2::class.java)
 }
 
-class StripyKeys2 : BaseSketch(Screen.LG_ULTRAWIDE, renderer = P2D) {
+class StripyKeys2 : BaseSketch(
+    Screen.LG_ULTRAWIDE,
+    renderer = P2D,
+    smoothLevel = 8
+) {
 
     // config
     private val hidingEnabled = false

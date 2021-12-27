@@ -10,7 +10,11 @@ fun main() {
     PApplet.main(StripyKeys::class.java)
 }
 
-class StripyKeys : BaseSketch(Screen.LG_ULTRAWIDE, renderer = P2D) {
+class StripyKeys : BaseSketch(
+    Screen.LG_ULTRAWIDE,
+    renderer = P2D,
+    smoothLevel = 8
+) {
 
     private val numOfKeys = 49 // 49
     private val numOfLines = 320
@@ -106,7 +110,7 @@ class StripyKeys : BaseSketch(Screen.LG_ULTRAWIDE, renderer = P2D) {
         fun draw() {
             if (state == State.HIDDEN) return
             tint(255, alpha)
-            image(padGraphics, -bottomLength/2f, 0f)
+            image(padGraphics, -bottomLength / 2f, 0f)
         }
 
         fun show(velocity: Int) {
