@@ -29,7 +29,7 @@ class TriangleBreakDown : BaseSketch(
     private val numOfRows by lazy { ceil(heightF / squareSize) }
     private val numOfCols by lazy { ceil(widthF / squareSize) }
     private val triangles by lazy { generateGrid() }
-    private val midiController by lazy { KompleteKontrol(this, 1, 2) }
+    private val midiController by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
         connectNeighbors()
