@@ -2,10 +2,15 @@ package sketch.patterns
 
 import BaseSketch
 import Screen
+import processing.core.PApplet
+import input.MidiController
 import util.roundTo
 
+fun main() {
+    PApplet.main(MaurerRosePatterns::class.java)
+}
+
 class MaurerRosePatterns : BaseSketch(
-    Screen(800, 800),
     fullscreen = true
 ) {
 
