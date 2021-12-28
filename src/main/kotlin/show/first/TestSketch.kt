@@ -1,9 +1,9 @@
 package show.first
 
 import BaseSketch
-import Screen
+import input.MidiController
 import processing.core.PApplet
-import show.first.MidiController.Companion.PAD_16
+import input.MidiController.Companion.PAD_16
 import themidibus.MidiBus
 
 fun main() {
