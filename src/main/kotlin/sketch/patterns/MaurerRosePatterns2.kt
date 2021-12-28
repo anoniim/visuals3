@@ -2,7 +2,22 @@ package sketch.patterns
 
 import BaseSketch
 import Screen
+import processing.core.PApplet
+import input.MidiController
 import util.roundTo
+
+fun main() {
+    PApplet.main(MaurerRosePatterns2::class.java)
+}
+
+// d 74
+// d 87
+// d 90
+// d 93
+// d 105
+// d 115
+
+// under 1 minute
 
 /**
  * TODO Find an interesting n (e.g. 3.66), scan through all 360° and pick most interesting segments that will be slowed down
@@ -11,8 +26,7 @@ import util.roundTo
  * TODO each line different color -> gradient
  */
 class MaurerRosePatterns2 : BaseSketch(
-    Screen(800, 800),
-    fullscreen = true
+    Screen.LG_ULTRAWIDE,
 ) {
 
     private val nProgress = ValueProgress(minValue = 2f, maxValue = 8f)
@@ -22,17 +36,38 @@ class MaurerRosePatterns2 : BaseSketch(
     private val textSize = 24f
     private val textScale = 1.3f
     private val stopArea = screen.widthF / 8
+    private var direction = 1f
+
+    private val midiController by lazy { MidiController(this, 1, 2) }
+
+    override fun setup() {
+        super.setup()
+        MidiController.printDevices()
+        midiController.on(36..37,
+            triggerAction = { pitch, velocity ->
+                println("Pitch: $pitch")
+                when (pitch) {
+                    36 -> direction = -1f
+                    37 -> direction = 1f
+                }
+        })
+        midiController.on(MidiController.CONTROL_1) { value ->
+            val change = map(value.toFloat(), 0f, 127f, 0f, 1f)
+            dProgress.setIncrement(change)
+        }
+    }
+
 
     override fun draw() {
         translate(width / 2f, height / 2f)
         background(grey3)
-        val (n, d) = mousePressControl()
+//        val (n, d) = mousePressControl()
+        val d = dProgress.last
+        val n = 2.42f
         drawRoseShape(n, d)
         drawValueText(n, d)
-        drawControlGuidelines()
-        if (frameCount % 5 == 0) {
-            dProgress.progress()
-        }
+//        drawControlGuidelines()
+        dProgress.progress()
     }
 
     private fun drawControlGuidelines() {
@@ -42,7 +77,7 @@ class MaurerRosePatterns2 : BaseSketch(
 
     private fun drawRoseShape(n: Float, d: Float) {
         noFill()
-        strokeWeight(1f)
+        strokeWeight(4f)
         stroke(grey9)
         beginShape()
         var i = 0f
@@ -78,20 +113,29 @@ class MaurerRosePatterns2 : BaseSketch(
 
         private val maxLoopTime: Float = 10000f // 1000f
         private val numDecimalPoints = 2 // 3
-        private var increment = 1f
+        private var increment = 0.5f
 
         var last = 0f
         private var value = 0f
 
         fun progress() {
+//            increment = incrementFromMouseControl()
+            value += increment
+            last = map(value % maxLoopTime, 0f, maxLoopTime - 1, minValue, maxValue).roundTo(numDecimalPoints)
+        }
+
+        private fun incrementFromKnob(change: Float): Float {
+            return constrain(map(change, 0f, 1f, 0f, 4f), 0.0f, 4f)
+        }
+
+        private fun incrementFromMouseControl(): Float {
             val mouseControl = mouseX - halfWidthF
             if (mouseControl < -stopArea) {
                 decrement()
             } else if (mouseControl > stopArea) {
                 increment()
             }
-            increment = map(abs(mouseControl), stopArea, halfWidthF, 0.1f, 10f)
-            last = map(value % maxLoopTime, 0f, maxLoopTime - 1, minValue, maxValue).roundTo(numDecimalPoints)
+            return map(abs(mouseControl), stopArea, halfWidthF, 0.1f, 10f)
         }
 
         private fun increment() {
@@ -101,6 +145,10 @@ class MaurerRosePatterns2 : BaseSketch(
         private fun decrement() {
             value -= increment
             if (value < 0) value = maxLoopTime
+        }
+
+        fun setIncrement(change: Float) {
+            increment = direction * incrementFromKnob(change)
         }
     }
 }
