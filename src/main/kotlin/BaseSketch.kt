@@ -220,6 +220,9 @@ class Screen(
         val LG_ULTRAWIDE = Screen(2000, 1280) {
             surface.setLocation(displayWidth - 2000 - taskBarWidth, 0)
         }
+        val LG_ULTRAWIDE_LEFT = Screen(2000, 1280) {
+            surface.setLocation(0, 0)
+        }
         val EPSON_PROJECTOR = Screen(800, 600, display = 1, isProjector = true)
     }
 }
