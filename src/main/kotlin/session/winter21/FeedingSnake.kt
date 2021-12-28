@@ -3,7 +3,7 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.circle
 import util.translateToCenter
 
@@ -11,7 +11,11 @@ fun main() {
     PApplet.main(FeedingSnake::class.java)
 }
 
-class FeedingSnake: BaseSketch() {
+class FeedingSnake: BaseSketch(
+    screen = Screen.EPSON_PROJECTOR
+) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     private val repelArea = 100f
 
@@ -19,8 +23,8 @@ class FeedingSnake: BaseSketch() {
     private val midiController by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
-        midiController.on(MidiController.PAD_1..MidiController.PAD_16, { pitch, velocity ->
-            val directionAngle = ((pitch - 12) / 15f) * TWO_PI
+        midiController.on(keyRange, { pitch, velocity ->
+            val directionAngle = ((pitch - 35) / 35f) * TWO_PI
             snake.move(directionAngle, velocity.toFloat())
         })
     }

@@ -4,7 +4,7 @@ import BaseSketch
 import Screen
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.curveVertex
 import util.translateToCenter
 import util.vertex
@@ -13,12 +13,14 @@ fun main() {
     PApplet.main(CircularStrings::class.java)
 }
 
-class CircularStrings : BaseSketch(Screen.LG_ULTRAWIDE) {
+class CircularStrings : BaseSketch(Screen.EPSON_PROJECTOR) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     // config
     private val maxPluckOffset = 30f
     private val centralGap = 100f
-    private val numOfCircles = 16
+    private val numOfCircles = 49
     private val resolution = 10
 
     private val circles by lazy(this::generateCircles)
@@ -27,9 +29,9 @@ class CircularStrings : BaseSketch(Screen.LG_ULTRAWIDE) {
 
     override fun setup() {
         super.setup()
-        midiController.on(MidiController.PAD_1..MidiController.PAD_16,
+        midiController.on(keyRange,
             { pitch, velocity ->
-                circles[pitch - 12].pluck(velocity)
+                circles[pitch - 35].pluck(velocity)
             })
     }
 

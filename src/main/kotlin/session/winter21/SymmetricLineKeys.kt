@@ -3,21 +3,25 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.translate
 
 fun main() {
     PApplet.main(SymmetricLineKeys::class.java)
 }
 
-class SymmetricLineKeys : BaseSketch() {
+class SymmetricLineKeys : BaseSketch(
+    screen = Screen.EPSON_PROJECTOR
+) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     // config
     private val moveSpeed = 3f // 2-5 low without fixed spacing, higher otherwise
-    private val pitchLengthFactor = 30f
-    private val fixedSpacingEnabled = true
+    private val pitchLengthFactor = 5f
+    private val fixedSpacingEnabled = false
     private val fixedSpacing = 40f
-    private val fadeInSpeed = 1f
+    private val fadeInSpeed = 3f
     private val expandSpeed = 4f
     private val lineColor = purple
 
@@ -26,7 +30,7 @@ class SymmetricLineKeys : BaseSketch() {
 
     override fun setup() {
         controller.on(
-            MidiController.PAD_1..MidiController.PAD_16,
+            keyRange,
             triggerAction = { pitch, velocity ->
                 generateNewLine(pitch * pitchLengthFactor)
             })

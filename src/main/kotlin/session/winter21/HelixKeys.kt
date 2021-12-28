@@ -3,7 +3,7 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.translate
 import kotlin.random.Random
 
@@ -11,9 +11,13 @@ fun main() {
     PApplet.main(HelixKeys::class.java)
 }
 
-class HelixKeys : BaseSketch() {
+class HelixKeys : BaseSketch(
+    screen = Screen.EPSON_PROJECTOR
+) {
 
-    private val numOfSlots = 16
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
+
+    private val numOfSlots = 49
     private val lineLength = 80f
     private val helixRadius = 10f
     private val moveSpeed = 5f
@@ -26,12 +30,12 @@ class HelixKeys : BaseSketch() {
     private val controller by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
-        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+        controller.on(keyRange,
             triggerAction = { pitch, velocity ->
-                generateNewHelix(pitch - 12)
+                generateNewHelix(pitch - 35)
             },
             releaseAction = { pitch ->
-                helices[pitch - 12]
+                helices[pitch - 35]
                     ?.takeLast(2)
                     ?.forEach {
                         it.finish()

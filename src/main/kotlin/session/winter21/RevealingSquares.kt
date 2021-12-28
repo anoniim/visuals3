@@ -4,7 +4,7 @@ import BaseSketch
 import processing.core.PApplet
 import processing.core.PImage
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.plus
 import util.translateToCenter
 
@@ -12,15 +12,19 @@ fun main() {
     PApplet.main(RevealingSquares::class.java)
 }
 
-class RevealingSquares : BaseSketch() {
+class RevealingSquares : BaseSketch(
+    screen = Screen.EPSON_PROJECTOR
+) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     // config
     private val minSize = 20f
-    private val revealBackgroundImage = false
+    private val revealBackgroundImage = true
     private val maxSize = 200f
     private val minAlpha = 100f
     private val randomnessSpeed = 0.005f
-    private val radius = 600f
+    private val radius = 300f
 
     private var time = 0f
     private var pointer = PVector()
@@ -30,11 +34,12 @@ class RevealingSquares : BaseSketch() {
 
     override fun setup() {
         controller.on(
-            MidiController.PAD_1..MidiController.PAD_16,
+            keyRange,
             triggerAction = { pitch, velocity ->
-                generateNewSquare(2f * velocity)
+                generateNewSquare(velocity.toFloat())
             })
 
+        background.resize(width, 0)
         shapeMode(CENTER)
         // config
 //        imageMode(CENTER) // enable for the cutout positions to be a bit off

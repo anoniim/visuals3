@@ -1,12 +1,10 @@
 package session.winter21
 
 import BaseSketch
+import input.KompleteKontrol
+import input.MidiController
 import processing.core.PApplet
 import processing.core.PVector
-import processing.event.KeyEvent
-import shapes.Circle
-import show.first.MidiController
-import themidibus.MidiBus
 import util.circle
 
 fun main() {
@@ -16,7 +14,7 @@ fun main() {
 class CirclePads : BaseSketch() {
 
     private val numOfRows = 4
-    private val numOfCols = 4
+    private val numOfCols = 8
     private val alphaSpeed = 0.1f
 
     private val numOfCircles = numOfCols * numOfRows
@@ -29,13 +27,14 @@ class CirclePads : BaseSketch() {
     private val controller by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
-        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+        controller.on(KompleteKontrol.defaultKeyRange,
             triggerAction = { pitch, _ ->
-                pads[pitch-12].setPressed()
+                pads[pitch-KompleteKontrol.pitchOffset].setPressed()
             },
             releaseAction = { pitch ->
-                pads[pitch-12].setReleased()
+                pads[pitch-KompleteKontrol.pitchOffset].setReleased()
             })
+        MidiController.printDevices()
     }
 
     private val pads by lazy {

@@ -3,7 +3,7 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.line
 
 fun main() {
@@ -16,14 +16,18 @@ fun main() {
  *
  * TODO: make the lines to spiral to the center of the screen
  */
-class PianoKeys : BaseSketch() {
+class PianoKeys : BaseSketch(
+    screen = Screen.EPSON_PROJECTOR
+) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     // config
     private val movementSpeed = 3f
-    private val numOfPads = 16
-    private val padSize = 40f
+    private val numOfPads = 49
     private val bottomMargin = 50f
 
+    private val padSize by lazy { widthF / numOfPads }
     private val margin by lazy { padSize }
     private val gridWidth by lazy { numOfPads * padSize + (numOfPads - 1) * margin }
     private val horizontalOffset by lazy { (widthF - gridWidth) / 2f }
@@ -38,12 +42,13 @@ class PianoKeys : BaseSketch() {
     }
 
     override fun setup() {
-        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+        controller.on(
+            MidiController.PAD_24..MidiController.PAD_72,
             triggerAction = { pitch, velocity ->
-                addPad(pitch - 12)
+                addPad(pitch - 35)
             },
             releaseAction = { pitch ->
-                releasePad(pitch - 12)
+                releasePad(pitch - 35)
             })
     }
 

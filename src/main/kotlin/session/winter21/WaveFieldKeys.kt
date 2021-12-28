@@ -3,17 +3,22 @@ package session.winter21
 import BaseSketch
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import kotlin.random.Random
 
 fun main() {
     PApplet.main(WaveFieldKeys::class.java)
 }
 
-class WaveFieldKeys : BaseSketch(renderer = P3D) {
+class WaveFieldKeys : BaseSketch(
+    renderer = P3D,
+    screen = Screen.EPSON_PROJECTOR
+) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     // config
-    private val numOfPoints = 16
+    private val numOfPoints = 49
     private val moveSpeed = 4f
     private val addLineOnFrame = 6 // 3 - 20
     private val waveReach = 200f
@@ -28,9 +33,9 @@ class WaveFieldKeys : BaseSketch(renderer = P3D) {
     private val controller by lazy { MidiController(this, 1, 2) }
 
     override fun setup() {
-        controller.on(MidiController.PAD_1..MidiController.PAD_16,
+        controller.on(keyRange,
             triggerAction = { pitch, velocity ->
-                addWave(pitch - 12, velocity.toFloat())
+                addWave(pitch - 35, velocity.toFloat())
             })
     }
 

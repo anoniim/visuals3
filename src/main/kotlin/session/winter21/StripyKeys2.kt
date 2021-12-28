@@ -2,22 +2,24 @@ package session.winter21
 
 import BaseSketch
 import processing.core.PApplet
-import show.first.MidiController
+import input.MidiController
 
 fun main() {
     PApplet.main(StripyKeys2::class.java)
 }
 
 class StripyKeys2 : BaseSketch(
-    Screen.LG_ULTRAWIDE,
+    Screen.EPSON_PROJECTOR,
     renderer = P2D,
     smoothLevel = 8
 ) {
 
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
+
     // config
     private val hidingEnabled = false
     private val numOfKeys = 49 // 49
-    private val numOfLines = 160
+    private val numOfLines = 80
     private val lineStrokeWeight = 3f
     private val maxAlpha = 255f
     private var fadeInSpeed = 25f
@@ -36,11 +38,11 @@ class StripyKeys2 : BaseSketch(
     override fun setup() {
         super.setup()
         midiController.on(
-            MidiController.PAD_1..MidiController.PAD_16,
+            keyRange,
             { pitch, velocity ->
-                keyPads[pitch - 12].show(velocity)
+                keyPads[pitch - 35].show(velocity)
             }, { pitch ->
-                keyPads[pitch - 12].hide()
+                keyPads[pitch - 35].hide()
             })
     }
 

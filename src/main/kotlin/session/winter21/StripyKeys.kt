@@ -4,17 +4,19 @@ import BaseSketch
 import processing.core.PApplet
 import processing.core.PGraphics
 import processing.core.PImage
-import show.first.MidiController
+import input.MidiController
 
 fun main() {
     PApplet.main(StripyKeys::class.java)
 }
 
 class StripyKeys : BaseSketch(
-    Screen.LG_ULTRAWIDE,
+    Screen.EPSON_PROJECTOR,
     renderer = P2D,
     smoothLevel = 8
 ) {
+
+    private val keyRange = MidiController.PAD_24..MidiController.PAD_72
 
     private val numOfKeys = 49 // 49
     private val numOfLines = 320
@@ -37,11 +39,11 @@ class StripyKeys : BaseSketch(
     override fun setup() {
         super.setup()
         midiController.on(
-            MidiController.PAD_1..MidiController.PAD_16,
+            keyRange,
             { pitch, velocity ->
-                keyPads[pitch - 12].show(velocity)
+                keyPads[pitch - 35].show(velocity)
             }, { pitch ->
-                keyPads[pitch - 12].hide()
+                keyPads[pitch - 35].hide()
             })
     }
 

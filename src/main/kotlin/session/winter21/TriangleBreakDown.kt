@@ -1,9 +1,10 @@
 package session.winter21
 
 import BaseSketch
+import input.KompleteKontrol
 import processing.core.PApplet
 import processing.core.PVector
-import show.first.MidiController
+import input.MidiController
 import util.triangle
 import kotlin.random.Random
 
@@ -12,6 +13,7 @@ fun main() {
 }
 
 class TriangleBreakDown : BaseSketch(
+    screen = Screen.EPSON_PROJECTOR,
     renderer = P2D,
     smoothLevel = 8
 ) {
@@ -27,11 +29,11 @@ class TriangleBreakDown : BaseSketch(
     private val numOfRows by lazy { ceil(heightF / squareSize) }
     private val numOfCols by lazy { ceil(widthF / squareSize) }
     private val triangles by lazy { generateGrid() }
-    private val midiController by lazy { MidiController(this, 1, 2) }
+    private val midiController by lazy { KompleteKontrol(this, 1, 2) }
 
     override fun setup() {
         connectNeighbors()
-        midiController.on(MidiController.PAD_1..MidiController.PAD_16, { _, _ ->
+        midiController.on(KompleteKontrol.defaultKeyRange, { _, _ ->
             startNewTrail()
         })
     }

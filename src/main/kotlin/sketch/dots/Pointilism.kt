@@ -9,10 +9,10 @@ fun main() {
     PApplet.main(Pointillism::class.java)
 }
 
-class Pointillism: BaseSketch(Screen.LG_ULTRAWIDE) {
+class Pointillism: BaseSketch(Screen.EPSON_PROJECTOR) {
 
     private val resolution = 1f
-    private val randomSize = 10f
+    private val randomSize = 5f
     private val speed = 500
 
     private val image by lazy { loadImage("input/winter21/joel2.png") } // joel1, club
