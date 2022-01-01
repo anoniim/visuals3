@@ -9,6 +9,7 @@ import sketch.perspective.TerrainGeneration
 import sketch.pixels.BrightnessReveal
 import sketch.squares.LowResFire
 import sketch.synchronization.SyncOrbits
+import sketch.waves.BentSine
 import sketch.waves.SineShell
 import sketch.waves.TileWave
 
@@ -70,7 +71,7 @@ fun main() {
 //    PApplet.main(MaurerRosePatterns2::class.java)
 //    PApplet.main(TerrainGeneration::class.java)
 //    PApplet.main(BrightnessReveal::class.java)
-    PApplet.main(SineShell::class.java)
+//    PApplet.main(SineShell::class.java)
 
 /* ______________ TOOLS ______________ */
 //    PApplet.main(Dot::class.java)
@@ -115,30 +116,34 @@ fun main() {
 //    PApplet.main(LowResFire::class.java)
 
 
-/* ______________ SHOWCASE ______________ */
+/* ______________ GOOD STUFF ______________ */
 //    PApplet.main(PixelatedWalkers::class.java)
 //    PApplet.main(SmoothWalkers::class.java)
 //    PApplet.main(RaisingTiles::class.java)
-//    PApplet.main(SoupParticles::class.java)
 //    PApplet.main(MatrixLetters::class.java)
-//    PApplet.main(TextFromRandom::class.java)
+//    PApplet.main(Toothpicks::class.java)
 //    PApplet.main(NoisyWave::class.java)
 //    PApplet.main(NoisyWaveSurface::class.java)
-//    PApplet.main(Toothpicks::class.java)
+//    PApplet.main(ConstraintNoise::class.java)
+//    PApplet.main(ConstrainedNoiseWithStencil::class.java)
+//    PApplet.main(RainbowSunrise::class.java)
+//    PApplet.main(CirclePendulum2::class.java)
+//    PApplet.main(SyncOrbits::class.java)
+
+
+/* ______________ SHOWCASE ______________ */
+//    PApplet.main(SoupParticles::class.java)
+//    PApplet.main(TextFromRandom::class.java)
 //    PApplet.main(RecamansSequence::class.java)
 //    PApplet.main(ZenSpiral::class.java)
 //    PApplet.main(AnimatedRosePatterns::class.java)
 //    PApplet.main(MaurerRosePatterns::class.java)
 //    PApplet.main(CircleTangents2::class.java)
 //    PApplet.main(EveningExperiment1Idea2::class.java)
-//    PApplet.main(ConstraintNoise::class.java)
-//    PApplet.main(ConstrainedNoiseWithStencil::class.java)
 //    PApplet.main(GrowingNeuron2::class.java)
-//    PApplet.main(CirclePendulum2::class.java)
-//    PApplet.main(RainbowSunrise::class.java)
 //    PApplet.main(AtomicFlicker::class.java)
-//    PApplet.main(SyncOrbits::class.java)
 //    PApplet.main(TileWave::class.java)
+//    PApplet.main(BentSine::class.java)
 //    PApplet.main(RevealingStripes::class.java)
 //    PApplet.main(Pointillism::class.java)
 }
