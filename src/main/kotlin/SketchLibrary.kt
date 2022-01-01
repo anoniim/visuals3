@@ -9,6 +9,7 @@ import sketch.perspective.TerrainGeneration
 import sketch.pixels.BrightnessReveal
 import sketch.squares.LowResFire
 import sketch.synchronization.SyncOrbits
+import sketch.waves.SineShell
 import sketch.waves.TileWave
 
 //import sketch.walkers.CityExploration
@@ -69,7 +70,7 @@ fun main() {
 //    PApplet.main(MaurerRosePatterns2::class.java)
 //    PApplet.main(TerrainGeneration::class.java)
 //    PApplet.main(BrightnessReveal::class.java)
-    PApplet.main(Pointillism::class.java)
+    PApplet.main(SineShell::class.java)
 
 /* ______________ TOOLS ______________ */
 //    PApplet.main(Dot::class.java)
@@ -139,4 +140,5 @@ fun main() {
 //    PApplet.main(SyncOrbits::class.java)
 //    PApplet.main(TileWave::class.java)
 //    PApplet.main(RevealingStripes::class.java)
+//    PApplet.main(Pointillism::class.java)
 }
