@@ -146,4 +146,5 @@ fun main() {
 //    PApplet.main(BentSine::class.java)
 //    PApplet.main(RevealingStripes::class.java)
 //    PApplet.main(Pointillism::class.java)
+//    PApplet.main(DotOrnaments::class.java)
 }
