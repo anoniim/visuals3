@@ -172,6 +172,8 @@ class MidiController(applet: PApplet, input: Int, output: Int) {
         const val PAD_79 = 90
 
         const val CONTROL_1 = 1
+        const val CONTROL_18 = 18
+        const val CONTROL_19 = 19
         const val KNOB_14 = 14
 
         fun printDevices() {
