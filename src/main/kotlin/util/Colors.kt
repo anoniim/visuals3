@@ -1,6 +1,7 @@
 package util
 
 import BaseSketch
+import processing.core.PApplet
 import java.util.*
 
 class Colors(val applet: BaseSketch) {
@@ -168,4 +169,13 @@ class Colors(val applet: BaseSketch) {
                 return color(random(50f, 200f), random(50f, 200f), random(50f, 200f))
             }
         }
+}
+
+/**
+ * https://discourse.processing.org/t/how-do-i-cycle-lerp-between-multiple-colors/13441/5
+ */
+fun PApplet.lerpColors(amt: Float, vararg colors: Int): Int {
+    if (colors.size == 1) return colors[0]
+    val cunit = 1f / (colors.size - 1)
+    return lerpColor(colors[PApplet.floor(amt / cunit)], colors[PApplet.ceil(amt / cunit)], amt % cunit / cunit)
 }
