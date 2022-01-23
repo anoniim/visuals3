@@ -1,10 +1,15 @@
 package sketch.patterns
 
 import BaseSketch
+import processing.core.PApplet
 import processing.core.PVector
 import util.circle
 import util.curveVertex
 import util.translateToCenter
+
+fun main() {
+    PApplet.main(Mandala::class.java)
+}
 
 class Mandala : BaseSketch(
     fullscreen = true
