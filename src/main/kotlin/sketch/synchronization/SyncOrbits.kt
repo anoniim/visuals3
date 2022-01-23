@@ -133,8 +133,8 @@ class SyncOrbits : BaseSketch(renderer = P2D) {
             systems.forEach { otherSystem ->
                 otherSystem.orbits.forEach { otherOrbit ->
                     if (otherOrbit != this) {
-                        val otherPosition = otherSystem.origin.copy() + (otherOrbit.position.copy().rotate(otherOrbit.rotation))
-                        val thisPosition = origin.copy() + (position.copy().rotate(rotation))
+                        val otherPosition = otherSystem.origin + (otherOrbit.position.copy().rotate(otherOrbit.rotation))
+                        val thisPosition = origin + (position.copy().rotate(rotation))
                         val dist = thisPosition.dist(otherPosition)
                         minDist = min(minDist, dist)
                     }

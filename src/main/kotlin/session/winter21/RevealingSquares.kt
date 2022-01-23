@@ -88,7 +88,7 @@ class RevealingSquares : BaseSketch(
     }
 
     private fun getCutout(size: Float): PImage? {
-        val cutoutCenter = pointer.copy() + PVector(halfWidthF, halfHeightF)
+        val cutoutCenter = pointer + PVector(halfWidthF, halfHeightF)
         return background.get(cutoutCenter.x.toInt(), cutoutCenter.y.toInt(), size.toInt(), size.toInt())
     }
 

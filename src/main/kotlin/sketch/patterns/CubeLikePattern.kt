@@ -47,12 +47,12 @@ class CubeLikePattern : BaseSketch() {
                 vertex(adjustedOrigin)
                 val v1 = PVector.fromAngle(angleRotation + angle)
                     .setMag(grid.itemSize * 3 / 5)
-                vertex(adjustedOrigin.copy() + v1)
+                vertex(adjustedOrigin + v1)
                 val v3 = PVector.fromAngle(angleRotation + angle - TWO_PI / 3)
                     .setMag(grid.itemSize * 3 / 5)
-                val v2 = v1.copy() + v3.copy()
-                vertex(adjustedOrigin.copy() + v2)
-                vertex(adjustedOrigin.copy() + v3)
+                val v2 = v1 + v3
+                vertex(adjustedOrigin + v2)
+                vertex(adjustedOrigin + v3)
                 endShape()
 //                    line(adjustedOrigin.x, adjustedOrigin.y, v1.x, v1.y)
             }

@@ -86,7 +86,7 @@ class AntiCollisionSystem : BaseSketch() {
         }
 
         fun attract() {
-            val force = attractor.copy() - position
+            val force = attractor - position
             // Constrain distance squared to avoid particles shooting away
             val distanceSq = constrain(force.magSq(), 20f, 500f)
             val strength = (gravityConst / distanceSq) * 0.1f
@@ -112,7 +112,7 @@ class AntiCollisionSystem : BaseSketch() {
         }
 
         private fun repelFrom(other: Particle) {
-            val collide_vec = position.copy() - other.position
+            val collide_vec = position - other.position
             val dist = sqrt(collide_vec.x * collide_vec.x + collide_vec.y * collide_vec.y)
             val collide_axe = collide_vec.div(dist);
 

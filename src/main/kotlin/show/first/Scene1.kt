@@ -49,7 +49,7 @@ class Scene1(applet: BaseSketch) : Scene(applet) {
                     start
                 } else {
                     val angle = QUARTER_PI - noise(it / 160f) * HALF_PI
-                    start.copy() + (PVector.fromAngle(angle) * it.toFloat())
+                    start + (PVector.fromAngle(angle) * it.toFloat())
                 }
             }.asReversed()
         }

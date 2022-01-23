@@ -87,7 +87,7 @@ class SimpleSyncOrbit : BaseSketch() {
         }
 
         fun attract(other: Body): PVector {
-            val force = position.copy() - other.position
+            val force = position - other.position
             val distance = force.mag()
 //            val distance = constrain(force.mag(), 10f, 50f)
             force.normalize()
