@@ -2,6 +2,7 @@ package sketch.physics
 
 import BaseSketch
 import Screen
+import org.gicentre.utils.move.Ease
 import processing.core.PApplet
 import processing.core.PVector
 import util.Easing
@@ -20,14 +21,15 @@ class EasingTest : BaseSketch(
     private val graphSize = 200f
     private val ballSize = 40f
     private val margin = 150f
+    private val ballY = -margin / 4f
 
     private val graphs = listOf(
-        Graph(PVector(margin, margin)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.LINEAR, Easing.EASE_IN) },
+        Graph(PVector(margin, margin)) { i, max -> max * i },
         Graph(PVector(2 * margin + graphSize, margin)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.QUADRATIC, Easing.EASE_IN) },
-        Graph(PVector(3 * margin + 2 * graphSize, margin)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.EXPONENTIAL, Easing.EASE_IN) },
-        Graph(PVector(margin, 2 * margin + graphSize)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.SQRT, Easing.EASE_IN) },
-        Graph(PVector(2 * margin + graphSize, 2 * margin + graphSize)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.SINUSOIDAL, Easing.EASE_IN) },
-        Graph(PVector(3 * margin + 2 * graphSize, 2 * margin + graphSize)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.CIRCULAR, Easing.EASE_IN) },
+        Graph(PVector(3 * margin + 2 * graphSize, margin)) { i, max -> max * Ease.sinOut(i) },
+        Graph(PVector(margin, 2 * margin + graphSize)) { i, max -> max * Ease.elasticOut(i) },
+        Graph(PVector(2 * margin + graphSize, 2 * margin + graphSize)) { i, max -> Easing.map2(i, 0f, 1f, 0f, max, Easing.EXPONENTIAL, Easing.EASE_IN) },
+        Graph(PVector(3 * margin + 2 * graphSize, 2 * margin + graphSize)) { i, max -> max * Ease.bounceOut(i) },
     )
     private var time = 0f
     private var progress = 0f
@@ -40,7 +42,7 @@ class EasingTest : BaseSketch(
         }
 
         time += speed
-        progress = abs(((time) % 2f) - 1f)
+        progress = 1f - abs(((time) % 2f) - 1f)
     }
 
     private inner class Graph(
@@ -55,15 +57,22 @@ class EasingTest : BaseSketch(
 //            drawAxes()
             plotGraph()
             plotTime()
+            drawBallTrail()
             drawBall()
             popMatrix()
+        }
+
+        private fun drawBallTrail() {
+            stroke(red, 150f)
+            strokeWeight(1f)
+            line(0f, ballY, size, ballY)
         }
 
         private fun drawBall() {
             noStroke()
             fill(red)
             val x = function(progress, size)
-            circle(PVector(x, - margin/2f), ballSize)
+            circle(PVector(x, ballY), ballSize)
         }
 
         private fun plotTime() {
