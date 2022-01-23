@@ -22,6 +22,7 @@ dependencies {
     implementation(jarsFrom("libs/contributed/VideoExport"))
     implementation(jarsFrom("libs/contributed/themidibus"))
     implementation(jarsFrom("libs/contributed/peasycam"))
+    implementation(jarsFrom("libs/contributed/gicentreUtils"))
 
     // Installed in local maven
 //    implementation(group = "org.processing", name = "core", version = "3.5.4")
