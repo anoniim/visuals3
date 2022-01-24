@@ -18,6 +18,7 @@ class EasingLines : BaseSketch(
     // config
     private val lineWidth = 10f
     private val spacing = 10f
+    private val recordingEnabled = false // record
 
     private val numOfHorizontalLines by lazy { ceil(widthF / (lineWidth + spacing)) }
     private val videoExport by lazy { VideoExport(this) }
@@ -92,7 +93,7 @@ class EasingLines : BaseSketch(
 
     override fun setup() {
         super.setup()
-        videoExport.startMovie() // record
+        if (recordingEnabled) videoExport.startMovie()
     }
 
     override fun draw() {
