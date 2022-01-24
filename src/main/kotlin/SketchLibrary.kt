@@ -4,6 +4,7 @@ import sketch.dots.AtomicFlicker
 import sketch.dots.CirclePendulum2
 import sketch.dots.Pointillism
 import sketch.growth.GrowingNeuron2
+import sketch.lines.EasingLines
 import sketch.perspective.RainbowSunrise
 import sketch.perspective.TerrainGeneration
 import sketch.pixels.BrightnessReveal
@@ -43,6 +44,7 @@ fun main() {
 //    PApplet.main(SomeRosePatterns::class.java)
 //    PApplet.main(Mandala::class.java)
 //    PApplet.main(ToiletPaper::class.java)
+//    PApplet.main(TriangularBackground::class.java)
 
 
 /* ______________ PRACTICE ______________ */
@@ -80,6 +82,7 @@ fun main() {
 //    PApplet.main(EveningExperiment1Visualizer::class.java)
 //    PApplet.main(FourierTransform::class.java)
 //    PApplet.main(CuriosityBoxSummer21::class.java)
+//    PApplet.main(EasingTest::class.java)
 
 
 /* ______________ IDEAS ______________ */
@@ -129,6 +132,7 @@ fun main() {
 //    PApplet.main(RainbowSunrise::class.java)
 //    PApplet.main(CirclePendulum2::class.java)
 //    PApplet.main(SyncOrbits::class.java)
+    PApplet.main(EasingLines::class.java)
 
 
 /* ______________ SHOWCASE ______________ */
