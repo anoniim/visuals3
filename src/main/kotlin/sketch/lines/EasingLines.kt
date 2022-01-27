@@ -31,7 +31,8 @@ class EasingLines : BaseSketch(
             val delayDelta = 3
             val middle = numOfHorizontalLines / 2
             Line(
-                origin, destination,
+                origin, easeOut = Ease::cubicOut,
+                destination, easeIn = Ease::cubicIn,
                 color = getColor(abs(middle - it), 0, numOfHorizontalLines - middle, colors.flame),
                 animationLength = 60 * 2,
                 delayFrames = abs((middle - it) * delayDelta),
@@ -48,7 +49,8 @@ class EasingLines : BaseSketch(
             val delayDelta = 3
             val middle = numOfHorizontalLines / 2
             Line(
-                origin, destination,
+                origin, easeOut = Ease::cubicOut,
+                destination, easeIn = Ease::cubicIn,
                 color = getColor(abs(middle - it), 0, numOfHorizontalLines - middle, colors.flame),
                 animationLength = 60 * 2,
                 delayFrames = abs((middle - it) * delayDelta),
@@ -64,7 +66,8 @@ class EasingLines : BaseSketch(
             val destination = PVector(x, heightF)
             val delayDelta = 1
             Line(
-                origin, destination,
+                origin, easeOut = Ease::cubicOut,
+                destination, easeIn = Ease::cubicIn,
                 color = getColor(it, numOfHorizontalLines, 0, colors.sunrise),
                 animationLength = 60 * 2,
                 delayFrames = abs((0 - it) * delayDelta),
@@ -80,7 +83,8 @@ class EasingLines : BaseSketch(
             val destination = PVector(x, heightF)
             val delayDelta = 1
             Line(
-                origin, destination,
+                origin, easeOut = Ease::cubicOut,
+                destination, easeIn = Ease::cubicIn,
                 color = getColor(it, 0, numOfHorizontalLines, colors.sunrise),
                 animationLength = 60 * 2,
                 delayFrames = abs((numOfHorizontalLines - it) * delayDelta),
@@ -136,7 +140,9 @@ class EasingLines : BaseSketch(
 
     private inner class Line(
         val origin: PVector,
+        easeOut: (Float) -> Float,
         destination: PVector,
+        easeIn: (Float) -> Float,
         val color: Int,
         val animationLength: Int = 60 * 1,
         val delayFrames: Int = 0,
@@ -152,8 +158,8 @@ class EasingLines : BaseSketch(
         private var currentDelayFrames = delayFrames
 
         private val direction = destination - start
-        private val startPath = generatePath { progress -> Ease.cubicOut(progress) }
-        private val endPath = generatePath { progress -> Ease.cubicIn(progress) }
+        private val startPath = generatePath(easeOut)
+        private val endPath = generatePath(easeIn)
 
         private fun generatePath(easingFn: (Float) -> Float): List<PVector> {
             val path = mutableListOf<PVector>()
