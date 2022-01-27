@@ -8,6 +8,8 @@ import sketch.lines.EasingLines
 import sketch.perspective.RainbowSunrise
 import sketch.perspective.TerrainGeneration
 import sketch.pixels.BrightnessReveal
+import sketch.sound.miso.EveningExperiment1Visualizer
+import sketch.sound.zdenda.GrainVisualizer
 import sketch.squares.LowResFire
 import sketch.synchronization.SyncOrbits
 import sketch.waves.BentSine
@@ -80,6 +82,7 @@ fun main() {
 //    PApplet.main(TestWithVioleta::class.java)
 //    PApplet.main(RosePatterns::class.java)
 //    PApplet.main(EveningExperiment1Visualizer::class.java)
+    PApplet.main(GrainVisualizer::class.java)
 //    PApplet.main(FourierTransform::class.java)
 //    PApplet.main(CuriosityBoxSummer21::class.java)
 //    PApplet.main(EasingTest::class.java)
@@ -132,7 +135,7 @@ fun main() {
 //    PApplet.main(RainbowSunrise::class.java)
 //    PApplet.main(CirclePendulum2::class.java)
 //    PApplet.main(SyncOrbits::class.java)
-    PApplet.main(EasingLines::class.java)
+//    PApplet.main(EasingLines::class.java)
 
 
 /* ______________ SHOWCASE ______________ */
