@@ -22,7 +22,7 @@ class GrainVisualizer : BarVisualizer(
 //            jump(18f) // vibrato
 //            jump(28f) // scream
 //            jump(54f) // beats
-            jump(80f) // flute
+//            jump(80f) // flute
         }
     }
 
@@ -40,21 +40,25 @@ class GrainVisualizer : BarVisualizer(
     private val beatCue by lazy {
         SoundHelper.FftSceneCue(listOf(4), 0.10f).apply {
             setRepeatable(throttleMillis = 400L)
+            setEnabled(false)
         }
     }
     private val flute1Cue by lazy {
         SoundHelper.FftSceneCue(listOf(49), 0.10f).apply {
             setRepeatable()
+            setEnabled(false)
         }
     }
     private val flute2Cue by lazy {
         SoundHelper.FftSceneCue(listOf(46,47), 0.10f).apply {
             setRepeatable()
+            setEnabled(false)
         }
     }
     private val flute3Cue by lazy {
         SoundHelper.FftSceneCue(listOf(20), 0.10f).apply {
             setRepeatable()
+            setEnabled(false)
         }
     }
 
@@ -91,9 +95,15 @@ class GrainVisualizer : BarVisualizer(
         beepCue.checkAny(fft) {
             showLabel("BEEP", x = 500f)
             beepTriggerCount++
+            if (beepTriggerCount >= 16) beatCue.setEnabled(true)
         }
         beatCue.checkAverage(fft) { triggerCount ->
             showLabel("BEAT $triggerCount", 28f, x = 500f, y = 2 * 28f + 20f)
+            if (triggerCount >= 20) {
+                flute1Cue.setEnabled(true)
+                flute2Cue.setEnabled(true)
+                flute3Cue.setEnabled(true)
+            }
         }
     }
 
