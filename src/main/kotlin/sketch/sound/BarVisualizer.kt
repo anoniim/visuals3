@@ -6,23 +6,21 @@ import processing.sound.SoundFile
 import sound.SoundHelper.Companion.getSelectedFftBinAverage
 import java.util.*
 
-open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) {
+open class BarVisualizer(
+    resolution: Int = 88,
+) : BaseSketch(Screen(1500, 800), longClickClear = true) {
 
-    private val bands = 1024 // power of 2 (256)
-    private val smoothingFactor = 0.2f // 0.2
-
-    private val strokeWeight = 20f // 1-100 (30)
-    private val spacing = 5f // 5
+    private val bands = 1024 // power of 2 (256, 512, 1024, 2048)
+    private val numBars = resolution // 16-100 (30)
     private val maxLength = 100f // 100
+    private val smoothingFactor = 0.2f // 0.2
     private var showBarNumbers = false
 
-    protected var inputFile: SoundFile? = null
-    protected val waveform by lazy { sound.waveform(samples, inputFile) }
-    protected val fft by lazy { sound.fft(bands, inputFile) }
-    private val barWidthTotal = strokeWeight + spacing
-    private val padding = 50f / strokeWeight
-    private val numBars = floor(screen.widthF / barWidthTotal - padding)
-    private val xOffset = (screen.widthF - numBars * barWidthTotal) / 2 + strokeWeight / 2
+    private val sidePadding = 35f // 35
+    private val barSpacing = 5f // 5
+    private val strokeWeight = (screen.widthF - sidePadding - numBars * barSpacing) / numBars
+    private val barWidthTotal = strokeWeight + barSpacing
+    private val xOffset = sidePadding + barWidthTotal / 2f
     private val fftTranslationY = 0.5f * screen.heightF
     private val waveformTranslationY = 0.4f * screen.heightF
     private val fftBars = List(numBars) { Bar(it) }
@@ -33,11 +31,17 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
     private val labelPadding = 20f
     private var maxWaveformPeak = 0f
     private var selectedFftBins = mutableListOf<Int>()
+    private var timeOffset = 0
+
+    protected var inputFile: SoundFile? = null
+    protected val waveform by lazy { sound.waveform(samples, inputFile) }
+    protected val fft by lazy { sound.fft(bands, inputFile) }
 
     override fun draw() {
         background(grey3)
         stroke(grey7)
         pushMatrix()
+        drawTime()
         drawFft()
         drawWaveform()
         popMatrix()
@@ -56,6 +60,14 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
         super.mouseReleased()
     }
 
+    private fun drawTime() {
+        fill(white)
+        textSize(2*labelTextSize)
+        if (timeOffset == 0) timeOffset = millis()
+        val time = (millis() - timeOffset) / 1000
+        text("${time}s", labelPadding, labelTextSize + labelPadding)
+    }
+
     private fun drawWaveform() {
         showBarNumbers = false
         translate(0f, waveformTranslationY)
@@ -65,7 +77,7 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
             val bin = waveform.data[line.index]
             line.value.update(bin)
             line.value.show()
-            waveformPeak = max(waveformPeak, binValueToLength(bin))
+            waveformPeak = max(waveformPeak, bin)
         }
         showPeakGuideline(waveformPeak)
     }
@@ -74,18 +86,18 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
         // Current
         strokeWeight(2f)
         stroke(white)
-        val y = -waveformPeak - strokeWeight / 2f
-        line(0f, y, xOffset, y)
+        val y = -binValueToLength(waveformPeak) - strokeWeight / 2f
+        line(0f, y, sidePadding, y)
         // Max
         stroke(grey11)
         maxWaveformPeak = max(waveformPeak, maxWaveformPeak)
-        val yMax = -maxWaveformPeak - strokeWeight / 2f
-        line(0f, yMax, xOffset, yMax)
+        val yMax = -binValueToLength(maxWaveformPeak) - strokeWeight / 2f
+        line(0f, yMax, sidePadding, yMax)
         // Max label
         fill(white)
         textSize(labelTextSize)
-        val yText = constrain(yMax, -waveformTranslationY + labelTextSize + labelPadding, 0f) - labelPadding/2f
-        text(maxWaveformPeak, 0f, yText)
+//        val yText = constrain(yMax, -waveformTranslationY + labelTextSize + labelPadding, 0f) - labelPadding/2f
+        text(maxWaveformPeak, 0f, 0f) // yText to show label at peak height
     }
 
     private fun drawFft() {
@@ -105,7 +117,8 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
         fill(white)
         textSize(labelTextSize)
         val label = getSelectedFftBinAverage(fft, selectedFftBins)
-        text(label, 0f, -fftTranslationY + labelTextSize + labelPadding)
+        val yTopCorner = -fftTranslationY + labelTextSize + labelPadding
+        text(label, 0f, 0f) //  yTopCorner to show label in top corner
     }
 
     private fun drawFftBinMax(index: Int, binValue: Float) {
@@ -133,6 +146,7 @@ open class BarVisualizer : BaseSketch(Screen(1500, 800), longClickClear = true) 
         maxWaveformPeak = 0f
         fftBinMaxList.replaceAll { 0f }
         selectedFftBins.clear()
+        timeOffset = millis()
     }
 
     inner class Bar(val i: Int) {

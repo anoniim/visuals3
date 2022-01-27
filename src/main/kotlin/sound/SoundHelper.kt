@@ -140,6 +140,31 @@ class SoundHelper(private val applet: PApplet) {
         }
     }
 
+    class WaveformSceneCue(
+        private val threshold: Float
+    ) : SceneCue() {
+
+        private val recentMax = ArrayDeque<Float>()
+        private val recentSizeLimit = 20
+
+        fun checkMax(waveform: Waveform, onTrigger: ((Int) -> Unit)? = null) {
+            val max = waveform.data.maxOrNull() ?: return
+            val isMaxAboveThreshold = { max >= threshold }
+            check(isMaxAboveThreshold, onTrigger)
+        }
+
+        fun checkRecentAverage(waveform: Waveform, onTrigger: ((Int) -> Unit)? = null) {
+            val latestMax = waveform.data.maxOrNull() ?: return
+            if (recentMax.size >= recentSizeLimit) recentMax.removeFirst()
+            recentMax.add(latestMax)
+            val isRecentAverageAboveThreshold = {
+                val average = recentMax.average()
+                average >= threshold
+            }
+            check(isRecentAverageAboveThreshold, onTrigger)
+        }
+    }
+
     companion object {
 
         fun getSelectedFftBinAverage(fft: FFT, fftBinIndices: List<Int>): Float {
