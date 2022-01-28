@@ -110,8 +110,9 @@ fun main() {
 /* ______________ GOOD STUFF ______________ */
 //    PApplet.main(PixelatedWalkers::class.java)
 //    PApplet.main(SmoothWalkers::class.java)
-    PApplet.main(TriangularWalker::class.java)
+//    PApplet.main(TriangularWalker::class.java)
 //    PApplet.main(RaisingTiles::class.java)
+    PApplet.main(TriangularBackground::class.java)
 //    PApplet.main(MatrixLetters::class.java)
 //    PApplet.main(Toothpicks::class.java)
 //    PApplet.main(NoisyWave::class.java)
