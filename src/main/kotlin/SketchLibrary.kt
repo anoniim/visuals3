@@ -1,20 +1,6 @@
 import processing.core.PApplet
-import session.winter21.RevealingStripes
-import sketch.dots.AtomicFlicker
-import sketch.dots.CirclePendulum2
-import sketch.dots.Pointillism
-import sketch.growth.GrowingNeuron2
-import sketch.lines.EasingLines
-import sketch.perspective.RainbowSunrise
-import sketch.perspective.TerrainGeneration
-import sketch.pixels.BrightnessReveal
-import sketch.sound.miso.EveningExperiment1Visualizer
-import sketch.sound.zdenda.GrainVisualizer
-import sketch.squares.LowResFire
-import sketch.synchronization.SyncOrbits
-import sketch.waves.BentSine
-import sketch.waves.SineShell
-import sketch.waves.TileWave
+import sketch.triangles.TriangularBackground
+import sketch.walkers.TriangularWalker
 
 //import sketch.walkers.CityExploration
 
@@ -46,7 +32,6 @@ fun main() {
 //    PApplet.main(SomeRosePatterns::class.java)
 //    PApplet.main(Mandala::class.java)
 //    PApplet.main(ToiletPaper::class.java)
-//    PApplet.main(TriangularBackground::class.java)
 
 
 /* ______________ PRACTICE ______________ */
@@ -82,7 +67,7 @@ fun main() {
 //    PApplet.main(TestWithVioleta::class.java)
 //    PApplet.main(RosePatterns::class.java)
 //    PApplet.main(EveningExperiment1Visualizer::class.java)
-    PApplet.main(GrainVisualizer::class.java)
+//    PApplet.main(GrainVisualizer::class.java)
 //    PApplet.main(FourierTransform::class.java)
 //    PApplet.main(CuriosityBoxSummer21::class.java)
 //    PApplet.main(EasingTest::class.java)
@@ -125,6 +110,7 @@ fun main() {
 /* ______________ GOOD STUFF ______________ */
 //    PApplet.main(PixelatedWalkers::class.java)
 //    PApplet.main(SmoothWalkers::class.java)
+    PApplet.main(TriangularWalker::class.java)
 //    PApplet.main(RaisingTiles::class.java)
 //    PApplet.main(MatrixLetters::class.java)
 //    PApplet.main(Toothpicks::class.java)
