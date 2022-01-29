@@ -2,21 +2,27 @@ package sketch.triangles
 
 import BaseSketch
 import processing.core.PApplet
+import processing.core.PShape
 import processing.core.PVector
-import util.triangle
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 fun main() {
-    PApplet.main(TriangularBackground::class.java)
+    PApplet.main(TriangularScreenSaver::class.java)
 }
 
-class TriangularBackground : BaseSketch(
-//    fullscreen = true,
+class TriangularScreenSaver : BaseSketch(
+    fullscreen = true,
+    renderer = P2D,
 ) {
 
-    private val size = 60f
-    private val numOfWalkers = 40
+    private val size = 30f
+    private val numOfWalkers = 80
+    private val walkerSpeed = 5 // 1..5
+    private val greyShadeRange = 100..200
+    private val initialAlpha = 150
+    private val minAlpha = 150
+    private val maxAlpha = 255
 
     private val triangleWidth by lazy { sqrt(sq(size) - sq(size / 2f)) }
     private val numOfCols by lazy { 2 * ceil(widthF / triangleWidth) + 1 }
@@ -43,19 +49,20 @@ class TriangularBackground : BaseSketch(
             it.draw()
             it.update()
         }
-        activateNew()
+        moveWalkers()
+        text("$frameRate", 100f, 100f)
     }
 
-    private fun activateNew() {
-        if (frameCount % 4 == 0) {
+    private fun moveWalkers() {
+        if (frameCount % 5 / walkerSpeed == 0) {
             selected.forEachIndexed { index, it ->
-                val newSelected = activateNew(it)
+                val newSelected = moveWalker(it)
                 selected[index] = newSelected
             }
         }
     }
 
-    private fun activateNew(selectedIndex: Int): Int {
+    private fun moveWalker(selectedIndex: Int): Int {
         val neighbors = triangles[selectedIndex].neighbors
         return if (neighbors.isNotEmpty()) {
             val random = random(2.2f)
@@ -83,10 +90,12 @@ class TriangularBackground : BaseSketch(
         private val originY = row * size + (if (odd) -size / 2f else 0f) + (if (oddCouple) -size / 2f else 0f)
         private val direction = if (odd) 1 else 0
         private val origin = PVector(originX, originY)
+        private val greyShade: Int = Random.nextInt(greyShadeRange)
+        private val triangle = createTriangle()
+
         val neighbors = calculateNeighbors()
 
-        private var color: Int = color(Random.nextInt(50..150))
-        private var alpha: Float = 200f
+        private var alpha: Int = initialAlpha
         private var state = State.NORMAL
 
         fun activate() {
@@ -102,22 +111,18 @@ class TriangularBackground : BaseSketch(
         }
 
         private fun fadeOut() {
-            alpha -= 1f
-            if (alpha <= 50) state = State.NORMAL
+            alpha -= 1
+            if (alpha <= minAlpha) state = State.NORMAL
         }
 
         private fun fadeIn() {
-            alpha += 5f
-            if (alpha >= 255f) state = State.FADE_OUT
+            alpha += 5
+            if (alpha >= maxAlpha) state = State.FADE_OUT
         }
 
         fun draw() {
-            noStroke()
-            fill(color, alpha)
-            val v1 = origin
-            val v2 = origin.copy().add(0f, size)
-            val v3 = origin.copy().add(PVector.fromAngle(radians(30f + direction * 120f)).mult(size))
-            triangle(v1, v2, v3)
+            triangle.setFill(color(greyShade, alpha))
+            shape(triangle)
         }
 
         private fun calculateNeighbors(): List<Int> {
@@ -137,6 +142,21 @@ class TriangularBackground : BaseSketch(
                 }
             }
             return listOf(upNeighbor, sideNeighbor, downNeighbor).filter { it in 0 until numOfTriangles }
+        }
+
+        private fun createTriangle(): PShape {
+            val v1 = origin
+            val v2 = origin.copy().add(0f, size)
+            val v3 = origin.copy().add(PVector.fromAngle(radians(30f + direction * 120f)).mult(size))
+            val triangle = createShape()
+            return triangle.apply {
+                beginShape()
+                noStroke()
+                vertex(v1.x, v1.y)
+                vertex(v2.x, v2.y)
+                vertex(v3.x, v3.y)
+                endShape(CLOSE)
+            }
         }
     }
 

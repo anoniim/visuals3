@@ -1,6 +1,5 @@
 import processing.core.PApplet
-import sketch.triangles.TriangularBackground
-import sketch.walkers.TriangularWalker
+import sketch.triangles.TriangularScreenSaver
 
 //import sketch.walkers.CityExploration
 
@@ -112,7 +111,7 @@ fun main() {
 //    PApplet.main(SmoothWalkers::class.java)
 //    PApplet.main(TriangularWalker::class.java)
 //    PApplet.main(RaisingTiles::class.java)
-    PApplet.main(TriangularBackground::class.java)
+    PApplet.main(TriangularScreenSaver::class.java)
 //    PApplet.main(MatrixLetters::class.java)
 //    PApplet.main(Toothpicks::class.java)
 //    PApplet.main(NoisyWave::class.java)
