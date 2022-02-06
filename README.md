@@ -57,15 +57,24 @@ Running Sketches with Kotlin
 To run a Processing Sketch, you need to run the static `PApplet.main()` method. 
 This method takes an array of PApplet class names to run.
 To avoid having to add the main method to every sketch, type the applet class name and change the run configuration every time, there is the `SketchLibrary` class that contains all sketches with class references. 
+
+### From Android Studio
 The application then needs just a single Run Configuration that launches `SketchLibraryKt` main class.
 
 ```kotlin
 fun main() {
-    PApplet.main(arrayOf(Bubbles::class.qualifiedName))
+    PApplet.main(Bubbles::class.java)
 }
 ```
 
 Whenever I create a new sketch, I add it to this class and comment the old one out.
+
+### From command line
+
+`SketchLibraryKt` is also set as the main class of Java application Gradle plugin, so the project can be run from the command line:
+```shell
+.gradlew run
+```
 
 Convenience methods
 ===
@@ -91,6 +100,8 @@ Then I can go to a location where the folder with captured PNGs is present and r
 ```shell
 makegif bubbles
 ```
+
+However, easier way is to use [Abe Pazos' VideoExport library](https://github.com/hamoid/video_export_processing)
 
 Known issues
 === 

@@ -2,6 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.20"
+    id("application")
+}
+
+application {
+    mainClass.set("SketchLibraryKt")
 }
 
 group = "net.solvetheriddle"
