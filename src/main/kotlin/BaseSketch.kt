@@ -224,5 +224,6 @@ class Screen(
             surface.setLocation(0, 0)
         }
         val EPSON_PROJECTOR = Screen(800, 600, display = 1, isProjector = true)
+        val PIXELBOOK_GO = Screen(3200, 1800)
     }
 }
