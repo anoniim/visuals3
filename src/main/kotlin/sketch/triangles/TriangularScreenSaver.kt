@@ -1,6 +1,7 @@
 package sketch.triangles
 
 import BaseSketch
+import Screen.Companion.PIXELBOOK_GO
 import processing.core.PApplet
 import processing.core.PShape
 import processing.core.PVector
@@ -12,7 +13,8 @@ fun main() {
 }
 
 class TriangularScreenSaver : BaseSketch(
-    fullscreen = true,
+    fullscreen = false,
+//    screen = PIXELBOOK_GO,
     renderer = P2D,
 ) {
 
