@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import sketch.circles.TwistedSunBeam
 import sketch.triangles.TriangularScreenSaver
 
 //import sketch.walkers.CityExploration
@@ -104,6 +105,7 @@ fun main() {
 //    PApplet.main(Incircles::class.java)
 //    PApplet.main(VipassanaWindow::class.java)
 //    PApplet.main(LowResFire::class.java)
+    PApplet.main(TwistedSunBeam::class.java)
 
 
 /* ______________ GOOD STUFF ______________ */
@@ -111,7 +113,7 @@ fun main() {
 //    PApplet.main(SmoothWalkers::class.java)
 //    PApplet.main(TriangularWalker::class.java)
 //    PApplet.main(RaisingTiles::class.java)
-    PApplet.main(TriangularScreenSaver::class.java)
+//    PApplet.main(TriangularScreenSaver::class.java)
 //    PApplet.main(MatrixLetters::class.java)
 //    PApplet.main(Toothpicks::class.java)
 //    PApplet.main(NoisyWave::class.java)
